@@ -53,7 +53,7 @@ cube: t => {
   C.group(t),
   C.plane({g:t.n,x:t.w/2,y:t.w,w:t.w,h:t.d,b:t.b,css:"floor"}),
   C.plane({g:t.n,y:t.d/2,w:t.d,h:t.h,b:t.b1||t.b,rx:-90,ry:90,o:"bottom",css:"east wall"}),
-  C.plane({g:t.n,x:t.w,y:t.d/2,w:t.d,h:t.h,b:t.b2||t.b,rx:-90,ry:90,o:"bottom",css:"east wall"}),
+  C.plane({g:t.n,x:t.w,y:t.d/2,w:t.d,h:t.h,b:t.b2||t.b,rx:-90,ry:90,o:"bottom",css:"west wall"}),
   C.plane({g:t.n,x:t.w/2,y:t.d,w:t.w,h:t.h,b:t.b1||t.b,rx:-90,o:"bottom",css:"south wall"}),
   C.plane({g:t.n,x:t.w/2,y:0,w:t.w,h:t.h,b:t.b2||t.b,rx:-90,o:"bottom",css:"north wall"})
 },
@@ -62,7 +62,7 @@ cube: t => {
 move: t => {
   if(t.n){
    var r=C.$(t.n),
-   n=C.o[t.n];
+   n=C.o[t.n || t.css];
    (t.x||0===t.x)&&(n.x=t.x),
    (t.y||0===t.y)&&(n.y=t.y),
    (t.z||0===t.z)&&(n.z=t.z),
@@ -70,7 +70,7 @@ move: t => {
    (t.ry||0===t.ry)&&(n.ry=t.ry),
    (t.rz||0===t.rz)&&(n.rz=t.rz),
    (t.sx||0===t.sx)&&(n.sx=t.sx),
-   (t.sy||0===t.sy)&&(n.sx=t.sy),
+   (t.sy||0===t.sy)&&(n.sy=t.sy),
    C.o[t.n]=n,
    r.style.transform=C.tr(n)
  }
