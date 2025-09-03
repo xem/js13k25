@@ -1,5 +1,6 @@
 // Achievements
 achievements = [
+  "get up on the wrong foot",
   "break a mirror",
   "tip a salt shaker",
   "open an umbrella inside",
@@ -16,7 +17,7 @@ achievements = [
   "see an owl",
   "put bread upside down",
   "sleep head north",
-  "keys on table",
+  "put keys on table",
   "sit on table corner",
   "point to a rainbow",
   "sleep with fan on",
@@ -36,6 +37,12 @@ achievements = [
   
 
 ];
+
+completed = [
+
+];
+
+
 
 // Show a room
 show = (room) => {
@@ -70,6 +77,7 @@ show(room);
 hour = 8;
 min = 0;
 setInterval(()=>{
+  if(introanim < 2) return;
   min++;
   if(min > 60){
     min = 0;
@@ -83,17 +91,6 @@ setInterval(()=>{
 
 target = 0;
 
-// Mousemove (show names / rotate hero)
-onmousemove = (e) => {
-  var x = -(window.innerWidth-600)/2+e.pageX, y = e.pageY-30, angle;
-  if(x>0&&y>0&&x<600&&y<600){
-    //console.log(x,y);
-    angle=Math.atan2(y-(guyY-roomY),x-(guyX-roomX))-1.6;
-    guy.style.transform="rotate("+angle+"rad)";
-    text.innerHTML = e.target.className;
-    target = e.target;
-  }
-}
 
 // Rooms states
 state = [
@@ -107,73 +104,11 @@ state = [
     calendar1: 0, // on wall
     calendar2: 0, // marked
     bed: 0, // angle
-    scissors: 0, // open
+    scissors: 0, // 1 = open, 2 = taken
+    pen: 0, // take
+    shirt: 3, // blue, red, green, default
   }
 ]
-
-// Click (interact)
-onclick = (e) => {
-  
-  // Compute in-game coordinates
-  var x = -(window.innerWidth-600)/2+e.pageX, y = e.pageY-30;
-  
-  // Move hero
-  if(x>0&&y>0&&x<600&&y<600){
-    if(e.target.className=="floor"){
-      C.move({n:"hero",x:300-(300-x)/2+roomX,y:250-(300-y)/2+roomY});
-      guyX = x+roomX;
-      guyY = y+roomY;
-    }
-  }
-  
-  // Open menu
-  if(room == 0){
-    if(target.className == "bed"){
-      openmenu({"rotate": "rotatebed", "sleep":"sleep"});
-    }
-    if(target.className == "window"){
-      if(state[0].window == 0){
-        openmenu({"open": "openwindow1", "watch":"watchwindow1"});
-      }
-      else {
-        openmenu({"close": "closewindow1", "watch":"watchwindow1"});
-      }
-    }
-    
-    if(target.className == "cupboard"){
-      if(state[0].cupboard == 0){
-        openmenu({"open": "opencupboard1"});
-      }
-      else {
-        openmenu({"close": "closecupboard1"});
-      }
-    }
-    
-    if(target.className == "calendar"){
-      if(state[0].calendar1 == 0){
-        openmenu({"put on desk": "removecalendar","watch":"watchcalendar"});
-      }
-      else {
-        openmenu({"watch":"watchcalendar"});
-      }
-    }
-    
-    if(target.className == "scissors"){
-      if(state[0].scissors == 0){
-        openmenu({"open": "openscissors"});
-      }
-      else {
-        openmenu({"close":"closescissors"});
-      }
-    }
-    
-    if(target.className == "pen" && state[0].calendar1 && !state[0].calendar2){
-      openmenu({"mark date": "markdate"});
-    }
-  }
-  
-}
-
 
 
 // Open and fill menu
@@ -232,15 +167,21 @@ watchwindow1 = () => {
 opencupboard1 = () => {
   document.querySelector(".cupboard").innerHTML = svg.cupboardopen;
   state[0].cupboard = 1;
+  document.querySelector(".shirt.hidden").classList.remove("hidden");
+  document.querySelector(".shirt.hidden").classList.remove("hidden");
+  document.querySelector(".shirt.hidden").classList.remove("hidden");
 }
 
 closecupboard1 = () => {
   document.querySelector(".cupboard").innerHTML = svg.cupboard;
   state[0].cupboard = 0;
+  document.querySelector(".shirt.blue").classList.add("hidden");
+  document.querySelector(".shirt.green").classList.add("hidden");
+  document.querySelector(".shirt.red").classList.add("hidden");
 }
 
 removecalendar = () => {
-  C.move({n:"p22", x:385,y:-5,rz:95,sx:.6,sy:.7});
+  C.move({n:"calendar", x:385,y:-5,rz:95,sx:.6,sy:.7});
   state[0].calendar1 = 1;
 }
 
@@ -273,4 +214,52 @@ openscissors = () => {
 closescissors = () => {
   document.querySelector(".scissors").innerHTML = svg.scissors;
   state[0].scissors = 0;
+}
+
+takepen = () => {
+  document.querySelector(".pen").style.display = "none";
+  pocket.innerHTML += "<div id=pocketpen>"+svg.pen+"</div>";
+  state[0].pen = 1;
+}
+
+takescissors = () => {
+  document.querySelector(".scissors").style.display = "none";
+  pocket.innerHTML += "<div id=pocketscissors>"+svg.scissors+"</div>";
+  state[0].scissors = 2;
+}
+
+putdownpen = () => {
+  pocketpen.remove();
+  document.querySelector(".pen").style.display = "block";
+  state[0].pen = 0;
+}
+
+putdownscissors = () => {
+  pocketscissors.remove();
+  document.querySelector(".scissors").style.display = "block";
+  closescissors(); // implied: state[0].scissors = 0;
+}
+
+wearblue = () => {
+  state[0].shirt = 0;
+  hero.innerHTML = drawguy();
+  document.querySelector(".shirt.blue").classList.add("wear");
+  document.querySelector(".shirt.green").classList.remove("wear");
+  document.querySelector(".shirt.red").classList.remove("wear");
+}
+
+weargreen = () => {
+  state[0].shirt = 1;
+  hero.innerHTML = drawguy();
+  document.querySelector(".shirt.green").classList.add("wear");
+  document.querySelector(".shirt.blue").classList.remove("wear");
+  document.querySelector(".shirt.red").classList.remove("wear");
+}
+
+wearred = () => {
+  state[0].shirt = 2;
+  hero.innerHTML = drawguy();
+  document.querySelector(".shirt.red").classList.add("wear");
+  document.querySelector(".shirt.green").classList.remove("wear");
+  document.querySelector(".shirt.blue").classList.remove("wear");
 }

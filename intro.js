@@ -1,3 +1,5 @@
+introanim = 0; // 1: ready to click, 2: ready to click again
+
 start = () => {
 
   intro.innerHTML = svg.eyes;
@@ -27,17 +29,15 @@ start = () => {
     legsintro.style.transform="scaleX(12) scaleY(12)rotate(-35deg)"
   },4500);
   
-  setTimeout(()=>{title.innerHTML += "I ";},6100);
-  setTimeout(()=>{title.innerHTML += "GOT ";},6300);
-  setTimeout(()=>{title.innerHTML += "UP<br>";},6500);
-  setTimeout(()=>{title.innerHTML += "ON ";},6700);
-  setTimeout(()=>{title.innerHTML += "THE<br>";},6900);
-  setTimeout(()=>{title.innerHTML += "WRONG ";},7100);
-  setTimeout(()=>{title.innerHTML += "FOOT!";},7300);
-  setTimeout(()=>{title.innerHTML += "<div class=start>CLICK TO START";},7500);
-  setTimeout(()=>{
-    onclick = () => { intro.remove(); }
-  },7500);
+  setTimeout(()=>{title.innerHTML += "I ";},5100);
+  setTimeout(()=>{title.innerHTML += "GOT ";},5300);
+  setTimeout(()=>{title.innerHTML += "UP<br>";},5500);
+  setTimeout(()=>{title.innerHTML += "ON ";},5700);
+  setTimeout(()=>{title.innerHTML += "THE<br>";},5900);
+  setTimeout(()=>{title.innerHTML += "WRONG ";},6100);
+  setTimeout(()=>{title.innerHTML += "FOOT!";},6300);
+  setTimeout(()=>{title.innerHTML += "<div class=start>CLICK TO START"; introanim++;},6500);
 }
 
-intro.remove();//start();
+//start();
+introanim = 3;intro.remove(); // debug

@@ -10,14 +10,15 @@
   
 </div>
 
-<div id=intro>
-</div>
+<div id=intro></div>
+<div id=pocket></div>
 
 <script src=svg.js></script>
 <script src=c.js></script>
+<script src=game.js></script>
 <script src=rooms.js></script>
 <script src=intro.js></script>
-<script src=game.js></script>
+<script src=mouse.js></script>
 
 
 <style>
@@ -29,30 +30,28 @@
 .cube div.east { background: #bbb !important }
 .cube div.ground { background: #eee !important }
 .cube.toolshed .right { display: none }
+#intro { top: 32px; cursor: pointer }
 #intro svg#eyesvg { position:absolute;left:40%; top: 42%;transform:scaleX(9)scaleY(6.2); }
 #intro svg#bedintro { position:absolute;left:40%; top: 42%;transform:scaleX(7)scaleY(7); }
 #intro svg#legsintro { position:absolute;left:40%; top: 22%;transform:scaleX(8)scaleY(8)rotate(-45deg); }
-#title {
-  color: #0b7bcd;
-  position: absolute;
-  width:100%;
-  text-align: center;
-  text-shadow: 10px 10px 10px #555;
-  font: 145px / 139px Anton,impact,fantasy;
-}
-#title div {
-  color: #000;
-  font: 38px/36px Anton,impact,fantasy;
-}
-#v #guy, #v .guy, #v svg, #v svg *, #v, #v #time, #v #text, #v .cube { pointer-events: none}
+#title { color: #0b7bcd; position: absolute; width:100%; text-align: center; text-shadow: 10px 10px 10px #555; font: 145px / 139px Anton,impact,fantasy; }
+#title div { color: #000; font: 38px/36px Anton,impact,fantasy; }
+#v #guy, #v .guy, #v svg, #v svg *, #v, #v #time, #v #text, #v .cube, #pocket { pointer-events: none}
+#v { border: 4px solid #555; }
 #v * { pointer-events: all}
 #time,#text { margin: 5px 10px; font: 25px Anton,impact,fantasy; text-align:right; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
 #text { bottom: 0; text-align: center; position: absolute; width: 100%; margin: 0; }
 #hero { transition: transform .75s }
 #menushadow { width: 100%; height: 100%; position: absolute; top: 0; background: #8888; display: none; }
-#menu { width: 200px; min-height: 50px; background: #fff; border: 5px solid #444; position: relative; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%);}
+#menu { width: 250px; min-height: 50px; background: #fff; border: 5px solid #444; position: relative; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); text-align: center; }
 #menu div { height: 50px; border: 2px solid #444; padding: 5px; font: 20px Anton,impact,fantasy;}
 #menu div:hover {  background: #ddd; }
 #menu div:first-child { background: none; border: none; text-align: center; margin-top: -50px; font-size: 30px; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
-#p22 { transition: all .75s }
+#calendar { transition: all .75s }
+#pocket { width: 100px; height: 600px; position: absolute; left: 50%; margin-left: 300px; background: #bbb; border: 4px solid #555; border-left: 0; width: 0; transition: width .25s; overflow: hidden; }
+#pocket:not(:empty) { width: 100px; background: #bbb; margin-left: 304px; }
+#pocket div { width: 100px; height: 100px; }
+#pocket div svg { padding: 40px; transform: scale(3); }
+#title .tuto { text-shadow: 2px 2px 50px #bbb,-2px -2px 50px #bbb,-2px 2px 50px #bbb,2px -2px 50px #bbb; font: 39px / 50px Anton, impact, fantasy; width: 500px; margin: 50px; }
+.hidden,.wear { display: none }
 </style>

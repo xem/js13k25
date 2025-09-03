@@ -1,5 +1,5 @@
 ﻿drawcal = (mark, mark2) => {
-  var cal = `<svg width=99 height=99 style="transform:translateX(50px) translateY(50px) scaleX(6) scaleY(6);font:4px Arial" xmlns='http://www.w3.org/2000/svg'><rect x=4 y=3 width=92 height=79 fill="#ffffff" stroke="#000000"/><rect x=9 y=8 width=82 height=69 fill="#ffffff" stroke="#000000"/><path d="M9 18L91 18M9 30L91 30M9 42L91 42M9 53L91 53M9 64 L91 64M20 8L20 77M32 8L32 77M44 8L44 77M56 8L56 77M68 8L68 77M80 8L80 77" fill="#ffffff" stroke="#000000"/>`;
+  var cal = `<svg width=99 height=99 style="transform:translateY(50px) scaleX(6) scaleY(6);font:4px Arial" xmlns='http://www.w3.org/2000/svg'><rect x=4 y=3 width=92 height=79 fill="#ffffff" stroke="#000000"/><rect x=9 y=8 width=82 height=69 fill="#ffffff" stroke="#000000"/><path d="M9 18L91 18M9 30L91 30M9 42L91 42M9 53L91 53M9 64 L91 64M20 8L20 77M32 8L32 77M44 8L44 77M56 8L56 77M68 8L68 77M80 8L80 77" fill="#ffffff" stroke="#000000"/>`;
   for(calx = 0; calx < 7; calx++){  
     for(caly = 0; caly < 6; caly++){
       cal += "<text x='"+(calx * 11.8+10.5)+"' y='" + (caly * 11.3+12) + "'>" + ["Mon","Tue","Wed","Thu"," Fri"," Sat","Sun"][calx]+"</text>";
@@ -14,16 +14,26 @@
   return cal;
 }
 
+drawguy = () => {
+  return `<svg id=guy width=89 height=89 xmlns='http://www.w3.org/2000/svg'><path d="M27 48M27 48C30 56 38 60 41 59L40 56L42 61C44 62 43 63 46 61L47 56L47 59C53 58 55 55 57 51L50 30Z" fill="#ffffff" stroke="#000000"/><path d="M25 35C8 44 7 50 29 52M62 33C79 42 80 53 59 49" fill="#`+ ["000088","008800","880000","bbbbbb"][state[0].shirt] + `" stroke="#000000"/><path d="M25 43C24 27 32 22 43 22C61 24 64 30 61 44L57 52L56 38L54 47L51 41L48 51L45 45L43 51L41 44L37 50L32 42L31 51L28 43L27 50L25 43Z" fill="#cccccc" stroke="#000000"/></svg>`
+}
+
 
 svg = {
 
+  // Intro
   eyes: `<svg id=eyesvg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M0 0L198 0L198 198L0 198L0 0M77 48C73 42 60 42 54 48C63 52 71 52 77 48M45 48C35 42 28 44 24 48C30 51 39 52 45 48" fill="#000000" stroke="#000000"/></svg>`,
   
   bedintro: `<svg id=bedintro width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=0 y=22 width=99 height=45 fill="#ffffff" stroke="#000000"/><rect x=2 y=67 width=10 height=23 fill="#ffffff" stroke="#000000"/><rect x=86 y=67 width=10 height=23 fill="#ffffff" stroke="#000000"/></svg>`,
   
   legsintro: `<svg id=legsintro width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M24 0L8 9C5 12 3 12 4 17L17 56L38 50L29 19L23 18L28 18L25 15L29 19L42 13L65 31L71 26L67 31L72 30L66 32L59 61L78 69L88 24C88 20 87 17 83 16L63 -1Z" fill="#ffffff" stroke="#000000"/><path d="M17 56L9 65C3 72 8 79 15 75L36 60C40 57 39 53 36 51Z" fill="#ffffff" stroke="#000000"/><path d="M60 61C53 63 51 66 53 70L77 87C85 92 89 80 86 78L77 69Z" fill="#ffffff" stroke="#000000"/></svg>`,
   
+  // Bedroom
   door: `<svg width=51 height=51 xmlns='http://www.w3.org/2000/svg'><path d="M1 5L50 5L45 50L8 50Z" fill="#eeeeee" stroke="#000000"/><circle cx=40 cy=27 r=2 fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  door2: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M1 5L50 5L45 50L8 50Z" fill="#888888" stroke="#000000"/><path d="M1pm 5L1 38L8 69L8 50Z" fill="#eeeeee" stroke="#000000"/></svg>`,
+  
+  door3: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M1 5L50 5L45 50L8 50Z" fill="#888888" stroke="#000000"/><path d="M1 5L12 5L14 37L8 51Z" fill="#eeeeee" stroke="#000000"/></svg>`,
   
   bed: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=20 y=5 width=60 height=90 fill="#eeeeee" stroke="#000000"/><path d="M20 25L80 25M39 25L37 12L60 9L63 25M20 5L16 15L16 98L20 95L80 95L75 99L16 99M20 25L16 31" fill="#dddddd" stroke="#000000"/></svg>`,
   
@@ -33,17 +43,24 @@ svg = {
   
   windowopen: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M20 20L20 80L70 98L70 0L20 20M20 20L28 20L69 7M28 20L28 79L20 80M28 78L70 90" fill="#ffffff" stroke="#000000"/><path d="M70 7L33 0L0 15L28 20Z" fill="#ffffff" stroke="#000000"/><path d="M70 89M70 90L26 98L0 83L29 78Z" fill="#ffffff" stroke="#000000"/><path d="M33 3L8 14L27 18L59 8Z" fill="#ffffff" stroke="#000000"/><path d="M58 90L29 80L5 84L26 95Z" fill="#ffffff" stroke="#000000"/><path d="M70 7L70 90L28 78L28 20Z" fill="#778077" stroke="#000000"/></svg>`,
   
-  hanger: `<svg width=8 height=11 xmlns='http://www.w3.org/2000/svg'><rect x=3 y=2 width=2 height=6 fill="#000000" stroke="#000000"/><rect x=1 y=7 width=6 height=3 fill="#ffffff" stroke="#000000"/></svg>`,
+  hanger: `<svg width=8 height=11 xmlns='http://www.w3.org/2000/svg'><rect x=3 y=2 width=2 height=6 fill="#000000" stroke="#000000"/><rect x=1 y=7 width=6 height=3 fill="#444444" stroke="#000000"/></svg>`,
   
   calendar: `<svg width=46 height=40 xmlns='http://www.w3.org/2000/svg'><path d="M0 16L38 16L45 39L10 39Z" fill="#eeeeee" stroke="#000000"/><path d="M6 16L15 2L31 16L15 2" fill="#ffffff" stroke="#000000"/><path d="M7 20L35 20L40 36L12 36L5 19M7 25L36 25M9 29L38 29M11 33L38 33M11 20L17 36M17 20L22 36M24 20L28 36M29 20L33 36" fill="#ffffff" stroke="#000000"/></svg>`,
   
   chair: `<svg width=34 height=28 xmlns='http://www.w3.org/2000/svg'><rect x=4 y=1 width=30 height=4 fill="#dddddd" stroke="#000000"/><path d="M4 5L34 5L25 8L9 8L4 5" fill="#cccccc" stroke="#000000"/><path d="M9 8L9 22L26 22L26 8" fill="#dddddd" stroke="#000000"/></svg>`,
   
-  pen: `<svg width=8 height=24 xmlns='http://www.w3.org/2000/svg'><rect x=3 y=6 width=3 height=16 fill="#ffffff" stroke="#000000"/><path d="M3 6L4 1L6 6" fill="#880000" stroke="#000000"/></svg>`,
+  pen: `<svg width=8 height=24 xmlns='http://www.w3.org/2000/svg'><rect x=3 y=6 width=4 height=16 fill="#ffffff" stroke="#000000"/><path d="M3 6L5 1L7 6" fill="#880000" stroke="#880000"/></svg>`,
   
   scissors: `<svg width=25 height=28 xmlns='http://www.w3.org/2000/svg'><circle cx=5 cy=4 r=3 fill="#ffffff" stroke="#000000"/><circle cx=12 cy=4 r=3 fill="#ffffff" stroke="#000000"/><path d="M9 6L4 23L6 26L12 6Z" fill="#ffffff" stroke="#000000"/><path d="M7 7M5 7L8 26L11 22L6 7Z" fill="#ffffff" stroke="#000000"/></svg>`,
   
   scissorsopen: `<svg width=25 height=28 xmlns='http://www.w3.org/2000/svg'><circle cx=4 cy=4 r=3 fill="#ffffff" stroke="#000000"/><circle cx=14 cy=4 r=3 fill="#ffffff" stroke="#000000"/><path d="M12 6L1 17L1 22L14 7" fill="#ffffff" stroke="#000000"/><path d="M6 5L18 16L18 21L4 7" fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  mirror: `<svg width=29 height=46 xmlns='http://www.w3.org/2000/svg'><ellipse cx=16 cy=29 rx=12 ry=16 fill="#ffffff" stroke="#000000"/><ellipse cx=16 cy=29 rx=9 ry=13 fill="#dddddd" stroke="#000000"/><path d="M7 18L16 2L25 18L16 2" fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  glasses: `<svg width=99 height=99 id=glasses xmlns='http://www.w3.org/2000/svg'><ellipse cx=7 cy=4 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><ellipse cx=16 cy=4 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><path d="M0 1L0 4L4 4M10 4L12 4M19 4L22 4L22 1" fill="transparent" stroke="#000000"/></svg>`,
+  
+  
+  // Bathroom 
   
   wc: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=40 y=10 width=40 height=19 fill="#ffffff" stroke="#000000"/><path d="M40 10L27 48L27 85C47 92 53 92 66 85L66 48L26 48L66 48L80 29L40 29L33 49L33 86" fill="#ffffff" stroke="#000000"/><circle cx=60 cy=19 r=3 fill="#ffffff" stroke="#000000"/></svg>`,
   
@@ -52,6 +69,10 @@ svg = {
   cupboard: `<svg width=73 height=44 xmlns='http://www.w3.org/2000/svg'><path d="M2 21L31 44L72 44L65 21L72 44L72 30L65 1L65 21M35 20L51 44" fill="#888888" stroke="#000000"/><rect x=2 y=1 width=63 height=20 fill="#bbbbbb" stroke="#000000"/><circle cx=38 cy=34 r=1 fill="#ffffff" stroke="#000000"/><circle cx=49 cy=34 r=1 fill="#ffffff" stroke="#000000"/></svg>`,
   
   cupboardopen: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M2 21L31 44L72 44L65 21L72 44L72 30L65 1L65 21M35 20L51 44" fill="#888888" stroke="#000000"/><rect x=2 y=1 width=63 height=20 fill="#bbbbbb" stroke="#000000"/><circle cx=38 cy=34 r=1 fill="#ffffff" stroke="#000000"/><circle cx=49 cy=34 r=1 fill="#ffffff" stroke="#000000"/><path d="M2 21L3 41L31 53L31 44L2 21L31 44L31 34L15 21L31 34L65 34L31 34L31 44L65 44L65 21L65 50L72 53L72 44L65 21Z" fill="#888888" stroke="#000000"/></svg>`,
+  
+  blueshirt:`<svg width=34 height=28 xmlns='http://www.w3.org/2000/svg'><path d="M10 1L5 12L8 28L16 24L12 14L23 25C29 20 32 14 31 11L20 3L31 4L31 1Z" fill="#000088" stroke="#000000"/></svg>`,
+  greenshirt:`<svg width=34 height=28 xmlns='http://www.w3.org/2000/svg'><path d="M10 1L5 12L8 28L16 24L12 14L23 25C29 20 32 14 31 11L20 3L31 4L31 1Z" fill="#008800" stroke="#000000"/></svg>`,
+  redshirt:`<svg width=34 height=28 xmlns='http://www.w3.org/2000/svg'><path d="M10 1L5 12L8 28L16 24L12 14L23 25C29 20 32 14 31 11L20 3L31 4L31 1Z" fill="#880000" stroke="#000000"/></svg>`,
   
   shower: `<svg width=199 height=199 xmlns='http://www.w3.org/2000/svg'><path d="M11 33L11 88L72 88C79 35 46 21 10 33" fill="#ffffff" stroke="#000000"/><circle cx=17 cy=77 r=3 fill="#ffffff" stroke="#000000"/><circle cx=35 cy=104 r=8 fill="#ffffff" stroke="#000000"/><rect x=34 y=104 width=4 height=16 fill="#ffffff" stroke="#000000"/><path d="M2 1L2 8C63 8 89 23 90 98L96 98C87 11 70 12 2 0M4 8L11 33M89 98M90 98L71 87M70 25L58 38" fill="#ffffff" stroke="#000000"/></svg>`,
   
@@ -84,6 +105,4 @@ svg = {
   ladder: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M38 23L53 23M36 19L55 19M33 14L59 14M30 9L63 9M26 4L66 4M40 26L24 1M51 25L68 1" fill="#ffffff" stroke="#000000"/></svg>`,
   
   bucket: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M31 37L35 20C42 13 54 12 60 20L63 41" fill="#ffffff" stroke="#000000"/><path d="M31 38C39 19 54 16 61 38" fill="#ffffff" stroke="#000000"/><circle cx=47 cy=41 r=16 fill="#ffffff" stroke="#000000"/></svg>`,
-  
-  guy: `<svg id=guy width=89 height=89 xmlns='http://www.w3.org/2000/svg'><path d="M27 48M27 48C30 56 38 60 41 59L40 56L42 61C44 62 43 63 46 61L47 56L47 59C53 58 55 55 57 51L50 30Z" fill="#ffffff" stroke="#000000"/><path d="M25 35C8 44 7 50 29 52M62 33C79 42 80 53 59 49" fill="#dddddd" stroke="#000000"/><path d="M25 43C24 27 32 22 43 22C61 24 64 30 61 44L57 52L56 38L54 47L51 41L48 51L45 45L43 51L41 44L37 50L32 42L31 51L28 43L27 50L25 43Z" fill="#cccccc" stroke="#000000"/></svg>`,
 }

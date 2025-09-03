@@ -23,8 +23,8 @@ C.cube({x:-100,y:-150,z:70,w:300,h:300,d:300,b:"#ccc",css:"cube"});
 C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
 
   // door
-  C.plane({w:51,h:51,x:290,y:84,z:300,rz:180,html:svg.door,css:"door"});
-  C.plane({w:51,h:51,x:191,y:55-50,z:300,rz:-90,html:svg.door,css:"door"});
+  C.plane({w:51,h:51,x:290,y:84,z:300,rz:180,html:svg.door,css:"living room door"});
+  C.plane({w:51,h:51,x:191,y:55-50,z:300,rz:-90,html:svg.door,css:"bathroom door"});
   
   // bed
   C.plane({w:100,h:100,x:253,y:-60-50,z:300,rz:-90,html:svg.bed,css:"bed",n:"bed"});
@@ -40,19 +40,27 @@ C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   
   // hanger
   C.plane({w:8,h:11,x:228,y:-147,z:300,rz:0,html:svg.hanger,css:"hanger"});
-  C.plane({w:8,h:11,x:230,y:115,z:300,rz:180,html:svg.hanger,css:"hanger"});
+  C.plane({w:8,h:11,x:230,y:130,z:300,rz:180,html:svg.hanger,css:"hanger"});
+  
+  // mirror
+  C.plane({w:29,h:46,x:232,y:96,z:300,rz:180,sy:.7,html:svg.mirror,css:"mirror"});
   
   // calendar
-  C.plane({w:46,h:40,x:235,y:-145,z:300,rz:0,html:svg.calendar,css:"calendar"});
+  C.plane({w:46,h:40,x:235,y:-145,z:300,rz:0,html:svg.calendar,css:"calendar",n:"calendar"});
   
   // cupboard
   C.plane({w:73,h:44,x:394,y:-100,z:300,rz:90,html:svg.cupboard,css:"cupboard"});
   
+  // Shirts
+  C.plane({w:34,h:25,x:384,y:-112,z:300,rz:90,html:svg.blueshirt,css:"blue shirt hidden"});
+  C.plane({w:34,h:25,x:384,y:-95,z:300,rz:90,html:svg.greenshirt,css:"green shirt hidden"});
+  C.plane({w:34,h:25,x:384,y:-77,z:300,rz:90,html:svg.redshirt,css:"red shirt hidden"});
+  
   // guy
-  C.plane({n:"hero",w:100,h:100,x:300,y:-40,z:305,rz:0,html:svg.guy,css:"guy"});
+  C.plane({n:"hero",w:100,h:100,x:300,y:-40,z:305,rz:0,html:drawguy(),css:"guy"});
 
   // pen
-  C.plane({w:8,h:24,x:380,y:-20,z:305,rz:95,html:svg.pen,css:"pen"});
+  C.plane({w:8,h:24,x:380,y:-25,z:305,rz:95,html:svg.pen,css:"pen"});
   
   // scissors
   C.plane({w:25,h:28,x:385,y:30,z:305,rz:45,html:svg.scissors,css:"scissors"});
