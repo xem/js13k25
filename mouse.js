@@ -2,10 +2,9 @@
 onmousemove = (e) => {
   var x = -(window.innerWidth-600)/2+e.pageX, y = e.pageY-30, angle;
   if(x>0&&y>0&&x<600&&y<600){
-    //console.log(x,y);
     angle=Math.atan2(y-(guyY-roomY),x-(guyX-roomX))-1.6;
     guy.style.transform="rotate("+angle+"rad)";
-    text.innerHTML = e.target.className;
+    text.innerHTML = e.target.className.replace(/ 1| 2/,"");
     target = e.target;
   }
 }
@@ -17,13 +16,18 @@ onclick = (e) => {
   // Compute in-game coordinates
   var x = -(window.innerWidth-600)/2+e.pageX, y = e.pageY-30;
   
-  // Move hero
+  // Move hero on floor
   if(x>0&&y>0&&x<600&&y<600){
     if(e.target.className=="floor"){
-      C.move({n:"hero",x:300-(300-x)/2+roomX,y:250-(300-y)/2+roomY});
+      sit = 0;
+      C.move({n:"hero",x:300-(300-x)/2+roomX,y:250-(300-y)/2+roomY,sx:1,sy:1});
       guyX = x+roomX;
       guyY = y+roomY;
     }
+  }
+  
+  if(sit){
+    C.move({n:"hero",sx:1,sy:1});
   }
   
   // intro
@@ -37,19 +41,13 @@ onclick = (e) => {
   }
   
   // Open menu
+  
+  // Bedroom
   if(room == 0){
     
     // Bed
     if(target.className == "bed"){
       openmenu({"rotate": "rotatebed", "sleep (and see your score)":"sleep"});
-    }
-    if(target.className == "window"){
-      if(state[0].window == 0){
-        openmenu({"open": "openwindow1"/*, "watch":"watchwindow1"*/});
-      }
-      else {
-        openmenu({"close": "closewindow1"/*, "watch":"watchwindow1"*/});
-      }
     }
     
     // Cupboard
@@ -117,6 +115,99 @@ onclick = (e) => {
     
     if(target.className == "red shirt"){
       openmenu({"wear":"wearred"});
+    }
+    
+    // Doors
+    if(target.className == "living room door"){
+      tmp = {"go to living room": "bedtoliving"};
+      if(state[0].door1){
+        tmp["close"] = "closedoor1";
+      }
+      else {
+        tmp["open"] = "opendoor1";
+      }
+      openmenu(tmp);
+    }
+    
+    /*if(target.className == "bathroom door"){
+      tmp = {"go to bathroom": "gotobath"};
+      if(state[0].door1){
+        tmp["close"] = "closedoor2";
+      }
+      else {
+        tmp["open"] = "opendoor2";
+      }
+      openmenu(tmp);
+    }*/
+    
+    // Window
+    if(target.className == "window"){
+      if(state[0].window == 0){
+        openmenu({"open": "openwindow1"/*, "watch":"watchwindow1"*/});
+      }
+      else {
+        openmenu({"close": "closewindow1"/*, "watch":"watchwindow1"*/});
+      }
+    }
+    
+  }
+  
+  // Living room
+  else if(room == 2){
+    
+    // Window
+    if(target.className == "window"){
+      if(state[2].window == 0){
+        openmenu({"open": "openwindow2"/*, "watch":"watchwindow1"*/});
+      }
+      else {
+        openmenu({"close": "closewindow2"/*, "watch":"watchwindow1"*/});
+      }
+    }
+    
+    // Chair
+    if(target.id == "chair1"){
+      if(state[2].chair1){
+        openmenu({"sit": "sitchair1","push":"pushchair1"});
+      }
+      else {
+        openmenu({"pull": "pullchair1"});
+      }
+    }
+    if(target.id == "chair2"){
+      if(state[2].chair2){
+        openmenu({"sit": "sitchair2","push":"pushchair2"});
+      }
+      else {
+        openmenu({"pull": "pullchair2"});
+      }
+    }
+    
+    // Couch
+    if(target.className == "couch"){
+      openmenu({"sit": "sitcouch"});
+    }
+    
+    // hat
+    if(target.className == "hat"){
+      openmenu({"take":"takehat"});
+    }
+    
+    // Mirror
+    if(target.className == "mirror"){
+      openmenu({"take":"takemirror"});
+    }
+    
+    // Doors
+    if(target.className == "bedroom door"){
+      tmp = {"go to bedroom": "livingtobed"};
+      if(state[2].door1){
+        tmp["close"] = "closedoor1";
+      }
+      else {
+        tmp["open"] = "opendoor1";
+      }
+      openmenu(tmp);
     }
     
   }

@@ -46,16 +46,28 @@ completed = [
 
 // Show a room
 show = (room) => {
+  
+  hero.style.transition = "none";
+  
+  // Bedroom
   if(room == 0){
     C.camera({x:roomX = 0,y:roomY = -300, z:0}) // bedroom
     guyX = 300;
     guyY = -40;
+    C.move({n:"hero",x:300,y:-40});
   }
+  // Bathroom
   if(room == 1){
     C.camera({x:roomX = -300,y:roomY = -300, z:0}) // bathroom
+    guyX = roomX + 300;
+    guyY = roomY + 260;
   }
+  // Living room 
   if(room == 2){
-    C.camera({x:roomX = 0,y:roomY = 0, z:0}) // living room
+    C.camera({x:roomX = 0,y:roomY = 50, z:0}) // living room
+    guyX = roomX + 300;
+    guyY = roomY + 330;
+    C.move({n:"hero",x:300,y:-40+340});
   }
   if(room == 3){
     C.camera({x:roomX = -300,y:roomY = 0, z:0}) // kitchen
@@ -66,10 +78,9 @@ show = (room) => {
   if(room == 5){
     C.camera({x:roomX = -300,y:roomY = 1350, z:70}) // tool shed
   }
+  
+  setTimeout(()=>{hero.style.transition = "transform .75s";},250);
 }
-
-room = 0;
-show(room);
 
 
 
@@ -92,29 +103,13 @@ setInterval(()=>{
 target = 0;
 
 
-// Rooms states
-state = [
-  
-  // 0: Bedroom
-  {
-    window: 0, // closed
-    door1: 0,  // bathroom, closed
-    door2: 0,  // living room, closed
-    cupboard: 0, // closed
-    calendar1: 0, // on wall
-    calendar2: 0, // marked
-    bed: 0, // angle
-    scissors: 0, // 1 = open, 2 = taken
-    pen: 0, // take
-    shirt: 3, // blue, red, green, default
-  }
-]
+
 
 
 // Open and fill menu
 openmenu = (opts) => {
   menushadow.style.display = "block";
-  var html = "<div>" + target.className + "</div>";
+  var html = "<div>" + target.className.replace(/ 1| 2/,"") + "</div>";
   for(var i in opts){
     html += "<div onclick='" + opts[i] + "()'>" + i + "</div>";
   }
@@ -134,6 +129,11 @@ closemenu = () => {
 
 
 // Actions
+// =======
+
+
+// Bedroom
+
 rotatebed = () => {
   state[0].bed ++;
   state[0].bed %= 2;
@@ -151,17 +151,27 @@ sleep = () => {
 }
 
 openwindow1 = () => {
-  document.querySelector(".window").innerHTML = svg.windowopen;
+  document.querySelector("#window1").innerHTML = svg.windowopen;
   state[0].window = 1;
 }
 
 closewindow1 = () => {
-  document.querySelector(".window").innerHTML = svg.window;
+  document.querySelector("#window1").innerHTML = svg.window;
   state[0].window = 0;
 }
 
-watchwindow1 = () => {
+/*watchwindow1 = () => {
   
+}*/
+
+openwindow2 = () => {
+  document.querySelector("#window2").innerHTML = svg.windowopen;
+  state[2].window = 1;
+}
+
+closewindow2 = () => {
+  document.querySelector("#window2").innerHTML = svg.window;
+  state[2].window = 0;
 }
 
 opencupboard1 = () => {
@@ -262,4 +272,99 @@ wearred = () => {
   document.querySelector(".shirt.red").classList.add("wear");
   document.querySelector(".shirt.green").classList.remove("wear");
   document.querySelector(".shirt.blue").classList.remove("wear");
+}
+
+opendoor1 = () => {
+  document.querySelector(".living.room.door").innerHTML = svg.door2;
+  document.querySelector(".bedroom.door").innerHTML = svg.door3;
+  state[0].door1 = 1;
+  state[2].door1 = 1;
+}
+
+closedoor1 = () => {
+  document.querySelector(".living.room.door").innerHTML = svg.door;
+  document.querySelector(".bedroom.door").innerHTML = svg.door;
+  state[0].door1 = 0;
+  state[2].door1 = 0;
+}
+
+bedtoliving = () => {
+  document.querySelector(".bedroom.door").innerHTML = svg.door3;
+  setTimeout(()=>{document.querySelector(".living.room.door").innerHTML = svg.door2;},100);
+  setTimeout(()=>{fade.style.opacity=1;},500);
+  setTimeout(()=>{show(room = 2);fade.style.opacity=0},1000);
+  setTimeout(()=>{document.querySelector(".bedroom.door").innerHTML = svg.door;},1500);
+  state[0].door1 = 0;
+  state[2].door1 = 0;
+}
+
+livingtobed = () => {
+  document.querySelector(".living.room.door").innerHTML = svg.door2;
+  setTimeout(()=>{document.querySelector(".bedroom.door").innerHTML = svg.door3;},100);
+  setTimeout(()=>{fade.style.opacity=1;},500);
+  setTimeout(()=>{show(room = 0);fade.style.opacity=0},1000);
+  setTimeout(()=>{document.querySelector(".living.room.door").innerHTML = svg.door;},1500);
+  state[0].door1 = 0;
+  state[2].door1 = 0;
+}
+
+// Living room
+
+pullchair1 = () => {
+  C.move({n:"chair1", y:335});
+  state[2].chair1 = 1;
+}
+
+pushchair1 = () => {
+  C.move({n:"chair1", y:355});
+  state[2].chair1 = 0;
+}
+
+pullchair2 = () => {
+  C.move({n:"chair2", x:275,y:355, rz:70});
+  state[2].chair2 = 1;
+}
+
+pushchair2 = () => {
+  C.move({n:"chair2",x:265,y:390,rz:90});
+  state[2].chair2 = 0;
+}
+
+sitchair1 = () => {
+  guyX = 185;
+  guyY = 328;
+  C.move({n:"hero",x:300-(300-guyX)/2+roomX,y:250-(300-guyY)/2+roomY});
+  setTimeout(()=>{C.move({n:"hero",sx:.8,sy:.8});},500);
+  sit = 1;
+  guy.style.transform="rotate(0rad)";
+}
+
+sitchair2 = () => {
+  guyX = 258;
+  guyY = 350;
+  C.move({n:"hero",x:300-(300-guyX)/2+roomX,y:250-(300-guyY)/2+roomY});
+  setTimeout(()=>{C.move({n:"hero",sx:.8,sy:.8});},500);
+  sit = 1;
+  guy.style.transform="rotate(1rad)";
+}
+
+sitcouch = () => {
+  guyX = 420;
+  guyY = 240;
+  C.move({n:"hero",x:300-(300-guyX)/2+roomX,y:250-(300-guyY)/2+roomY});
+  setTimeout(()=>{C.move({n:"hero",sx:.8,sy:.8});},500);
+  sit = 1;
+  guy.style.transform="rotate(1rad)";
+}
+
+takehat = () => {
+  document.querySelector(".hat").style.display = "none";
+  pocket.innerHTML += "<div id=pockethat>"+svg.hat+"</div>";
+  state[2].hat = 1;
+}
+
+takemirror = () => {
+  document.querySelector("#mirrorliving").style.display = "none";
+  pocket.innerHTML += "<div id=pocketmirror>"+svg.mirror+"</div>";
+  state[2].mirror = 1;
 }

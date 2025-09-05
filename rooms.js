@@ -1,8 +1,8 @@
 // bathroom
-C.cube({x:-100,y:-150,z:70,w:300,h:300,d:300,b:"#ccc",css:"cube"});
+C.cube({x:-100,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
 
   // door
-  C.plane({w:100,h:100,x:84,y:15,z:300,rz:-90,html:svg.door});
+  C.plane({w:51,h:51,x:84,y:15,z:300,rz:-90,html:svg.door});
   
   // wc
   C.plane({w:100,h:100,x:44,y:-80,z:300,html:svg.wc});
@@ -24,7 +24,7 @@ C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
 
   // door
   C.plane({w:51,h:51,x:290,y:84,z:300,rz:180,html:svg.door,css:"living room door"});
-  C.plane({w:51,h:51,x:191,y:55-50,z:300,rz:-90,html:svg.door,css:"bathroom door"});
+  //C.plane({w:51,h:51,x:191,y:55-50,z:300,rz:-90,html:svg.door,css:"bathroom door"});
   
   // bed
   C.plane({w:100,h:100,x:253,y:-60-50,z:300,rz:-90,html:svg.bed,css:"bed",n:"bed"});
@@ -36,7 +36,7 @@ C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   C.plane({w:34,h:28,x:355,y:0,z:295,rz:-95,html:svg.chair,css:"chair"});
   
   // window
-  C.plane({w:100,h:100,x:310,y:-125-50,z:300,rz:-90,html:svg.window,css:"window"});
+  C.plane({w:100,h:100,x:180,y:25-50,z:300,rz:180,html:svg.window,css:"window",n:"window1"});
   
   // hanger
   C.plane({w:8,h:11,x:228,y:-147,z:300,rz:0,html:svg.hanger,css:"hanger"});
@@ -65,51 +65,55 @@ C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   // scissors
   C.plane({w:25,h:28,x:385,y:30,z:305,rz:45,html:svg.scissors,css:"scissors"});
 
+
+
 // living room
-C.cube({x:301,y:151,z:70,w:300,h:300,d:300,b:"#ccc",css:"cube"});
+C.cube({x:301,y:-100,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   
   // door
-  C.plane({w:100,h:100,x:290,y:216,z:300,rz:180,html:svg.door});
-  C.plane({w:100,h:100,x:330,y:385,z:300,html:svg.door});
-  C.plane({w:100,h:100,x:216,y:275,z:300,rz:90,html:svg.door});
+  C.plane({w:51,h:51,x:270,y:215,z:300,rz:0,html:svg.door,css:"bedroom door"});
+  C.plane({w:51,h:51,x:330,y:434,z:300,rz:180,html:svg.door,css:"exit door"});
+  C.plane({w:51,h:51,x:410,y:360,z:300,rz:90,html:svg.door,css: "kitchen door"});
   
   // window
-  C.plane({w:100,h:100,x:425,y:275,z:300,html:svg.window});
+  C.plane({w:100,h:100,x:180,y:280,z:300,rz:180,html:svg.window,css:"window",n:"window2"});
   
   // couch
-  C.plane({w:100,h:100,x:245,y:355,z:300,html:svg.couch});
+  C.plane({w:50,h:100,x:375,y:250,z:300,rz:-180,html:svg.couch,css:"couch"});
+  C.plane({w:100,h:50,x:355,y:250,z:300,rz:-180,html:"",css:"couch"});
   
   // fan
-  C.plane({w:100,h:100,x:380,y:360,z:300,rz:-45,html:svg.fan});
+  //C.plane({w:100,h:100,x:380,y:360,z:300,rz:-45,html:svg.fan});
   
   // chair
-  C.plane({w:100,h:100,x:310,y:260,z:300,html:svg.chair});
-  C.plane({w:100,h:100,x:340,y:290,z:300,rz:-90,html:svg.chair});
+  C.plane({w:34,h:28,x:240,y:355,z:300,sx:-1,html:svg.chair,css:"chair 1",n:"chair1"});
+  C.plane({w:60,h:60,x:265,y:390,z:300,rz:90,html:svg.chair,css:"chair 2",n:"chair2"});
   
   // table
-  C.plane({w:100,h:100,x:360,y:270,z:300,html:svg.table});
-
-  // chair
-  C.plane({w:100,h:100,x:305,y:295,z:300,rz:-45,html:svg.chair});
+  C.plane({w:65,h:74,x:238,y:372,z:300,rz:180,html:svg.table,css:"table"});
   
   // hanger
-  C.plane({w:100,h:100,x:270,y:425,z:300,rz:0,html:svg.hanger2});
+  C.plane({w:8,h:11,x:280,y:455,z:300,rz:180,html:svg.hanger,css:"hanger"});
+  C.plane({w:8,h:11,x:435,y:285,z:300,rz:90,html:svg.hanger,css:"hanger"});
+  
+  // mirror
+  C.plane({w:29,h:46,x:418,y:265,z:300,rz:90,sy:.7,html:svg.mirror,css:"mirror",n:"mirrorliving"});
   
   // hat
-  C.plane({w:100,h:100,x:270,y:417,z:300,rz:0,html:svg.hat});
+  C.plane({w:33,h:20,x:280,y:441,z:300,rz:0,html:svg.hat,css:"hat"});
   
   // salt
-  C.plane({w:100,h:100,x:360,y:270,z:300,html:svg.salt});
-  C.plane({w:100,h:100,x:370,y:267,z:300,html:svg.salt});
+  C.plane({w:20,h:20,x:220,y:230+180,z:300,rz:225,html:svg.salt,css:"salt"});
+  C.plane({w:20,h:20,x:230,y:227+180,z:300,rz:225,html:svg.salt,css:"pepper"});
 
 
 
 
 // kitchen
-C.cube({x:0,y:151,z:70,w:300,h:300,d:300,b:"#ccc",css:"cube"});
+C.cube({x:0,y:-151,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
 
   // door
-  C.plane({w:100,h:100,x:85,y:275,z:300,rz:-90,html:svg.door});
+  C.plane({w:51,h:51,x:85,y:275,z:300,rz:-90,html:svg.door});
   
   // fridge
   C.plane({w:100,h:100,x:70,y:365,z:300,rz:90,html:svg.fridge});
@@ -142,7 +146,7 @@ C.plane({x:0,y:1000,w:800,h:2000,z:65,b:"#787"});
   C.cube({x:-40,y:1080,z:150,w:100,h:100,d:100,ry: 90,b:"#ccc",css:"cube"});
   
   // door
-  C.plane({w:100,h:100,x:200,y:920,z:300,rz:180,html:svg.door});
+  C.plane({w:51,h:51,x:200,y:920,z:300,rz:180,html:svg.door});
   
   // fence 
   C.plane({w:100,h:100,x:190,y:990,z:400,rz:180,html:svg.fence});
@@ -169,3 +173,7 @@ C.cube({x:0,y:1500,z:70,w:300,h:300,d:300,b:"#ccc",css:"cube toolshed"});
   // shelves
   C.plane({x:-120,y:1650,w:60,h:295,z:155,b:"#eee",css:"shelf"});
   C.plane({x:-120,y:1650,w:60,h:295,z:295,b:"#eee",css:"shelf"});
+  
+  
+room = 0;
+show(room);

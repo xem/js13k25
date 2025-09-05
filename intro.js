@@ -39,5 +39,5 @@ start = () => {
   setTimeout(()=>{title.innerHTML += "<div class=start>CLICK TO START"; introanim++;},6500);
 }
 
-//start();
-introanim = 3;intro.remove(); // debug
+start();
+//introanim = 3;intro.remove();show(room=2);// debug
