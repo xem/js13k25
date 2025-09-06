@@ -23,11 +23,15 @@ C.cube({x:-100,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
 C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
 
   // door
-  C.plane({w:51,h:51,x:290,y:84,z:300,rz:180,html:svg.door,css:"living room door"});
+  C.plane({w:51,h:51,x:290,y:84,z:300,rz:180,html:svg.door,css:"living room door",n:"lrd1"});
   //C.plane({w:51,h:51,x:191,y:55-50,z:300,rz:-90,html:svg.door,css:"bathroom door"});
   
   // bed
   C.plane({w:100,h:100,x:253,y:-60-50,z:300,rz:-90,html:svg.bed,css:"bed",n:"bed"});
+  
+  // hat 
+  C.plane({w:33,h:20,x:245,y:-71,z:300,rz:0,html:svg.hat,css:"hat hidden",n:"hat2"});
+  
   
   // desk
   C.plane({w:100,h:50,x:375,y:-10,z:300,rz:90,sy:1.2,html:svg.desk,css:"desk"});
@@ -39,17 +43,21 @@ C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   C.plane({w:100,h:100,x:180,y:25-50,z:300,rz:180,html:svg.window,css:"window",n:"window1"});
   
   // hanger
-  C.plane({w:8,h:11,x:228,y:-147,z:300,rz:0,html:svg.hanger,css:"hanger"});
+  C.plane({w:8,h:11,x:228,y:-147,z:300,rz:0,html:svg.hanger,css:"hanger",n:"hanger1"});
   C.plane({w:8,h:11,x:230,y:130,z:300,rz:180,html:svg.hanger,css:"hanger"});
   
   // mirror
   C.plane({w:29,h:46,x:232,y:96,z:300,rz:180,sy:.7,html:svg.mirror,css:"mirror"});
+  C.plane({w:29,h:46,x:227,y:-147,z:300,sy:.7,html:svg.mirror,css:"mirror hidden",n:"mirror2"});
   
   // calendar
   C.plane({w:46,h:40,x:235,y:-145,z:300,rz:0,html:svg.calendar,css:"calendar",n:"calendar"});
   
   // cupboard
   C.plane({w:73,h:44,x:394,y:-100,z:300,rz:90,html:svg.cupboard,css:"cupboard"});
+  
+  // Shoes
+  C.plane({w:24,h:27,x:384,y:-74,z:300,rz:90,html:svg.shoes,css:"shoes hidden",n:"shoes1"});
   
   // Shirts
   C.plane({w:34,h:25,x:384,y:-112,z:300,rz:90,html:svg.blueshirt,css:"blue shirt hidden"});
@@ -92,40 +100,59 @@ C.cube({x:301,y:-100,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   // table
   C.plane({w:65,h:74,x:238,y:372,z:300,rz:180,html:svg.table,css:"table"});
   
+  // bread
+  C.plane({w:18,h:40,x:224,y:382,z:300,rz:245,sx:.9,sy:.9,html:svg.bread,css:"bread hidden",n:"bread2"});
+  
+  // shoes
+  C.plane({w:18,h:40,x:245,y:409,z:300,rz:53,sx:.9,sy:.9,html:svg.shoes,css:"shoes hidden",n:"shoes2"});
+  
   // hanger
   C.plane({w:8,h:11,x:280,y:455,z:300,rz:180,html:svg.hanger,css:"hanger"});
-  C.plane({w:8,h:11,x:435,y:285,z:300,rz:90,html:svg.hanger,css:"hanger"});
-  
-  // mirror
-  C.plane({w:29,h:46,x:418,y:265,z:300,rz:90,sy:.7,html:svg.mirror,css:"mirror",n:"mirrorliving"});
   
   // hat
-  C.plane({w:33,h:20,x:280,y:441,z:300,rz:0,html:svg.hat,css:"hat"});
+  C.plane({w:33,h:20,x:280,y:441,z:300,rz:0,html:svg.hat,css:"hat",n:"hat1"});
   
   // salt
-  C.plane({w:20,h:20,x:220,y:230+180,z:300,rz:225,html:svg.salt,css:"salt"});
+  C.plane({w:20,h:20,x:220,y:230+180,z:300,rz:225,html:svg.salt,css:"salt",n:"salt"});
   C.plane({w:20,h:20,x:230,y:227+180,z:300,rz:225,html:svg.salt,css:"pepper"});
 
 
 
 
 // kitchen
-C.cube({x:0,y:-151,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
+C.cube({x:-100,y:-100,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
 
   // door
-  C.plane({w:51,h:51,x:85,y:275,z:300,rz:-90,html:svg.door});
+  C.plane({w:51,h:51,x:-209,y:360,z:300,rz:-90,html:svg.door,css:"living room door",n:"lrd2"});
   
   // fridge
-  C.plane({w:100,h:100,x:70,y:365,z:300,rz:90,html:svg.fridge});
+  C.plane({w:56,h:77,x:-190,y:230,z:300,rz:0,html:svg.fridge,css:"fridge"});
   
-  // plane
-  C.plane({w:100,h:100,x:-65,y:232,z:300,rz:0,html:svg.plane});
+  // plane/cupboard
+  C.plane({w:53,h:100,x:-21+3,y:365,z:300,rz:180,sx:1.2,html:svg.plane,css:"cupboard",n:"plane"});
+  
+  // bread
+  C.plane({w:18,h:40,x:-37,y:400,z:300,rz:180,html:svg.bread,css:"bread hidden",n:"bread"});
   
   // sink
-  C.plane({w:100,h:100,x:-60,y:365,z:300,rz:0,html:svg.sink});
+  C.plane({w:50,h:100,x:-20+3,y:237,z:300,rz:180,sx:1.3,html:svg.sink,css:"sink"});
+  
+  // broom
+  C.plane({w:19,h:50,x:-110,y:240,z:330,rz:0,html:svg.broom,css:"broom",n:"broom"});
+  
+  // knive
+  C.plane({w:12,h:29,x:-23,y:260,z:300,rz:30,html:svg.knive,css:"knive",n:"knive1"});
+  C.plane({w:12,h:29,x:-15,y:297,z:300,rz:100,html:svg.knive,css:"knive",n:"knive2"});
+  C.plane({w:12,h:29,x:-15,y:297,z:300,rz:30,html:svg.knive,css:"knive hidden",n:"knive3"});
 
   // oven
-  C.plane({w:100,h:100,x:-55,y:306,z:340,rz:0,html:svg.oven});
+  C.plane({w:55,h:65,x:-32+3,y:330,z:340,rz:180,html:svg.oven,css:"oven"});
+  
+  // Hanger
+  C.plane({w:8,h:11,x:-120,y:470,z:300,rz:180,html:svg.hanger,css:"hanger"});
+  
+  // mirror
+  C.plane({w:29,h:46,x:-120,y:435,z:300,rz:180,sy:.7,html:svg.mirror,css:"mirror",n:"mirror1"});
 
 
 

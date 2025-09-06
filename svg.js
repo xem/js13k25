@@ -55,9 +55,11 @@ svg = {
   
   scissorsopen: `<svg width=25 height=28 xmlns='http://www.w3.org/2000/svg'><circle cx=4 cy=4 r=3 fill="#ffffff" stroke="#000000"/><circle cx=14 cy=4 r=3 fill="#ffffff" stroke="#000000"/><path d="M12 6L1 17L1 22L14 7" fill="#ffffff" stroke="#000000"/><path d="M6 5L18 16L18 21L4 7" fill="#ffffff" stroke="#000000"/></svg>`,
   
-  mirror: `<svg width=29 height=46 xmlns='http://www.w3.org/2000/svg'><ellipse cx=16 cy=29 rx=12 ry=16 fill="#dddddd" stroke="#000000"/><ellipse cx=16 cy=29 rx=9 ry=13 fill="#ffffff" stroke="#000000"/><path d="M7 18L16 2L25 18L16 2" fill="#dddddd" stroke="#000000"/></svg>`,
+  mirror: `<svg width=29 height=46 xmlns='http://www.w3.org/2000/svg'><ellipse cx=16 cy=29 rx=12 ry=16 fill="#dddddd" stroke="#000000"/><ellipse cx=16 cy=29 rx=9 ry=13 fill="#ffffff" stroke="#000000"/><path d="M7 18L16 2L25 18L16 2L15 11" fill="#dddddd" stroke="#000000"/></svg>`,
   
-  glasses: `<svg width=99 height=99 id=glasses xmlns='http://www.w3.org/2000/svg'><ellipse cx=7 cy=4 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><ellipse cx=16 cy=4 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><path d="M0 1L0 4L4 4M10 4L12 4M19 4L22 4L22 1" fill="transparent" stroke="#000000"/></svg>`,
+  /*glasses: `<svg width=99 height=99 id=glasses xmlns='http://www.w3.org/2000/svg'><ellipse cx=7 cy=4 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><ellipse cx=16 cy=4 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><path d="M0 1L0 4L4 4M10 4L12 4M19 4L22 4L22 1" fill="transparent" stroke="#000000"/></svg>`,*/
+  
+  shoes: `<svg width=24 height=27 xmlns='http://www.w3.org/2000/svg'><path d="M7 9C12 7 12 8 15 9C13 11 9 10 7 9L7 12C1 11 0 11 0 17L15 18L15 9L7 9" fill="#555" stroke="#000000"/><path d="M10 13C14 11 18 11 21 13C17 15 12 15 10 13L10 16C5 15 2 15 1 16C0 21 0 24 5 24L22 21L21 13L10 13" fill="#555" stroke="#000000"/></svg>`,
   
   
   // Bathroom 
@@ -86,18 +88,35 @@ svg = {
   
   hat: `<svg width=33 height=20 xmlns='http://www.w3.org/2000/svg'><ellipse cx=16 cy=14 rx=14 ry=4 fill="#555555" stroke="#000000"/><ellipse cx=16 cy=3 rx=7 ry=2 fill="#555555" stroke="#000000"/><path d="M9 3L9 13C13 15 18 15 24 13L23 3Z" fill="#555555" stroke="#000000"/></svg>`,
   
-  salt: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><ellipse cx=5 cy=6 rx=4 ry=4 fill="#ffffff" stroke="#000000"/><ellipse cx=5 cy=5 rx=3 ry=2 fill="#ffffff" stroke="#000000"/></svg>`,
+  salt: `<svg width=11 height=11 xmlns='http://www.w3.org/2000/svg'><ellipse cx=5 cy=6 rx=4 ry=4 fill="#ffffff" stroke="#000000"/><ellipse cx=5 cy=5 rx=3 ry=2 fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  salttip: `<svg width=11 height=11 xmlns='http://www.w3.org/2000/svg'><ellipse cx=5 cy=6 rx=4 ry=4 fill="#ffffff" stroke="#000000"/><ellipse cx=5 cy=5 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><path d="M9 5L9 -1L6 1L8 2L5 3L6 5L4 5L8 6" fill="#ffffff" stroke="#000000"/></svg>`,
   
   // Kitchen
-  fridge: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=64 y=7 width=32 height=53 fill="#ffffff" stroke="#000000"/><path d="M64 7L44 38L44 77L64 60Z" fill="#ffffff" stroke="#000000"/><path d="M44 77L70 77L96 60L64 60Z" fill="#ffffff" stroke="#000000"/><path d="M50 28L51 71" fill="#ffffff" stroke="#000000"/><rect x=54 y=58 width=2 height=6 fill="#ffffff" stroke="#000000"/><rect x=47 y=63 width=2 height=7 fill="#ffffff" stroke="#000000"/></svg>`,
   
-  bin: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M10 9L3 19C2 27 3 33 12 33L25 27M7 13C7 23 8 31 20 29" fill="#ffffff" stroke="#000000"/><circle cx=20 cy=16 r=12 fill="#ffffff" stroke="#000000"/></svg>`,
+  fridge: `<svg width=56 height=77 xmlns='http://www.w3.org/2000/svg'><path d="M2 57L32 76L54 76L32 57L54 76L54 38L32 2L44 22L44 67L44 22L32 2L32 57Z" fill="#ffffff" stroke="#000000"/><rect x=41 y=54 width=2 height=7 fill="#ffffff" stroke="#000000"/><rect x=46 y=58 width=2 height=8 fill="#ffffff" stroke="#000000"/><rect x=2 y=2 width=30 height=55 fill="#ffffff" stroke="#000000"/></svg>`,
   
-  plane: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=8 y=7 width=30 height=71 fill="#ffffff" stroke="#000000"/><path d="M38 7L51 36L51 83L37 77L37 7M37 45L51 61" fill="#ffffff" stroke="#000000"/><path d="M8 78M8 78L28 85L51 83" fill="#ffffff" stroke="#000000"/><circle cx=43 cy=47 r=1 fill="#ffffff" stroke="#000000"/><circle cx=42 cy=55 r=1 fill="#ffffff" stroke="#000000"/></svg>`,
+  //bin: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M10 9L3 19C2 27 3 33 12 33L25 27M7 13C7 23 8 31 20 29" fill="#ffffff" stroke="#000000"/><circle cx=20 cy=16 r=12 fill="#ffffff" stroke="#000000"/></svg>`,
   
-  sink: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=9 y=8 width=33 height=82 fill="#ffffff" stroke="#000000"/><ellipse cx=25 cy=63 rx=13 ry=23 fill="#ffffff" stroke="#000000"/><path d="M6 63L5 60C5 51 15 47 24 57L20 59C8 53 9 53 8 63Z" fill="#ffffff" stroke="#000000"/><circle cx=24 cy=63 r=3 fill="#ffffff" stroke="#000000"/><path d="M42 8L46 3L20 3L10 8Z" fill="#ffffff" stroke="#000000"/><path d="M46 3L46 72L42 90" fill="#ffffff" stroke="#000000"/></svg>`,
+  plane: `<svg width=53 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=8 y=7 width=30 height=71 fill="#ccc" stroke="#000000"/><path d="M38 7L51 36L51 83L37 77L37 7M37 45L51 61" fill="#bbb" stroke="#000000"/><path d="M8 78M8 78L28 85L51 83" fill="#bbb" stroke="#000000"/><circle cx=43 cy=47 r=1 fill="#bbb" stroke="#000000"/><circle cx=42 cy=55 r=1 fill="#ffffff" stroke="#000000"/></svg>`,
   
-  oven: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=8 y=13 width=37 height=49 fill="#ffffff" stroke="#000000"/><circle cx=16 cy=23 r=5 fill="#000000" stroke="#000000"/><circle cx=33 cy=24 r=7 fill="#000000" stroke="#000000"/><circle cx=18 cy=47 r=8 fill="#000000" stroke="#000000"/><circle cx=35 cy=46 r=5 fill="#000000" stroke="#000000"/><path d="M45 13L52 24L52 56L45 62Z" fill="#ffffff" stroke="#000000"/><rect x=48 y=24 width=2 height=31 fill="#ffffff" stroke="#000000"/></svg>`,
+  bread: `<svg width=18 height=40 xmlns='http://www.w3.org/2000/svg'><path d="M6 8C4 16 4 28 6 36C8 39 11 41 14 36C16 29 17 13 14 11C9 6 8 6 6 7" fill="#ca8" stroke="#000000"/><path d="M5 13C8 15 8 15 10 13M4 18C7 20 8 21 11 19M5 25C6 27 10 28 12 25M5 32C7 34 9 35 11 33" fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  breadr: `<svg width=18 height=40 xmlns='http://www.w3.org/2000/svg'><path d="M6 8C4 16 4 28 6 36C8 39 11 41 14 36C16 29 17 13 14 11C9 6 8 6 6 7" fill="#975" stroke="#000000"/></svg>`,
+  
+  plane2: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=8 y=7 width=30 height=71 fill="#ccc" stroke="#000000"/><path d="M38 7L51 36L51 83L37 77L37 7M37 45L51 61" fill="#bbb" stroke="#000000"/><path d="M8 78M8 78L28 85L51 83" fill="#bbb" stroke="#000000"/><circle cx=43 cy=47 r=1 fill="#bbb" stroke="#000000"/><circle cx=42 cy=55 r=1 fill="#ffffff" stroke="#000000"/><path d="M37 6L69 4L70 33L51 36L51 82L71 85L42 86L37 78L51 81L37 78L36 6L51 36L39 36L36 30L39 36L40 78" fill="#bbb" stroke="#000000"/></svg>`,
+  
+  sink: `<svg width=50 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=9 y=8 width=33 height=82 fill="#eee" stroke="#000000"/><ellipse cx=25 cy=63 rx=13 ry=23 fill="#ffffff" stroke="#000000"/><path d="M6 66C8 73 15 72 18 66L16 64C14 70 10 70 8 66Z" fill="#ddd" stroke="#000000"/><circle cx=24 cy=63 r=3 fill="#ffffff" stroke="#000000"/><path d="M42 8L46 3L20 3L10 8Z" fill="#ffffff" stroke="#000000"/><path d="M46 3L46 72L42 90" fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  oven: `<svg width=55 height=65 xmlns='http://www.w3.org/2000/svg'><rect x=8 y=13 width=37 height=49 fill="#ffffff" stroke="#000000"/><circle cx=16 cy=23 r=5 fill="#000000" stroke="#000000"/><circle cx=33 cy=24 r=7 fill="#000000" stroke="#000000"/><circle cx=18 cy=47 r=8 fill="#000000" stroke="#000000"/><circle cx=35 cy=46 r=5 fill="#000000" stroke="#000000"/><path d="M45 13L52 24L52 56L45 62Z" fill="#ffffff" stroke="#000000"/><rect x=48 y=24 width=2 height=31 fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  knive:`<svg width=12 height=29 xmlns='http://www.w3.org/2000/svg'><rect x=3 y=18 width=2 height=8 fill="#555" stroke="#000000"/><path d="M3 1L3 18L7 17Z" fill="#ddd" stroke="#000000"/></svg>`,
+  
+  broom: `<svg width=19 height=50 xmlns='http://www.w3.org/2000/svg'><rect x=5 y=38 width=12 height=5 fill="#ccc" stroke="#000000"/><path d="M8 5L9 40C11 41 10 41 12 40L12 5Z" fill="#ffffff" stroke="#000000"/><path d="M5 43L5 48L6 46L7 48L8 46L9 48L10 46L11 48L12 47L12 48L13 46L14 48L15 46L15 48L16 46L17 48L17 43Z" fill="#ddd" stroke="#000000"/><circle cx=10 cy=5 r=2 fill="#ccc" stroke="#000000"/></svg>`,
+  
+  broom2: `<svg width=19 height=50 xmlns='http://www.w3.org/2000/svg'><path d="M5 43L5 48L6 46L7 48L8 46L9 48L10 46L11 48L12 47L12 48L13 46L14 48L15 46L15 48L16 46L17 48L17 43Z" fill="#ddd" stroke="#000000"/><path d="M8 5L9 40C11 41 10 41 12 40L12 5Z" fill="#ffffff" stroke="#000000"/><rect x=5 y=40 width=12 height=2 fill="#ccc" stroke="#000000"/></svg>`,
+  
+  // Garden
   
   fence: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=8 y=2 width=4 height=95 fill="#ffffff" stroke="#000000"/><path d="M12 96L15 92L15 5L11 2Z" fill="#ffffff" stroke="#000000"/><path d="M9 5L0 0" fill="#ffffff" stroke="#000000"/><path d="M9 13L0 9" fill="#ffffff" stroke="#000000"/><path d="M9 21L0 19" fill="#ffffff" stroke="#000000"/><path d="M9 29L0 28" fill="#ffffff" stroke="#000000"/><path d="M9 37L0 37" fill="#ffffff" stroke="#000000"/><path d="M10 45L0 46" fill="#ffffff" stroke="#000000"/><path d="M9 53L0 55" fill="#ffffff" stroke="#000000"/><path d="M9 59L0 65" fill="#ffffff" stroke="#000000"/><path d="M10 67L0 77" fill="#ffffff" stroke="#000000"/><path d="M9 78L0 88" fill="#ffffff" stroke="#000000"/><path d="M10 88L2 98" fill="#ffffff" stroke="#000000"/><path d="M4 1L4 98" fill="#ffffff" stroke="#000000"/></svg>`,
   

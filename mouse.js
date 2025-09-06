@@ -3,7 +3,7 @@ onmousemove = (e) => {
   var x = -(window.innerWidth-600)/2+e.pageX, y = e.pageY-30, angle;
   if(x>0&&y>0&&x<600&&y<600){
     angle=Math.atan2(y-(guyY-roomY),x-(guyX-roomX))-1.6;
-    guy.style.transform="rotate("+angle+"rad)";
+    if(!sit) guy.style.transform="rotate("+angle+"rad)";
     text.innerHTML = e.target.className.replace(/ 1| 2/,"");
     target = e.target;
   }
@@ -47,7 +47,12 @@ onclick = (e) => {
     
     // Bed
     if(target.className == "bed"){
-      openmenu({"rotate": "rotatebed", "sleep (and see your score)":"sleep"});
+      tmp = {"rotate": "rotatebed"};
+      if(state[2].hat == 1){
+        tmp["put hat on bed"] = "puthat";
+      }
+      tmp["sleep (and see your score)"] = "sleep";
+      openmenu(tmp);
     }
     
     // Cupboard
@@ -75,6 +80,11 @@ onclick = (e) => {
       openmenu(tmp);
     }
     
+    // hanger
+    if(target.id=="hanger1" && state[0].calendar1 != 0 && state[3].mirror == 1){
+      openmenu({"hang mirror": "hangmirror"});
+    }
+    
     // Scissors
     if(target.className == "scissors"){
       tmp = {"take":"takescissors"};
@@ -90,6 +100,11 @@ onclick = (e) => {
     // Pen
     if(target.className == "pen"){
       openmenu({"take":"takepen"});
+    }
+    
+    // Shoes
+    if(target.id == "shoes1"){
+      openmenu({"take":"takeshoes"});
     }
     
     // Desk
@@ -118,7 +133,7 @@ onclick = (e) => {
     }
     
     // Doors
-    if(target.className == "living room door"){
+    if(target.id == "lrd1"){
       tmp = {"go to living room": "bedtoliving"};
       if(state[0].door1){
         tmp["close"] = "closedoor1";
@@ -128,17 +143,6 @@ onclick = (e) => {
       }
       openmenu(tmp);
     }
-    
-    /*if(target.className == "bathroom door"){
-      tmp = {"go to bathroom": "gotobath"};
-      if(state[0].door1){
-        tmp["close"] = "closedoor2";
-      }
-      else {
-        tmp["open"] = "opendoor2";
-      }
-      openmenu(tmp);
-    }*/
     
     // Window
     if(target.className == "window"){
@@ -193,11 +197,6 @@ onclick = (e) => {
       openmenu({"take":"takehat"});
     }
     
-    // Mirror
-    if(target.className == "mirror"){
-      openmenu({"take":"takemirror"});
-    }
-    
     // Doors
     if(target.className == "bedroom door"){
       tmp = {"go to bedroom": "livingtobed"};
@@ -210,6 +209,94 @@ onclick = (e) => {
       openmenu(tmp);
     }
     
+    if(target.className == "kitchen door"){
+      tmp = {"go to kitchen": "livingtokitchen"};
+      if(state[2].door2){
+        tmp["close"] = "closedoor2";
+      }
+      else {
+        tmp["open"] = "opendoor2";
+      }
+      openmenu(tmp);
+    }
+    
+    // Salt
+    if(target.className == "salt"){
+      openmenu({"tip":"tipsalt"});
+    }
+    
+    // Table
+    if(target.className == "table"){
+      tmp = {};
+      if(state[3].bread == 1){
+        tmp["put bread"] = "putbread";
+      }
+      if(state[0].shoes == 1){
+        tmp["put shoes"] = "putshoes";
+      }
+      if(JSON.stringify(tmp) != '{}') openmenu(tmp);
+    }
+    
+    // bread
+    if(target.id == "bread2"){
+      if(state[3].bread == 2){
+        openmenu({"return":"returnbread"});
+      }
+    }
+   
+    
+  }
+  
+  // Kitchen
+  else if(room == 3){
+    
+    // Plane
+    if(target.id == "plane"){
+      if(state[3].plane){
+        openmenu({"close":"closeplane"});
+      }
+      else {
+        openmenu({"open":"openplane"});
+      }
+    }
+    
+    // bread
+    if(target.id == "bread"){
+      if(state[3].bread == 0){
+        openmenu({"take":"takebread"});
+      }
+    }
+    
+    // Door
+    if(target.id == "lrd2"){
+      tmp = {"go to living room": "kitchentoliving"};
+      if(state[3].door2){
+        tmp["close"] = "closedoor2";
+      }
+      else {
+        tmp["open"] = "opendoor2";
+      }
+      openmenu(tmp);
+    }
+    
+    // Mirror
+    if(target.className == "mirror"){
+      openmenu({"take":"takemirror"});
+    }
+    
+    // Knive
+    if(target.id == "knive1"){
+      openmenu({"take":"takeknive"});
+    }
+    
+    if(target.id == "knive2" && state[3].knive == 1){
+      openmenu({"put knive":"putknive"});
+    }
+    
+    // Broom 
+    if(target.className == "broom"){
+      openmenu({"return":"returnbroom"});
+    }
   }
   
 }

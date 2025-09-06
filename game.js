@@ -1,32 +1,33 @@
 // Achievements
 achievements = [
-  "get up on the wrong foot",
+  "get up on the wrong foot",  // ok
+  "set the date to friday 13th",  // ok
+  "wear green clothes",  // ok
+  "sleep head north",  // ok
+  "leave scissors open",  // ok
+  "sleep with door open",  // ok
+  "sleep with window open",  // ok
+  "tip a salt shaker",  // ok
+  "put hat on bed",  // ok
+  "put bread upside down",  // ok
+  "sit on table corner",  // ok
+  "put shoes on table", // ok
+  "cross knives", // ok
+  "broom upside down", // ok
+  "put two mirrors face to face", // ok
+  "drop a haircomb",
+  "put glasses on table",
   "break a mirror",
-  "tip a salt shaker",
+  "sleep with fan on",
   "open an umbrella inside",
-  "set the date to friday 13th",
   "hang horseshoe pointing down",
-  "put shoes on table",
   "walk under a ladder",
-  "put hat on bed",
   "cross a black cat",
-  "cross knives",
   "bird looks inside from window",
-  "wear green clothes",
   "walk on a crack",
   "see an owl",
-  "put bread upside down",
-  "sleep head north",
   "put keys on table",
-  "sit on table corner",
   "point to a rainbow",
-  "sleep with fan on",
-  "leave scissors open",
-  "drop a haircomb",
-  "broom upside down",
-  "put glasses on table",
-  "sleep with window open",
-  "sleep with door open",
   "walk under a tree during thunder",
   
   // let candle burn out
@@ -66,15 +67,23 @@ show = (room) => {
   if(room == 2){
     C.camera({x:roomX = 0,y:roomY = 50, z:0}) // living room
     guyX = roomX + 300;
-    guyY = roomY + 330;
-    C.move({n:"hero",x:300,y:-40+340});
+    guyY = roomY + 310;
+    C.move({n:"hero",x:300,y:-40+320});
   }
+  // Kitchen
   if(room == 3){
-    C.camera({x:roomX = -300,y:roomY = 0, z:0}) // kitchen
+    C.camera({x:roomX = -400,y:roomY = 50, z:0}) // kitchen
+    guyX = roomX + 300;
+    guyY = roomY + 310;
+    C.move({n:"hero",x:-100,y:350});
   }
+  
+  // Garden
   if(room == 4){
     C.camera({x:roomX = -150,y:roomY = 700, z:0}) // garden
   }
+  
+  // Toolshed
   if(room == 5){
     C.camera({x:roomX = -300,y:roomY = 1350, z:70}) // tool shed
   }
@@ -177,9 +186,10 @@ closewindow2 = () => {
 opencupboard1 = () => {
   document.querySelector(".cupboard").innerHTML = svg.cupboardopen;
   state[0].cupboard = 1;
-  document.querySelector(".shirt.hidden").classList.remove("hidden");
-  document.querySelector(".shirt.hidden").classList.remove("hidden");
-  document.querySelector(".shirt.hidden").classList.remove("hidden");
+  if(state[0].shirt != 0) document.querySelector(".shirt.blue").classList.remove("hidden");
+  if(state[0].shirt != 1) document.querySelector(".shirt.red").classList.remove("hidden");
+  if(state[0].shirt != 2) document.querySelector(".shirt.green").classList.remove("hidden");
+  if(state[0].shoes != 1) document.querySelector("#shoes1").classList.remove("hidden");
 }
 
 closecupboard1 = () => {
@@ -188,6 +198,13 @@ closecupboard1 = () => {
   document.querySelector(".shirt.blue").classList.add("hidden");
   document.querySelector(".shirt.green").classList.add("hidden");
   document.querySelector(".shirt.red").classList.add("hidden");
+  document.querySelector(".shoes").classList.add("hidden");
+}
+
+takeshoes = () => {
+  document.querySelector("#shoes1").style.display = "none";
+  pocket.innerHTML += "<div id=pocketshoes>"+svg.shoes+"</div>";
+  state[0].shoes = 1;
 }
 
 removecalendar = () => {
@@ -274,41 +291,23 @@ wearred = () => {
   document.querySelector(".shirt.blue").classList.remove("wear");
 }
 
-opendoor1 = () => {
-  document.querySelector(".living.room.door").innerHTML = svg.door2;
-  document.querySelector(".bedroom.door").innerHTML = svg.door3;
-  state[0].door1 = 1;
-  state[2].door1 = 1;
+puthat = () => {
+  pockethat.remove();
+  document.querySelector("#hat2").classList.remove("hidden");
+  state[2].hat = 2;
 }
 
-closedoor1 = () => {
-  document.querySelector(".living.room.door").innerHTML = svg.door;
-  document.querySelector(".bedroom.door").innerHTML = svg.door;
-  state[0].door1 = 0;
-  state[2].door1 = 0;
+hangmirror = () => {
+  pocketmirror.remove();
+  document.querySelector("#mirror2").classList.remove("hidden");
+  state[3].mirror = 2;
 }
 
-bedtoliving = () => {
-  document.querySelector(".bedroom.door").innerHTML = svg.door3;
-  setTimeout(()=>{document.querySelector(".living.room.door").innerHTML = svg.door2;},100);
-  setTimeout(()=>{fade.style.opacity=1;},500);
-  setTimeout(()=>{show(room = 2);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector(".bedroom.door").innerHTML = svg.door;},1500);
-  state[0].door1 = 0;
-  state[2].door1 = 0;
-}
 
-livingtobed = () => {
-  document.querySelector(".living.room.door").innerHTML = svg.door2;
-  setTimeout(()=>{document.querySelector(".bedroom.door").innerHTML = svg.door3;},100);
-  setTimeout(()=>{fade.style.opacity=1;},500);
-  setTimeout(()=>{show(room = 0);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector(".living.room.door").innerHTML = svg.door;},1500);
-  state[0].door1 = 0;
-  state[2].door1 = 0;
-}
 
 // Living room
+
+
 
 pullchair1 = () => {
   C.move({n:"chair1", y:335});
@@ -358,13 +357,149 @@ sitcouch = () => {
 }
 
 takehat = () => {
-  document.querySelector(".hat").style.display = "none";
+  document.querySelector("#hat1").style.display = "none";
   pocket.innerHTML += "<div id=pockethat>"+svg.hat+"</div>";
   state[2].hat = 1;
 }
 
+tipsalt = () => {
+  document.querySelector(".salt").innerHTML = svg.salttip;
+  C.move({n:"salt",x:225,y:240+180,rz:5});
+  state[2].salt = 1;
+}
+
+putbread = () => {
+  pocketbread.remove();
+  document.querySelector("#bread2").classList.remove("hidden");
+  state[3].bread = 2;
+}
+
+putshoes = () => {
+  pocketshoes.remove();
+  document.querySelector("#shoes2").classList.remove("hidden");
+  state[0].shoes = 2;
+}
+
+returnbread = () => {
+  document.querySelector("#bread2").innerHTML = svg.breadr;
+  C.move({n:"bread2",sx:-.9});
+  state[3].bread = 3;
+}
+
+// Kitchen
+
+openplane = () => {
+  document.querySelector("#plane").innerHTML = svg.plane2;
+  state[3].plane = 1;
+  if(state[3].bread == 0) document.querySelector("#bread").classList.remove("hidden");
+}
+
+closeplane = () => {
+  document.querySelector("#plane").innerHTML = svg.plane;
+  state[3].plane = 0;
+  document.querySelector(".bread").classList.add("hidden");
+}
+
+takebread = () => {
+  document.querySelector("#bread").classList.add("hidden");
+  pocket.innerHTML += "<div id=pocketbread>"+svg.bread+"</div>";
+  state[3].bread = 1;
+}
+
+takeknive = () => {
+  document.querySelector("#knive1").classList.add("hidden");
+  pocket.innerHTML += "<div id=pocketknive>"+svg.knive+"</div>";
+  state[3].knive = 1;
+}
+
+putknive = () => {
+  pocketknive.remove();
+  document.querySelector("#knive3").classList.remove("hidden");
+  state[3].knive = 2;
+}
+
+returnbroom = () => {
+  document.querySelector("#broom").innerHTML = state[3].broom ? svg.broom : svg.broom2;
+  C.move({n:"broom",rz: state[3].broom ? 0 : 180});
+  state[3].broom = state[3].broom ? 0 : 1;
+}
+
 takemirror = () => {
-  document.querySelector("#mirrorliving").style.display = "none";
+  document.querySelector("#mirror1").style.display = "none";
   pocket.innerHTML += "<div id=pocketmirror>"+svg.mirror+"</div>";
-  state[2].mirror = 1;
+  state[3].mirror = 1;
+}
+
+
+
+
+
+// Doors
+
+opendoor1 = () => {
+  document.querySelector("#lrd1").innerHTML = svg.door2;
+  document.querySelector(".bedroom.door").innerHTML = svg.door3;
+  state[0].door1 = 1;
+  state[2].door1 = 1;
+}
+
+closedoor1 = () => {
+  document.querySelector("#lrd1").innerHTML = svg.door;
+  document.querySelector(".bedroom.door").innerHTML = svg.door;
+  state[0].door1 = 0;
+  state[2].door1 = 0;
+}
+
+bedtoliving = () => {
+  document.querySelector(".bedroom.door").innerHTML = svg.door3;
+  setTimeout(()=>{document.querySelector("#lrd1").innerHTML = svg.door2;},100);
+  setTimeout(()=>{fade.style.opacity=1;},500);
+  setTimeout(()=>{show(room = 2);fade.style.opacity=0},1000);
+  setTimeout(()=>{document.querySelector(".bedroom.door").innerHTML = svg.door;},1500);
+  state[0].door1 = 0;
+  state[2].door1 = 0;
+}
+
+livingtobed = () => {
+  document.querySelector("#lrd1").innerHTML = svg.door2;
+  setTimeout(()=>{document.querySelector(".bedroom.door").innerHTML = svg.door3;},100);
+  setTimeout(()=>{fade.style.opacity=1;},500);
+  setTimeout(()=>{show(room = 0);fade.style.opacity=0},1000);
+  setTimeout(()=>{document.querySelector("#lrd1").innerHTML = svg.door;},1500);
+  state[0].door1 = 0;
+  state[2].door1 = 0;
+}
+
+opendoor2 = () => {
+  document.querySelector("#lrd2").innerHTML = svg.door2;
+  document.querySelector(".kitchen.door").innerHTML = svg.door3;
+  state[3].door2 = 1;
+  state[2].door2 = 1;
+}
+
+closedoor2 = () => {
+  document.querySelector("#lrd2").innerHTML = svg.door;
+  document.querySelector(".kitchen.door").innerHTML = svg.door;
+  state[3].door2 = 0;
+  state[2].door2 = 0;
+}
+
+kitchentoliving = () => {
+  document.querySelector(".kitchen.door").innerHTML = svg.door3;
+  setTimeout(()=>{document.querySelector("#lrd2").innerHTML = svg.door2;},100);
+  setTimeout(()=>{fade.style.opacity=1;},500);
+  setTimeout(()=>{show(room = 2);fade.style.opacity=0},1000);
+  setTimeout(()=>{document.querySelector(".kitchen.door").innerHTML = svg.door;},1500);
+  state[3].door2 = 0;
+  state[2].door2 = 0;
+}
+
+livingtokitchen = () => {
+  document.querySelector("#lrd2").innerHTML = svg.door2;
+  setTimeout(()=>{document.querySelector(".kitchen.door").innerHTML = svg.door3;},100);
+  setTimeout(()=>{fade.style.opacity=1;},500);
+  setTimeout(()=>{show(room = 3);fade.style.opacity=0},1000);
+  setTimeout(()=>{document.querySelector("#lrd2").innerHTML = svg.door;},1500);
+  state[3].door2 = 0;
+  state[2].door2 = 0;
 }
