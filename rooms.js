@@ -174,30 +174,33 @@ C.cube({x:-100,y:-100,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
 
 
 // Garden
-C.plane({x:100,y:900,w:800,h:2000,z:65,b:"#787"});
+C.plane({x:100,y:900,w:800,h:2000,z:65,b:"#787", css:"floor"});
 
   // house
-  C.cube({x:150,y:220,z:90,w:400,h:400,d:400,b:"#ccc",css:"cube"},1);
+  C.cube({x:160,y:179,z:90,w:420,h:420,d:420,b:"#ccc",css:"cube"},1);
   
   // pavement
-  C.plane({x:160,y:887+125,w:350,h:60,z:65,b:"#ccc"});
-  C.plane({x:160,y:1165+125,w:350,h:60,z:65,b:"#ccc"});
-  C.plane({x:320,y:1010,w:60,h:350,z:65,b:"#ccc"});
-  C.plane({x:-10,y:1010,w:60,h:350,z:65,b:"#ccc"});
+  C.plane({x:160,y:887+125,w:350,h:60,z:65,b:"#ccc",css:"floor"});
+  C.plane({x:160,y:1165+145,w:350,h:60,z:65,b:"#ccc",css:"floor"});
+  C.plane({x:350,y:1010,w:60,h:350,z:65,b:"#ccc",css:"floor"});
+  C.plane({x:-20,y:1010,w:60,h:350,z:65,b:"#ccc",css:"floor"});
   
   // tool shed
-  C.cube({x:-40,y:1080+45,z:150,w:100,h:100,d:100,ry: 90,b:"#ccc",css:"cube"});
+  C.cube({x:-50,y:1080+63,z:150,w:100,h:100,d:100,ry: 90,b:"#ccc",css:"cube"},0,2);
   
   // door
-  C.plane({w:51,h:51,x:200,y:920+100,z:300,rz:0,html:svg.door,css:"entrance door"});
+  C.plane({w:51,h:51,x:200,y:920+99,z:300,rz:0,html:svg.door,css:"entrance door"});
   
   // fence 
-  C.plane({w:100,h:100,x:190,y:990+95,z:400,rz:180,html:svg.fence});
-  C.plane({w:100,h:100,x:60,y:990+95,z:400,rz:0,html:svg.gate});
-  C.plane({w:100,h:100,x:160,y:1038+95,z:400,rz:-90,html:svg.fence});
+  C.plane({w:16,h:100,x:290,y:990+85,z:300,rz:180,sx:1.4,sy:1.4,html:svg.fence,css:"fence"});
+  C.plane({w:75,h:100,x:-10,y:990+95,z:300,rz:0,sx:1.4,sy:1.6,html:svg.gate,css:"gate"});
+  C.plane({w:16,h:100,x:154,y:1048+180,z:300,rz:-90,sx:1.4,sy:1.4,html:svg.fence,css:"fence"});
   
   // tree
-  C.plane({w:100,h:100,x:215,y:1045+100,z:420,rz:90,html:svg.tree});
+  C.plane({w:100,h:100,x:235,y:1045+120,z:300,sx:1.9,sy:1.9,html:svg.trunk,css:"treetop"});
+  C.plane({w:40,h:40,x:220,y:1045+120,z:300,sx:1.9,sy:1.9,css:"tree"});
+  C.plane({w:100,h:100,x:195,y:1045+90,z:420,html:svg.tree,css:"treetop"});
+  
   
   
   

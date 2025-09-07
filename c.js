@@ -47,15 +47,15 @@ plane: t => {
 },
 
 // Cube
-cube: (t,out) => {
+cube: (t,out,shed) => {
   t.n||(t.n=`cube${C.c++}`),
   C.init(t),
   C.group(t),
   C.plane({g:t.n,x:t.w/2,y:t.w,w:t.w,h:t.d,b:t.b,css:"floor"}),
-  C.plane({g:t.n,y:t.d/2,w:t.d,h:t.h,b:t.b1||t.b,rx:-90,ry:90,o:"bottom",css:"east wall"}),
-  C.plane({g:t.n,x:t.w,y:t.d/2,w:t.d,h:t.h,b:t.b2||t.b,rx:-90,ry:90,o:"bottom",css:"west wall"}),
-  C.plane({g:t.n,x:t.w/2,y:t.d,w:t.w,h:t.h,b:t.b1||t.b,rx:-90,o:"bottom",css:out?"house":"south wall"}),
-  C.plane({g:t.n,x:t.w/2,y:0,w:t.w,h:t.h,b:t.b2||t.b,rx:-90,o:"bottom",css:"north wall"})
+  C.plane({g:t.n,y:t.d/2,w:t.d,h:t.h,b:t.b1||t.b,rx:-90,ry:90,o:"bottom",css:shed?"tool shed" : "east wall"}),
+  C.plane({g:t.n,x:t.w,y:t.d/2,w:t.d,h:t.h,b:t.b2||t.b,rx:-90,ry:90,o:"bottom",css:shed?"tool shed" : "west wall"}),
+  C.plane({g:t.n,x:t.w/2,y:t.d,w:t.w,h:t.h,b:t.b1||t.b,rx:-90,o:"bottom",css:shed?"tool shed" : out?"house":"south wall"}),
+  C.plane({g:t.n,x:t.w/2,y:0,w:t.w,h:t.h,b:t.b2||t.b,rx:-90,o:"bottom",css:shed?"tool shed" : "north wall"})
 },
 
 // move an object
