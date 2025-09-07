@@ -56,7 +56,7 @@ onclick = (e) => {
     }
     
     // Cupboard
-    if(target.className == "cupboard"){
+    if(target.id == "cupboard1"){
       if(state[0].cupboard == 0){
         openmenu({"open": "opencupboard1"});
       }
@@ -197,6 +197,11 @@ onclick = (e) => {
       openmenu({"take":"takehat"});
     }
     
+    // key
+    if(target.id == "key"){
+      openmenu({"take":"takekey"});
+    }
+    
     // Doors
     if(target.className == "bedroom door"){
       tmp = {"go to bedroom": "livingtobed"};
@@ -220,6 +225,17 @@ onclick = (e) => {
       openmenu(tmp);
     }
     
+    if(target.className == "exit door"){
+      tmp = {"go outside": "goout"};
+      if(state[2].door4){
+        tmp["close"] = "closedoor4";
+      }
+      else {
+        tmp["open"] = "opendoor4";
+      }
+      openmenu(tmp);
+    }
+    
     // Salt
     if(target.className == "salt"){
       openmenu({"tip":"tipsalt"});
@@ -233,6 +249,12 @@ onclick = (e) => {
       }
       if(state[0].shoes == 1){
         tmp["put shoes"] = "putshoes";
+      }
+      if(state[1].glasses == 1){
+        tmp["put glasses"] = "putglasses";
+      }
+      if(state[2].key == 1){
+        tmp["put keys"] = "putkey";
       }
       if(JSON.stringify(tmp) != '{}') openmenu(tmp);
     }
@@ -279,6 +301,17 @@ onclick = (e) => {
       openmenu(tmp);
     }
     
+    if(target.className == "bathroom door"){
+      tmp = {"go to bathroom": "kitchentobath"};
+      if(state[3].door3){
+        tmp["close"] = "closedoor3";
+      }
+      else {
+        tmp["open"] = "opendoor3";
+      }
+      openmenu(tmp);
+    }
+    
     // Mirror
     if(target.className == "mirror"){
       openmenu({"take":"takemirror"});
@@ -298,5 +331,40 @@ onclick = (e) => {
       openmenu({"return":"returnbroom"});
     }
   }
+  
+  // Bathroom
+  
+    // Door
+    if(target.id == "bathdoor"){
+      tmp = {"go to kitchen": "bathtokitchen"};
+      if(state[1].door3){
+        tmp["close"] = "closedoor3";
+      }
+      else {
+        tmp["open"] = "opendoor3";
+      }
+      openmenu(tmp);
+    }
+    
+    // Cupboard
+    if(target.id == "cupboard2"){
+      if(state[1].cupboard == 0){
+        openmenu({"open": "opencupboard2"});
+      }
+      else {
+        openmenu({"close": "closecupboard2"});
+      }
+    }
+    
+    // Comb
+    if(target.className == "comb" && state[1].comb == 0){
+      openmenu({"drop": "dropcomb"});
+    }
+    
+    // Glasses
+    if(target.id == "glasses"){
+      openmenu({"take":"takeglasses"});
+    }
+    
   
 }

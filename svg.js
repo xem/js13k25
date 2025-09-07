@@ -57,26 +57,36 @@ svg = {
   
   mirror: `<svg width=29 height=46 xmlns='http://www.w3.org/2000/svg'><ellipse cx=16 cy=29 rx=12 ry=16 fill="#dddddd" stroke="#000000"/><ellipse cx=16 cy=29 rx=9 ry=13 fill="#ffffff" stroke="#000000"/><path d="M7 18L16 2L25 18L16 2L15 11" fill="#dddddd" stroke="#000000"/></svg>`,
   
-  /*glasses: `<svg width=99 height=99 id=glasses xmlns='http://www.w3.org/2000/svg'><ellipse cx=7 cy=4 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><ellipse cx=16 cy=4 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><path d="M0 1L0 4L4 4M10 4L12 4M19 4L22 4L22 1" fill="transparent" stroke="#000000"/></svg>`,*/
-  
   shoes: `<svg width=24 height=27 xmlns='http://www.w3.org/2000/svg'><path d="M7 9C12 7 12 8 15 9C13 11 9 10 7 9L7 12C1 11 0 11 0 17L15 18L15 9L7 9" fill="#555" stroke="#000000"/><path d="M10 13C14 11 18 11 21 13C17 15 12 15 10 13L10 16C5 15 2 15 1 16C0 21 0 24 5 24L22 21L21 13L10 13" fill="#555" stroke="#000000"/></svg>`,
+  
+  blueshirt:`<svg width=34 height=28 xmlns='http://www.w3.org/2000/svg'><path d="M10 1L5 12L8 28L16 24L12 14L23 25C29 20 32 14 31 11L20 3L31 4L31 1Z" fill="#000088" stroke="#000000"/></svg>`,
+  
+  greenshirt:`<svg width=34 height=28 xmlns='http://www.w3.org/2000/svg'><path d="M10 1L5 12L8 28L16 24L12 14L23 25C29 20 32 14 31 11L20 3L31 4L31 1Z" fill="#008800" stroke="#000000"/></svg>`,
+  
+  redshirt:`<svg width=34 height=28 xmlns='http://www.w3.org/2000/svg'><path d="M10 1L5 12L8 28L16 24L12 14L23 25C29 20 32 14 31 11L20 3L31 4L31 1Z" fill="#880000" stroke="#000000"/></svg>`,
   
   
   // Bathroom 
   
-  wc: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=40 y=10 width=40 height=19 fill="#ffffff" stroke="#000000"/><path d="M40 10L27 48L27 85C47 92 53 92 66 85L66 48L26 48L66 48L80 29L40 29L33 49L33 86" fill="#ffffff" stroke="#000000"/><circle cx=60 cy=19 r=3 fill="#ffffff" stroke="#000000"/></svg>`,
+  wc: `<svg width=45 height=58 xmlns='http://www.w3.org/2000/svg'><rect x=15 y=2 width=28 height=11 fill="#ffffff" stroke="#000000"/><circle cx=29 cy=7 r=2 fill="#ffffff" stroke="#000000"/><path d="M15 2L5 31L5 54C9 58 13 58 17 54L12 43L11 26L15 13Z" fill="#ffffff" stroke="#000000"/><path d="M21 55C15 55 12 55 9 51L8 31L11 25" fill="#ffffff" stroke="#000000"/><path d="M15 13L11 26L11 43C16 58 25 61 36 43L36 26L11 26L36 26L43 13Z" fill="#ffffff" stroke="#000000"/></svg>`,
   
-  lavabo: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M5 10L5 75L20 80L20 30L5 10M23 80L23 30L37 30C50 46 51 63 37 79L23 80M27 34L27 76L34 75C47 50 41 48 35 34L26 34M20 47C23 41 27 40 31 45L31 49C24 45 25 44 20 51 M23 80L44 86L52 86L52 46L37 30" fill="#ffffff" stroke="#000000"/></svg>`,
+  lavabo: `<svg width=65 height=90 xmlns='http://www.w3.org/2000/svg'><path d="M23 80L45 86L57 86L38 80L57 86C61 75 66 62 56 46L37 30Z" fill="#ccc" stroke="#000000"/><path d="M23 80L23 30L37 30C50 43 50 64 38 80L23 80" fill="#ffffff" stroke="#000000"/><path d="M26 33L26 77L36 77C48 60 45 46 36 33Z" fill="#ffffff" stroke="#000000"/><circle cx=34 cy=55 r=3 fill="#ffffff" stroke="#000000"/><path d="M21 51C23 42 30 42 31 50L28 51C28 45 25 45 22 52Z" fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  bathmirror: `<svg width=26 height=90 xmlns='http://www.w3.org/2000/svg'><path d="M20 28L1 10L1 61L21 80Z" fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  bathmirror2: `<svg width=26 height=90 xmlns='http://www.w3.org/2000/svg'><path d="M20 28L1 10L1 61L21 80Z" fill="#ffffff" stroke="#000000"/><path d="M1 10L1 20L8 26L8 33L12 36L13 42L11 36L6 34L7 26L1 23L1 50L7 43L1 54L1 61L12 71L7 60L13 57L13 52L14 58L9 61L15 74L21 80L20 51L13 48L20 49L20 28L12 32L18 26L1 9" fill="#ffffff" stroke="#000000"/></svg>`,
   
   cupboard: `<svg width=73 height=44 xmlns='http://www.w3.org/2000/svg'><path d="M2 21L31 44L72 44L65 21L72 44L72 30L65 1L65 21M35 20L51 44" fill="#888888" stroke="#000000"/><rect x=2 y=1 width=63 height=20 fill="#bbbbbb" stroke="#000000"/><circle cx=38 cy=34 r=1 fill="#ffffff" stroke="#000000"/><circle cx=49 cy=34 r=1 fill="#ffffff" stroke="#000000"/></svg>`,
   
   cupboardopen: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M2 21L31 44L72 44L65 21L72 44L72 30L65 1L65 21M35 20L51 44" fill="#888888" stroke="#000000"/><rect x=2 y=1 width=63 height=20 fill="#bbbbbb" stroke="#000000"/><circle cx=38 cy=34 r=1 fill="#ffffff" stroke="#000000"/><circle cx=49 cy=34 r=1 fill="#ffffff" stroke="#000000"/><path d="M2 21L3 41L31 53L31 44L2 21L31 44L31 34L15 21L31 34L65 34L31 34L31 44L65 44L65 21L65 50L72 53L72 44L65 21Z" fill="#888888" stroke="#000000"/></svg>`,
   
-  blueshirt:`<svg width=34 height=28 xmlns='http://www.w3.org/2000/svg'><path d="M10 1L5 12L8 28L16 24L12 14L23 25C29 20 32 14 31 11L20 3L31 4L31 1Z" fill="#000088" stroke="#000000"/></svg>`,
-  greenshirt:`<svg width=34 height=28 xmlns='http://www.w3.org/2000/svg'><path d="M10 1L5 12L8 28L16 24L12 14L23 25C29 20 32 14 31 11L20 3L31 4L31 1Z" fill="#008800" stroke="#000000"/></svg>`,
-  redshirt:`<svg width=34 height=28 xmlns='http://www.w3.org/2000/svg'><path d="M10 1L5 12L8 28L16 24L12 14L23 25C29 20 32 14 31 11L20 3L31 4L31 1Z" fill="#880000" stroke="#000000"/></svg>`,
+  cupboardopen2: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M2 21L31 44L72 44L65 21L72 44L72 30L65 1L65 21M35 20L51 44" fill="#888888" stroke="#000000"/><rect x=2 y=1 width=63 height=20 fill="#bbbbbb" stroke="#000000"/><circle cx=38 cy=34 r=1 fill="#ffffff" stroke="#000000"/><circle cx=49 cy=34 r=1 fill="#ffffff" stroke="#000000"/><path d="M2 21L3 41L31 53L31 44L2 21L31 44L31 34L15 21L31 34L65 34L31 34L31 44L65 44L65 21L65 50L72 53L72 44L65 21Z" fill="#888888" stroke="#000000"/><path d="M18 34L18 23L64 23L65 35Z" fill="#888888" stroke="#000000"/></svg>`,
   
-  shower: `<svg width=199 height=199 xmlns='http://www.w3.org/2000/svg'><path d="M11 33L11 88L72 88C79 35 46 21 10 33" fill="#ffffff" stroke="#000000"/><circle cx=17 cy=77 r=3 fill="#ffffff" stroke="#000000"/><circle cx=35 cy=104 r=8 fill="#ffffff" stroke="#000000"/><rect x=34 y=104 width=4 height=16 fill="#ffffff" stroke="#000000"/><path d="M2 1L2 8C63 8 89 23 90 98L96 98C87 11 70 12 2 0M4 8L11 33M89 98M90 98L71 87M70 25L58 38" fill="#ffffff" stroke="#000000"/></svg>`,
+  comb: `<svg width=17 height=12 xmlns='http://www.w3.org/2000/svg'><path d="M4 2L15 2L14 9L14 4L13 9L12 4L11 9L10 4L9 9L8 4L7 9L6 4L5 9L5 4L4 9L3 4Z" fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  shower: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M60 30L60 89C18 88 4 70 4 30Z" fill="#ffffff" stroke="#000000"/><path d="M8 1C11 48 31 62 73 66L73 62C38 56 19 52 10 0Z" fill="#ffffff" stroke="#000000"/><path d="M7 1L4 30M73 66L60 89M24 48L14 72" fill="#ffffff" stroke="#000000"/><path d="" fill="#ffffff" stroke="#000000"/><circle cx=44 cy=22 r=10 fill="#ffffff" stroke="#000000"/><rect x=42 y=4 width=3 height=16 fill="#ffffff" stroke="#000000"/><circle cx=52 cy=40 r=3 fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  glasses: `<svg width=25 height=8 id=glasses xmlns='http://www.w3.org/2000/svg'><ellipse cx=7 cy=4 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><ellipse cx=16 cy=4 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><path d="M0 1L0 4L4 4M10 4L12 4M19 4L22 4L22 1" fill="transparent" stroke="#000000"/></svg>`,
   
   
   // Living room 
@@ -91,6 +101,8 @@ svg = {
   salt: `<svg width=11 height=11 xmlns='http://www.w3.org/2000/svg'><ellipse cx=5 cy=6 rx=4 ry=4 fill="#ffffff" stroke="#000000"/><ellipse cx=5 cy=5 rx=3 ry=2 fill="#ffffff" stroke="#000000"/></svg>`,
   
   salttip: `<svg width=11 height=11 xmlns='http://www.w3.org/2000/svg'><ellipse cx=5 cy=6 rx=4 ry=4 fill="#ffffff" stroke="#000000"/><ellipse cx=5 cy=5 rx=3 ry=2 fill="#ffffff" stroke="#000000"/><path d="M9 5L9 -1L6 1L8 2L5 3L6 5L4 5L8 6" fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  key: `<svg width=12 height=12 xmlns='http://www.w3.org/2000/svg'><path d="M5 10M5 10L5 5A3 2 0 1 1 8 5L7 6L9 7L7 8L9 10L7 10Z" fill="#ffffff" stroke="#000000"/></svg>`,
   
   // Kitchen
   

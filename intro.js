@@ -40,4 +40,4 @@ start = () => {
 }
 
 //start();
-introanim = 3;intro.remove();show(room=3);// debug
+introanim = 3;intro.remove();show(room=4);// debug

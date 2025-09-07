@@ -15,21 +15,21 @@ achievements = [
   "cross knives", // ok
   "broom upside down", // ok
   "put two mirrors face to face", // ok
-  "drop a haircomb",
-  "put glasses on table",
-  "break a mirror",
-  "sleep with fan on",
+  "put glasses on table", // ok
+  "drop a haircomb", // ok
+  "put keys on table", // ok
   "open an umbrella inside",
+  "break a mirror",
   "hang horseshoe pointing down",
   "walk under a ladder",
   "cross a black cat",
   "bird looks inside from window",
   "walk on a crack",
   "see an owl",
-  "put keys on table",
   "point to a rainbow",
   "walk under a tree during thunder",
   
+  //"sleep with fan on",
   // let candle burn out
   // watch new moon at...
   // broken clock
@@ -59,9 +59,10 @@ show = (room) => {
   }
   // Bathroom
   if(room == 1){
-    C.camera({x:roomX = -300,y:roomY = -300, z:0}) // bathroom
-    guyX = roomX + 300;
-    guyY = roomY + 260;
+    C.camera({x:roomX = -400,y:roomY = -300, z:0}) // bathroom
+    guyX = roomX+300;
+    guyY = roomY+310;
+    C.move({n:"hero",x:guyX,y:guyY-40});
   }
   // Living room 
   if(room == 2){
@@ -80,7 +81,10 @@ show = (room) => {
   
   // Garden
   if(room == 4){
-    C.camera({x:roomX = -150,y:roomY = 700, z:0}) // garden
+    C.camera({x:roomX = -150,y:roomY = 840, z:0}) // garden
+    guyX = roomX + 300;
+    guyY = roomY + 310;
+    C.move({n:"hero",x:guyX,y:guyY});
   }
   
   // Toolshed
@@ -184,7 +188,7 @@ closewindow2 = () => {
 }
 
 opencupboard1 = () => {
-  document.querySelector(".cupboard").innerHTML = svg.cupboardopen;
+  document.querySelector("#cupboard1").innerHTML = svg.cupboardopen;
   state[0].cupboard = 1;
   if(state[0].shirt != 0) document.querySelector(".shirt.blue").classList.remove("hidden");
   if(state[0].shirt != 1) document.querySelector(".shirt.red").classList.remove("hidden");
@@ -193,7 +197,7 @@ opencupboard1 = () => {
 }
 
 closecupboard1 = () => {
-  document.querySelector(".cupboard").innerHTML = svg.cupboard;
+  document.querySelector("#cupboard1").innerHTML = svg.cupboard;
   state[0].cupboard = 0;
   document.querySelector(".shirt.blue").classList.add("hidden");
   document.querySelector(".shirt.green").classList.add("hidden");
@@ -362,6 +366,12 @@ takehat = () => {
   state[2].hat = 1;
 }
 
+takekey = () => {
+  document.querySelector("#key").classList.add("hidden");
+  pocket.innerHTML += "<div id=pocketkey>"+svg.key+"</div>";
+  state[2].key = 1;
+}
+
 tipsalt = () => {
   document.querySelector(".salt").innerHTML = svg.salttip;
   C.move({n:"salt",x:225,y:240+180,rz:5});
@@ -374,10 +384,23 @@ putbread = () => {
   state[3].bread = 2;
 }
 
+putkey = () => {
+  pocketkey.remove();
+  document.querySelector("#key").classList.remove("hidden");
+  C.move({n:"key",x:250,y:390,z:310,rz:80,sy:1.2});
+  state[2].key = 2;
+}
+
 putshoes = () => {
   pocketshoes.remove();
   document.querySelector("#shoes2").classList.remove("hidden");
   state[0].shoes = 2;
+}
+
+putglasses = () => {
+  pocketglasses.remove();
+  document.querySelector("#glasses2").classList.remove("hidden");
+  state[1].glasses = 2;
 }
 
 returnbread = () => {
@@ -420,7 +443,7 @@ putknive = () => {
 
 returnbroom = () => {
   document.querySelector("#broom").innerHTML = state[3].broom ? svg.broom : svg.broom2;
-  C.move({n:"broom",rz: state[3].broom ? 0 : 180});
+  C.move({n:"broom",rz: state[3].broom ? -90 : 90});
   state[3].broom = state[3].broom ? 0 : 1;
 }
 
@@ -430,6 +453,33 @@ takemirror = () => {
   state[3].mirror = 1;
 }
 
+
+// Bathroom
+
+opencupboard2 = () => {
+  document.querySelector("#cupboard2").innerHTML = svg.cupboardopen2;
+  state[1].cupboard = 1;
+  if(state[1].comb == 0) document.querySelector(".comb").classList.remove("hidden");
+  if(state[1].comb == 0) document.querySelector(".glasses").classList.remove("hidden");
+}
+
+closecupboard2 = () => {
+  document.querySelector("#cupboard2").innerHTML = svg.cupboard;
+  state[1].cupboard = 0;
+  if(state[1].comb == 0) document.querySelector(".comb").classList.add("hidden");
+  if(state[1].comb == 0) document.querySelector(".glasses").classList.add("hidden");
+}
+
+dropcomb = () => {
+  C.move({n:"comb",x:-38,y:67,rz: 204,sx:-.9,sy:.9});
+  state[1].comb = 1;
+}
+
+takeglasses = () => {
+  document.querySelector("#glasses").classList.add("hidden");
+  pocket.innerHTML += "<div id=pocketglasses>"+svg.glasses+"</div>";
+  state[1].glasses = 1;
+}
 
 
 
@@ -502,4 +552,72 @@ livingtokitchen = () => {
   setTimeout(()=>{document.querySelector("#lrd2").innerHTML = svg.door;},1500);
   state[3].door2 = 0;
   state[2].door2 = 0;
+}
+
+opendoor3 = () => {
+  document.querySelector("#bathdoor").innerHTML = svg.door2;
+  document.querySelector(".bathroom.door").innerHTML = svg.door3;
+  state[3].door2 = 1;
+  state[1].door2 = 1;
+}
+
+closedoor3 = () => {
+  document.querySelector("#bathdoor").innerHTML = svg.door;
+  document.querySelector(".bathroom.door").innerHTML = svg.door;
+  state[3].door2 = 0;
+  state[1].door2 = 0;
+}
+
+kitchentobath = () => {
+  document.querySelector("#bathdoor").innerHTML = svg.door2;
+  setTimeout(()=>{document.querySelector(".bathroom.door").innerHTML = svg.door3;},100);
+  setTimeout(()=>{fade.style.opacity=1;},500);
+  setTimeout(()=>{show(room = 1);fade.style.opacity=0},1000);
+  setTimeout(()=>{document.querySelector("#bathdoor").innerHTML = svg.door;},1500);
+  state[3].door3 = 0;
+  state[1].door3 = 0;
+}
+
+bathtokitchen = () => {
+  document.querySelector(".bathroom.door").innerHTML = svg.door3;
+  setTimeout(()=>{document.querySelector("#bathdoor").innerHTML = svg.door2;},100);
+  setTimeout(()=>{fade.style.opacity=1;},500);
+  setTimeout(()=>{show(room = 3);fade.style.opacity=0},1000);
+  setTimeout(()=>{document.querySelector(".bathroom.door").innerHTML = svg.door;},1500);
+  state[3].door3 = 0;
+  state[1].door3 = 0;
+}
+
+goout = () => {
+  document.querySelector(".entrance.door").innerHTML = svg.door3;
+  setTimeout(()=>{document.querySelector(".exit.door").innerHTML = svg.door2;},100);
+  setTimeout(()=>{fade.style.opacity=1;},500);
+  setTimeout(()=>{show(room = 4);fade.style.opacity=0},1000);
+  setTimeout(()=>{document.querySelector(".entrance.door").innerHTML = svg.door;},1500);
+  state[4].door1 = 0;
+  state[2].door1 = 0;
+}
+
+goin = () => {
+  document.querySelector(".exit.door").innerHTML = svg.door2;
+  setTimeout(()=>{document.querySelector(".entrance.door").innerHTML = svg.door3;},100);
+  setTimeout(()=>{fade.style.opacity=1;},500);
+  setTimeout(()=>{show(room = 2);fade.style.opacity=0},1000);
+  setTimeout(()=>{document.querySelector(".exit.door").innerHTML = svg.door;},1500);
+  state[4].door3 = 0;
+  state[2].door3 = 0;
+}
+
+opendoor4 = () => {
+  document.querySelector(".exit.door").innerHTML = svg.door2;
+  document.querySelector(".entrance.door").innerHTML = svg.door3;
+  state[4].door4 = 1;
+  state[2].door4 = 1;
+}
+
+closedoor4 = () => {
+  document.querySelector(".entrance.door").innerHTML = svg.door;
+  document.querySelector(".exit.door").innerHTML = svg.door;
+  state[4].door4 = 0;
+  state[2].door4 = 0;
 }
