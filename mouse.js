@@ -20,7 +20,7 @@ onclick = (e) => {
   if(x>0&&y>0&&x<600&&y<600){
     if(e.target.className=="floor"){
       sit = 0;
-      C.move({n:"hero",x:300-(300-x)/2+roomX,y:250-(300-y)/2+roomY,sx:1,sy:1});
+      C.move({n:"hero",x:300-(300-x)/2+roomX,y:250-(300-y)/2+roomY,sx:room==5?1.5:1,sy:room==5?1.5:1});
       guyX = x+roomX;
       guyY = y+roomY;
     }
@@ -81,9 +81,19 @@ onclick = (e) => {
     }
     
     // hanger
-    if(target.id=="hanger1" && state[0].calendar1 != 0 && state[3].mirror == 1){
-      openmenu({"hang mirror": "hangmirror"});
+    if(target.id=="hanger1" && state[0].calendar1 != 0){
+      tmp = {};
+      if(state[3].mirror == 1 && state[5].horseshoe != 2){
+        tmp["hang mirror"] = "hangmirror";
+      }
+      if(state[5].horseshoe == 1 && state[3].mirror != 2){
+        tmp["hang horseshoe"] = "hanghorseshoe4";
+      }
+      openmenu(tmp);
     }
+    
+    // horseshoe
+    // todo
     
     // Scissors
     if(target.className == "scissors"){
@@ -265,6 +275,11 @@ onclick = (e) => {
         openmenu({"return":"returnbread"});
       }
     }
+    
+    // hanger
+    if(target.id=="hanger2" && state[5].horseshoe == 1 && state[2].hat != 0){
+      openmenu({"hang horseshoe": "hanghorseshoe3"});
+    }
    
     
   }
@@ -330,9 +345,15 @@ onclick = (e) => {
     if(target.className == "broom"){
       openmenu({"return":"returnbroom"});
     }
+    
+    // hanger
+    if(target.id=="hanger3" && state[3].mirror != 0 && state[5].horseshoe == 1){
+      openmenu({"hang horseshoe": "hanghorseshoe2"});
+    }
   }
   
   // Bathroom
+  else if(room == 1){
   
     // Door
     if(target.id == "bathdoor"){
@@ -366,5 +387,77 @@ onclick = (e) => {
       openmenu({"take":"takeglasses"});
     }
     
+    // Mirror
+    if(target.id == "bathmirror" && state[5].hatchet == 1){
+      openmenu({"break with hatchet": "breakmirror"});
+    }
+  }
+  
+  // Garden
+  else if(room == 4){
+    
+    // Door
+    if(target.className == "entrance door"){
+      tmp = {"go intside": "goin"};
+      if(state[4].door4){
+        tmp["close"] = "closedoor4";
+      }
+      else {
+        tmp["open"] = "opendoor4";
+      }
+      openmenu(tmp);
+    }
+    
+    // Umbrella
+    if(target.id == "umbrella1"){
+      tmp = {"open": "openumbrella"};
+      openmenu(tmp);
+    }
+    
+    if(target.className == "umbrella holder"){
+      tmp = {"put down umbrella": "closeumbrella"};
+      openmenu(tmp);
+    }
+    
+    if(target.className == "tool shed"){
+      tmp = {"enter": "entershed"};
+      openmenu(tmp);
+    }
+    
+    // Crack
+    if(target.id == "crack"){
+      // todo
+    }
+  }
+  
+  // Tool shed
+  else if(room == 5){
+    
+    // exit
+    if(target.className == "exit"){
+      exitshed();
+    }
+    
+    // ladder
+    if(target.id == "ladder1"){
+      openmenu({"take":"takeladder"});
+    }
+    
+    // seed
+    if(target.className == "seed bucket"){
+      openmenu({"take some seed":"takeseed"});
+    }
+    
+    // Hatchet
+    if(target.className == "hatchet"){
+      openmenu({"take":"takehatchet"});
+    }
+    
+    // Horseshoe
+    if(target.id=="horseshoe1"){
+      openmenu({"take":"takehorseshoe"});
+    }
+  }
+  
   
 }

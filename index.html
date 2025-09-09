@@ -32,13 +32,14 @@
 .cube div.east { background: #bbb !important }
 .cube div.floor { background: #eee !important }
 .cube.toolshed .right { display: none }
+.cube.toolshed .floor { background: #aaa !important }
 #intro { top: 32px; cursor: pointer }
 #intro svg#eyesvg { position:absolute;left:40%; top: 42%;transform:scaleX(9)scaleY(6.2); }
 #intro svg#bedintro { position:absolute;left:40%; top: 42%;transform:scaleX(7)scaleY(7); }
 #intro svg#legsintro { position:absolute;left:40%; top: 22%;transform:scaleX(8)scaleY(8)rotate(-45deg); }
 #title { color: #0b7bcd; position: absolute; width:100%; text-align: center; text-shadow: 10px 10px 10px #555; font: 145px / 139px Anton,impact,fantasy; }
 #title div { color: #000; font: 38px/36px Anton,impact,fantasy; }
-#v #guy, #v .guy, #v svg, #v svg *, #v, #v #time, #v #text, #v .cube, #pocket, #v #fade, #v .treetop { pointer-events: none}
+#v #guy, #v .guy, #v svg, #v svg *, #v, #v #time, #v #text, #v .cube, #v #fade, #v .treetop { pointer-events: none}
 #v { border: 4px solid #555; }
 #v * { pointer-events: all}
 #time,#text { margin: 5px 10px; font: 25px Anton,impact,fantasy; text-align:right; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
@@ -51,13 +52,18 @@
 #menu div:hover {  background: #ddd; }
 #menu div:first-child { background: none; border: none; text-align: center; margin-top: -50px; font-size: 30px; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
 #calendar, .chair, #broom, .comb { transition: all .75s }
-#pocket { width: 100px; height: 600px; position: absolute; left: 50%; margin-left: 300px; background: #bbb; border: 4px solid #555; border-left: 0; width: 0; transition: width .25s; overflow: hidden; }
+#pocket { width: 100px; height: 600px; position: absolute; left: 50%; margin-left: 300px; background: #bbb; border: 4px solid #555; border-left: 0; width: 0; transition: width .25s; overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; }
 #pocket:not(:empty) { width: 100px; background: #bbb; margin-left: 304px; }
 #pocket div { width: 100px; height: 100px; }
-#pocket div svg { padding: 40px; transform: scale(3); }
-#pocket div#pocketscissors svg { padding: 30px 0 0 28px; transform: scale(2.5); }
-#pocket div#pockethat svg { padding: 35px 0 0 20px; transform: scale(2.5); }
-#pocket div#pocketmirror svg { padding: 25px 0 0 20px; transform: scale(2); }
+#pocket div svg { padding: 10px 0 0 10px; transform: scale(3); }
+#pocket div#pocketscissors svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#pocket div#pocketshoes svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#pocket div#pocketladder svg { transform: scale(1.5); padding: 15px 0 0 0px; margin: 0 0 0 -5px; }
+#pocket div#pockethat svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#pocket div#pocketglasses svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#pocket div#pocketmirror svg { transform: scale(2); }
+#pocket div#pockethatchet svg { transform: scale(2); padding: 10px 0 0 15px; }
+#pocket div#pockethorseshoe svg { transform: scale(1.5); }
 #title .tuto { text-shadow: 2px 2px 50px #bbb,-2px -2px 50px #bbb,-2px 2px 50px #bbb,2px -2px 50px #bbb; font: 39px / 50px Anton, impact, fantasy; width: 500px; margin: 50px; }
 .hidden,.wear { display: none }
 </style>

@@ -23,6 +23,7 @@ state = [
     cupboard: 0, // 1: open
     comb: 0, // 0: in cupboard, 1: dropped,
     glasses: 0, // 1: taken, 2: on table
+    mirror: 0, // 1: broken
   },
   
   // 2: living room
@@ -55,7 +56,10 @@ state = [
   
   // 5: Tool shed
   {
-    
+    ladder: 0, // 1: taken, 2: on house
+    seed: 0,  // 1: taken, 2: on window, 3: eaten
+    hatchet: 0,  // 1: taken
+    horseshoe: 0, // 1: taken, 2: hung
   },
 ]
 

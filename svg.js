@@ -29,6 +29,7 @@ svg = {
   legsintro: `<svg id=legsintro width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M24 0L8 9C5 12 3 12 4 17L17 56L38 50L29 19L23 18L28 18L25 15L29 19L42 13L65 31L71 26L67 31L72 30L66 32L59 61L78 69L88 24C88 20 87 17 83 16L63 -1Z" fill="#ffffff" stroke="#000000"/><path d="M17 56L9 65C3 72 8 79 15 75L36 60C40 57 39 53 36 51Z" fill="#ffffff" stroke="#000000"/><path d="M60 61C53 63 51 66 53 70L77 87C85 92 89 80 86 78L77 69Z" fill="#ffffff" stroke="#000000"/></svg>`,
   
   // Bedroom
+  
   door: `<svg width=51 height=51 xmlns='http://www.w3.org/2000/svg'><path d="M1 5L50 5L45 50L8 50Z" fill="#eeeeee" stroke="#000000"/><circle cx=40 cy=27 r=2 fill="#ffffff" stroke="#000000"/></svg>`,
   
   door2: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M1 5L50 5L45 50L8 50Z" fill="#888888" stroke="#000000"/><path d="M1 5L1 38L8 69L8 50Z" fill="#eeeeee" stroke="#000000"/></svg>`,
@@ -92,8 +93,6 @@ svg = {
   // Living room 
   couch: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M5 5C9 3 12 3 17 5L17 81L95 81C98 86 98 91 95 95L5 95Z" fill="#aaaaaa" stroke="#000000"/><path d="M17 6L35 6C40 7 41 8 41 13L41 56L87 56C92 56 94 56 93 61L93 80L17 81Z" fill="#888888" stroke="#000000"/></svg>`,
   
-  fan: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><ellipse cx=39 cy=43 rx=13 ry=6 fill="#ffffff" stroke="#000000"/><ellipse cx=40 cy=43 rx=6 ry=2 fill="#ffffff" stroke="#000000"/><path d="M36 45C21 69 61 53 43 45M46 42C38 27 32 26 41 41M37 41C26 32 14 47 34 44" fill="#ffffff" stroke="#000000"/></svg>`,
-  
   table: `<svg width=65 height=74 xmlns='http://www.w3.org/2000/svg'><path d="M10 3L1 16L1 20L4 20L7 13L7 60L2 68L2 73L6 73L12 64L56 64L50 69L50 72L53 72L63 61L63 3Z" fill="#ffffff" stroke="#000000"/><path d="M10 4L10 62L2 73L10 61L63 61" fill="#ffffff" stroke="#000000"/></svg>`,
   
   hat: `<svg width=33 height=20 xmlns='http://www.w3.org/2000/svg'><ellipse cx=16 cy=14 rx=14 ry=4 fill="#555555" stroke="#000000"/><ellipse cx=16 cy=3 rx=7 ry=2 fill="#555555" stroke="#000000"/><path d="M9 3L9 13C13 15 18 15 24 13L23 3Z" fill="#555555" stroke="#000000"/></svg>`,
@@ -107,8 +106,6 @@ svg = {
   // Kitchen
   
   fridge: `<svg width=56 height=77 xmlns='http://www.w3.org/2000/svg'><path d="M2 57L32 76L54 76L32 57L54 76L54 38L32 2L44 22L44 67L44 22L32 2L32 57Z" fill="#ffffff" stroke="#000000"/><rect x=41 y=54 width=2 height=7 fill="#ffffff" stroke="#000000"/><rect x=46 y=58 width=2 height=8 fill="#ffffff" stroke="#000000"/><rect x=2 y=2 width=30 height=55 fill="#ffffff" stroke="#000000"/></svg>`,
-  
-  //bin: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M10 9L3 19C2 27 3 33 12 33L25 27M7 13C7 23 8 31 20 29" fill="#ffffff" stroke="#000000"/><circle cx=20 cy=16 r=12 fill="#ffffff" stroke="#000000"/></svg>`,
   
   plane: `<svg width=53 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=8 y=7 width=30 height=71 fill="#ccc" stroke="#000000"/><path d="M38 7L51 36L51 83L37 77L37 7M37 45L51 61" fill="#bbb" stroke="#000000"/><path d="M8 78M8 78L28 85L51 83" fill="#bbb" stroke="#000000"/><circle cx=43 cy=47 r=1 fill="#bbb" stroke="#000000"/><circle cx=42 cy=55 r=1 fill="#ffffff" stroke="#000000"/></svg>`,
   
@@ -138,7 +135,26 @@ svg = {
   
   tree: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M98 18C88 14 81 21 82 33C75 24 70 22 64 31C61 37 58 45 61 49C48 46 40 49 39 60C39 72 40 77 54 81C35 83 35 92 46 98L98 98Z" fill="#676" stroke="#000000"/><path d="M92 36C86 30 79 34 76 44M72 49C66 46 58 50 58 61M60 72C52 76 52 84 60 90" fill="#676" stroke="#000000"/></svg>`,
   
-  ladder: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M38 23L53 23M36 19L55 19M33 14L59 14M30 9L63 9M26 4L66 4M40 26L24 1M51 25L68 1" fill="#ffffff" stroke="#000000"/></svg>`,
+  umbrellaholder: `<svg width=22 height=27 xmlns='http://www.w3.org/2000/svg'><path d="M6 11L8 23C10 25 14 25 16 23L18 9Z" fill="#555" stroke="#000000"/><circle cx=12 cy=9 r=6 fill="#aaa" stroke="#000000"/></svg>`,
   
-  bucket: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M31 37L35 20C42 13 54 12 60 20L63 41" fill="#ffffff" stroke="#000000"/><path d="M31 38C39 19 54 16 61 38" fill="#ffffff" stroke="#000000"/><circle cx=47 cy=41 r=16 fill="#ffffff" stroke="#000000"/></svg>`,
+  umbrella1: `<svg width=22 height=27 xmlns='http://www.w3.org/2000/svg'><path d="M9 14L5 6L9 8L11 6L13 8L16 5L14 13Z" fill="#444" stroke="#000000"/><path d="M10 7L10 1C12 0 13 0 15 1L14 3L11 3L12 7" fill="#888" stroke="#000000"/></svg>`,
+  
+  umbrella2: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><circle cx=42 cy=42 r=37 fill="#444" stroke="#000"/><path d="M42 42L66 14M42 41L38 5M42 41L16 18M42 41L5 42M42 41L14 66M42 41L37 79M42 42L62 73M42 42L76 54M42 42L78 34" fill="#444" stroke="#000000"/><circle cx=42 cy=42 r=3 fill="#444" stroke="#000000"/></svg>`,
+  
+  crack: `<svg width=18 height=11 xmlns='http://www.w3.org/2000/svg'><path d="M0 4L4 6L9 3L16 6L9 5L3 9L0 6" fill="#bbb" stroke="#ccc"/></svg>`,
+  
+  
+  // Tool shed
+  
+  ladder: `<svg width=71 height=27 xmlns='http://www.w3.org/2000/svg'><path d="M38 23L53 23M36 19L55 19M33 14L59 14M30 9L63 9M26 4L66 4M40 26L24 1M51 25L68 1" fill="#ffffff" stroke="#000000"/></svg>`,
+  
+  bucket: `<svg width=67 height=58 xmlns='http://www.w3.org/2000/svg'><path d="M31 37L35 20C42 13 54 12 60 20L63 41" fill="#bbb" stroke="#000000"/><path d="M31 38C39 19 54 16 61 38" fill="#bbb" stroke="#000000"/><circle cx=47 cy=41 r=16 fill="#999" stroke="#000000"/><path d="M31 39C40 60 58 54 62 39C57 20 36 23 31 39" fill="#b97" stroke="#000000"/></svg>`,
+  
+  seed: `<svg width=23 height=17 xmlns='http://www.w3.org/2000/svg'><ellipse cx=9 cy=13 rx=5 ry=2 fill="#b97" stroke="#000000"/><ellipse cx=15 cy=6 rx=5 ry=2 fill="#b97" stroke="#000000"/><ellipse cx=16 cy=11 rx=4 ry=2 fill="#b97" stroke="#000000"/><ellipse cx=8 cy=10 rx=4 ry=2 fill="#b97" stroke="#000000"/><ellipse cx=11 cy=8 rx=5 ry=2 fill="#b97" stroke="#000000"/></svg>`,
+  
+  hatchet: `<svg width=27 height=56 xmlns='http://www.w3.org/2000/svg'><path d="M9 53L16 53L14 18L8 18Z" fill="#975" stroke="#000000"/><path d="M6 21L6 30L16 29L16 26L22 30C24 25 24 22 22 19L16 22L15 20Z" fill="#ddd" stroke="#000000"/></svg>`,
+  
+  horseshoe: `<svg width=50 height=49 xmlns='http://www.w3.org/2000/svg'><path d="M11 41L14 46L24 43C9 18 51 20 34 43L43 46L46 40L41 39C49 13 10 14 16 40Z" fill="#ddd" stroke="#000000"/></svg>`,
+  
+
 }
