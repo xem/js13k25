@@ -39,5 +39,28 @@ start = () => {
   setTimeout(()=>{title.innerHTML += "<div class=start>CLICK TO START"; introanim++;},6500);
 }
 
+outro = () => {
+  intro.innerHTML = svg.bedintro + svg.legsintro + "<div id=title>";
+  setTimeout(()=>{
+    bedintro.style.transition="all 3s";
+    legsintro.style.transition="all 3s";
+  },50);
+  setTimeout(()=>{
+    legsintro.style.left="-21%";
+    legsintro.style.top="53%";
+    legsintro.style.transform="scaleX(12) scaleY(12)rotate(-35deg)"
+  },2500);
+  setTimeout(()=>{
+    bedintro.style.left="5%";
+    bedintro.style.top="0%";bedintro.style.transform="scaleX(12) scaleY(12)rotate(0deg)"
+  },2600);
+  setTimeout(()=>{
+      legsintro.style.left="5%";
+      legsintro.style.top="0%";
+      legsintro.style.transform="scaleX(12) scaleY(12)rotate(0deg)";
+  },4500);
+};
+
+
 //start();
 introanim = 3;intro.remove();show(room=5);// debug

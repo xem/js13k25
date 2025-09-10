@@ -15,6 +15,7 @@ state = [
     door: 0, // living room, closed
     window: 0, // closed
     shoes: 0, // 1: pocket, 2: on table
+    bird: 0, // 1: here
   },
   
   // 1: bathroom
@@ -37,6 +38,7 @@ state = [
     hat: 0, // 1: take, 2: on bed
     key: 0, // 1: take, 2: on table
     salt: 0, // tip
+    bird: 0, // 1: here
   },
   
   // 3: Kitchen
@@ -51,16 +53,18 @@ state = [
   
   // 4: garden
   {
-    
+    umbrella: 0,
+    door4: 0,
   },
   
   // 5: Tool shed
   {
-    ladder: 0, // 1: taken, 2: on house
-    seed: 0,  // 1: taken, 2: on window, 3: eaten
+    ladder: 0, // 1: taken, 2: placed against house
+    seed: 0,  // 1: taken, 2: on window bedroom, 3: on window living room, 4: eaten
     hatchet: 0,  // 1: taken
     horseshoe: 0, // 1: taken, 2: hung
   },
 ]
 
 sit = 0;
+watching = 0;

@@ -7,6 +7,9 @@ onmousemove = (e) => {
     text.innerHTML = e.target.className.replace(/ 1| 2/,"");
     target = e.target;
   }
+  else {
+    text.innerHTML = "";
+  }
 }
 
 // Click (interact)
@@ -32,7 +35,7 @@ onclick = (e) => {
   
   // intro
   if(introanim == 1){
-    title.innerHTML = "<div class=tuto>Today is your big (unlucky) day! Your goal is to trigger as many bad luck events as possible, and return to bed to see how unlucky you have been.<br>After sleeping, you can restart the day to improve your score!<h1>OK";
+    title.innerHTML = "<div class=tuto>Today is your big (unlucky) day! Your goal is to trigger as many bad luck events as possible before midnight and return to bed to see how unlucky you have been.<br>After sleeping, you can restart the day to improve your score!<h1>OK";
     introanim++;
   }
   else if(introanim == 2){
@@ -92,8 +95,8 @@ onclick = (e) => {
       openmenu(tmp);
     }
     
-    // horseshoe
-    // todo
+    // remove horseshoe
+    // todo ?
     
     // Scissors
     if(target.className == "scissors"){
@@ -155,13 +158,19 @@ onclick = (e) => {
     }
     
     // Window
-    if(target.className == "window"){
+    if(target.id == "window1"){
+      tmp = {};
       if(state[0].window == 0){
-        openmenu({"open": "openwindow1"/*, "watch":"watchwindow1"*/});
+        tmp["open"] = "openwindow1";
       }
       else {
-        openmenu({"close": "closewindow1"/*, "watch":"watchwindow1"*/});
+        tmp["close"] = "closewindow1";
       }
+      tmp["watch outside"] = "watchout";
+      if(state[5].seed == 1){
+        tmp["put seed on windosill"] = "putseed1";
+      }
+      openmenu(tmp);
     }
     
   }
@@ -169,14 +178,19 @@ onclick = (e) => {
   // Living room
   else if(room == 2){
     
-    // Window
     if(target.className == "window"){
+      tmp = {};
       if(state[2].window == 0){
-        openmenu({"open": "openwindow2"/*, "watch":"watchwindow1"*/});
+        tmp["open"] = "openwindow2";
       }
       else {
-        openmenu({"close": "closewindow2"/*, "watch":"watchwindow1"*/});
+        tmp["close"] = "closewindow2";
       }
+      tmp["watch"] = "watchout";
+      if(state[5].seed == 1){
+        tmp["put seed on windosill"] = "putseed2";
+      }
+      openmenu(tmp);
     }
     
     // Chair
@@ -428,6 +442,17 @@ onclick = (e) => {
     if(target.id == "crack"){
       // todo
     }
+    
+    // House
+    if(target.className == "house" && state[5].ladder == 1){
+      tmp = {"place ladder": "placeladder"};
+      openmenu(tmp);
+    }
+    
+    // Gate
+    if(target.className == "gate"){
+      openmenu({"watch outside": "watchout"});
+    }
   }
   
   // Tool shed
@@ -457,6 +482,14 @@ onclick = (e) => {
     if(target.id=="horseshoe1"){
       openmenu({"take":"takehorseshoe"});
     }
+  }
+  
+  if(e.target.id == "rainbow"){
+    openmenu({"point":"pointrainbow"});
+  }
+  
+  if(e.target.className == "return"){
+    watchin();
   }
   
   

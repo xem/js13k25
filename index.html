@@ -1,14 +1,25 @@
 ﻿﻿<!doctype html><meta name=viewport content="width=1200,initial-scale=1"><meta name=apple-mobile-web-app-capable content=yes><meta name=mobile-web-app-capable content=yes><title>I GOT UP ON THE WRONG FOOT</title><link rel=icon href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2230%22 y=%2280%22 font-size=%2280%22>🦶</text></svg>">
-
+<html id=root style=display:none>
 <div id=v>
   <div id=camera>
     <div id=scene></div>
   </div>
-  <div id=time>08:00</div>
-  <div id=text></div>
-  <div id=menushadow onclick="this.style.display='none'"><div id=menu></div></div>
+  <div id=view>
+    <div id=sky class=return></div>
+    <div id=sun class=return></div>
+    <div id=mountain class=return></div>
+    <div id=path class=return></div>
+    <div id=cat class=cat class=return></div>
+    <div id=finger class=return></div>
+    <div id=rainbow class=rainbow></div>
+  </div>
+  <canvas id=rain width=600 height=600></canvas>
   <div id=fade></div>
-  
+  <div id=thun></div>
+  <div id=meow class=hidden>MEOW!</div>
+  <div id=text></div>
+  <div id=time>08:00</div>
+  <div id=menushadow onclick="this.style.display='none'"><div id=menu></div></div>
 </div>
 
 <div id=intro></div>
@@ -27,6 +38,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 #v, #intro{width:600px;height:600px;overflow:hidden;position:absolute;left:50%;transform:translateX(-50%);perspective:600px; background: #ccc; }
 #v *{transform-style:preserve-3d;box-sizing:border-box;line-height:0; cursor:pointer; }
+@keyframes sky {
+  5% { background: #000 }  /* 8h night */
+  8% { background: #F41 } /* 9h30 sunrise */
+  10% { background: #d60 } /* 9h30 sunrise */
+  20% { background: #8ce } /* 11h */
+  30% { background: #8cc } /* 12h30 cat */
+  40% { background: #8aa } /* 14h */
+  50% { background: #444 } /* 15h30 rain */
+  60% { background: #444 } /* 17h rain */
+  70% { background: #8ce } /* 18h30 rainbow */
+  80% { background: #135 } /* 20h */
+  90% { background: #000 } /* 21h30 night */
+}
+@keyframes rise {
+  0% { transform: translateX(-640px) translateY(-90px);  }
+  100% { transform: translateX(100px) translateY(-900px);  }
+}
 .cube div, .shelf { border: 2px solid }
 .cube div.south { background: #ccc !important }
 .cube div.east { background: #bbb !important }
@@ -39,14 +67,18 @@
 #intro svg#legsintro { position:absolute;left:40%; top: 22%;transform:scaleX(8)scaleY(8)rotate(-45deg); }
 #title { color: #0b7bcd; position: absolute; width:100%; text-align: center; text-shadow: 10px 10px 10px #555; font: 145px / 139px Anton,impact,fantasy; }
 #title div { color: #000; font: 38px/36px Anton,impact,fantasy; }
-#v #guy, #v .guy, #v svg, #v svg *, #v, #v #time, #v #text, #v .cube, #v #fade, #v .treetop { pointer-events: none}
 #v { border: 4px solid #555; }
 #v * { pointer-events: all}
 #time,#text { margin: 5px 10px; font: 25px Anton,impact,fantasy; text-align:right; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
 #text { bottom: 0; text-align: center; position: absolute; width: 100%; margin: 0; }
 #hero { transition: transform .75s }
 #menushadow { width: 100%; height: 100%; position: absolute; top: 0; background: #8888; display: none; }
-#fade { width: 100%; height: 100%; position: absolute; top: 0; background: #000; opacity: 0; transition: opacity .25s; }
+#fade { width: 100%; height: 100%; position: absolute; top: 0; background: #000; opacity: 0; transition: opacity .25s;  }
+#thun { width: 100%; height: 100%; position: absolute; top: 0; background: #fff; opacity: 0; pointer-events: none; }
+#meow { width: 100%; height: 100%; position: absolute; top: 0; text-align:center; font: 80px/600px Anton,impact,fantasy; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
+#view { width: 100%; height: 100%; position: absolute; top: 0; background: #000; overflow: hidden; pointer-events: none; opacity: 0; }
+#view * { pointer-events: none }
+.w #view, .w #view div { pointer-events: all; }
 #menu { width: 250px; min-height: 50px; background: #fff; border: 5px solid #444; position: relative; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); text-align: center; }
 #menu div { height: 50px; border: 2px solid #444; padding: 5px; font: 20px Anton,impact,fantasy;}
 #menu div:hover {  background: #ddd; }
@@ -66,4 +98,20 @@
 #pocket div#pockethorseshoe svg { transform: scale(1.5); }
 #title .tuto { text-shadow: 2px 2px 50px #bbb,-2px -2px 50px #bbb,-2px 2px 50px #bbb,2px -2px 50px #bbb; font: 39px / 50px Anton, impact, fantasy; width: 500px; margin: 50px; }
 .hidden,.wear { display: none }
+#sky { width: 600px; height: 600px; position: absolute; animation: sky 1000s;}
+#rainbow { width: 600px; height: 1000px; position: absolute; top: 10%; left: 0%; display: none; opacity: 0; transition: opacity 4s; background: radial-gradient(circle,
+   rgba(0,0,0,0) 60%,
+   rgba(192, 0, 255, 1) 65%,
+   rgba(0, 192, 255, 1) 70%,
+   rgba(255, 255, 0, 1) 75%,
+   rgba(255, 0, 0, 1) 80%,
+   rgba(0,0,0,0) 85%
+ ) }
+#sun { width: 200px; height: 200px; position: absolute; bottom: 0; right: 0; background: radial-gradient(#fe8 30%, #fe80 50%); animation: rise 800s;}
+#finger { position: absolute; top: 110%; left: 40%; transform: scale(6); transition: all 2s; }
+#cat { position: absolute; top: 70%; left: -40%; transform: scale(2); transition: left 5s; }
+#mountain{ position: absolute; top: 60%; left: 41%; transform: scale(6.5); }
+#path { position: absolute; top: 45%; left: 41%; transform: scale(6.5); }
+#rain { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 5s; pointer-events:none}
+#v #guy, #v .guy, #v svg, #v svg *, #v, #v #time, #v #text, #v .cube, #v #fade, #v .treetop, #v #view { pointer-events: none}
 </style>

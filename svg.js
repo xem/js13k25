@@ -143,6 +143,8 @@ svg = {
   
   crack: `<svg width=18 height=11 xmlns='http://www.w3.org/2000/svg'><path d="M0 4L4 6L9 3L16 6L9 5L3 9L0 6" fill="#bbb" stroke="#ccc"/></svg>`,
   
+  ladder2: `<svg width=36 height=91 xmlns='http://www.w3.org/2000/svg'><path d="M7 2L14 89M30 2L25 88M8 13L29 13M9 26L28 26M9 38L28 38M11 48L27 48M12 57L27 57M12 65L26 65M12 72L26 72M13 79L25 79M14 84L25 84" fill="#ffffff" stroke="#000000"/></svg>`,
+  
   
   // Tool shed
   
@@ -156,5 +158,15 @@ svg = {
   
   horseshoe: `<svg width=50 height=49 xmlns='http://www.w3.org/2000/svg'><path d="M11 41L14 46L24 43C9 18 51 20 34 43L43 46L46 40L41 39C49 13 10 14 16 40Z" fill="#ddd" stroke="#000000"/></svg>`,
   
-
+  bird: `<svg width=33 height=36 xmlns='http://www.w3.org/2000/svg'><path d="M24 19L30 21L24 23C24 27 20 28 17 26C12 29 7 29 3 28L0 30L2 25L0 24L2 24L0 21L4 23L2 19L5 21C8 18 10 18 14 19C16 16 20 16 24 19" fill="#000000" stroke="#000000"/><path d="M8 28L8 31L6 33L8 31L8 33L8 30L10 32M11 28L14 31L12 30L12 31L12 30L15 30" fill="#000" stroke="#000000"/></svg>`,
+  
+  // View
+  
+  hand: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M0 92L14 70L12 57L18 47L22 46L25 49L28 48L31 52L41 36L45 35L47 40L36 58L34 64L43 64L46 67L44 70L27 74L20 98L0 98Z" fill="#fdb" stroke="#000000"/></svg>`,
+  
+  cat: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M89 22C83 24 82 27 80 32C67 40 52 38 38 42C27 12 16 10 6 13C0 16 1 24 16 24C23 27 28 44 36 48C29 51 20 63 15 66C11 71 18 75 24 70C28 64 37 63 44 56C46 66 40 68 41 72C44 78 50 74 51 56C54 59 64 60 70 56C74 62 72 61 68 66C66 69 70 72 75 70C77 67 77 70 77 64C82 68 87 66 94 73C98 74 98 68 96 63C94 60 84 57 78 54C79 47 84 47 89 49C96 47 97 39 96 37L93 36C92 33 91 33 90 32C91 28 93 25 95 24C91 24 88 28 86 32Z" fill="#000" stroke="#000000"/></svg>`,
+  
+  mountain: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M0 46C17 20 20 20 38 41L34 36C52 21 48 21 73 36L67 43C84 21 90 33 98 40L98 99L0 99Z" fill="#364" stroke="#000000"/></svg>`,
+  
+  path: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M0 77C26 71 60 78 73 74C90 71 92 70 98 72L98 99L0 99Z" fill="#453" stroke="#000000"/></svg>`,
 }

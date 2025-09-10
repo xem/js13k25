@@ -1,6 +1,6 @@
 // Achievements
 achievements = [
-  "get up on the wrong foot",  // ok
+  "get up on the left foot",  // ok
   "set the date to friday 13th",  // ok
   "wear green clothes",  // ok
   "sleep head north",  // ok
@@ -21,13 +21,13 @@ achievements = [
   "walk on a crack", // ok
   "break a mirror", // ok (bathroom)
   "hang horseshoe pointing down", // ok
-  "walk under a ladder", //
-  "a bird looks inside from the window", //
-  "see an owl", // 
-  "cross a black cat",
-  "point to a rainbow",
+  "walk under a ladder", // ok
+  "a bird looks inside from the window", // ok
+  "point to a rainbow", // ok
+  "cross a black cat", // ok
   "walk under a tree during thunder",
   
+  //"see an owl", // 
   // let candle burn out
   // sleep with window open,
   // sleep with fan on,
@@ -54,6 +54,9 @@ show = (room, pos) => {
     guyX = 300;
     guyY = -40;
     C.move({n:"hero",x:300,y:-40});
+    if(state[0].bird == 1){
+      // Achievement
+    }
   }
   
   // Bathroom
@@ -70,6 +73,9 @@ show = (room, pos) => {
     guyX = roomX + 300;
     guyY = roomY + 310;
     C.move({n:"hero",x:300,y:-40+320});
+    if(state[2].bird == 1){
+      // Achievement
+    }
   }
   
   // Kitchen
@@ -105,7 +111,44 @@ show = (room, pos) => {
   setTimeout(()=>{hero.style.transition = "transform .75s";},250);
 }
 
+// ZZfx
+zzfxV=.3,               // volume
+zzfxX=new AudioContext, // audio context
+zzfx=                   // play sound
+(p=1,k=.05,b=220,e=0,r=0,t=.1,q=0,D=1,u=0,y=0,v=0,z=0,l=0,E=0,A=0,F=0,c=0,w=1,m=0,B=0
+,N=0)=>{let M=Math,d=2*M.PI,R=44100,G=u*=500*d/R/R,C=b*=(1-k+2*k*M.random(k=[]))*d/R,
+g=0,H=0,a=0,n=1,I=0,J=0,f=0,h=N<0?-1:1,x=d*h*N*2/R,L=M.cos(x),Z=M.sin,K=Z(x)/4,O=1+K,
+X=-2*L/O,Y=(1-K)/O,P=(1+h*L)/2/O,Q=-(h+L)/O,S=P,T=0,U=0,V=0,W=0;e=R*e+9;m*=R;r*=R;t*=
+R;c*=R;y*=500*d/R**3;A*=d/R;v*=d/R;z*=R;l=R*l|0;p*=zzfxV;for(h=e+m+r+t+c|0;a<h;k[a++]
+=f*p)++J%(100*F|0)||(f=q?1<q?2<q?3<q?Z(g**3):M.max(M.min(M.tan(g),1),-1):1-(2*g/d%2+2)
+%2:1-4*M.abs(M.round(g/d)-g/d):Z(g),f=(l?1-B+B*Z(d*a/l):1)*(f<0?-1:1)*M.abs(f)**D*(a<
+e?a/e:a<e+m?1-(a-e)/m*(1-w):a<e+m+r?w:a<h-c?(h-a-c)/t*w:0),f=c?f/2+(c>a?0:(a<h-c?1:(h
+-a)/c)*k[a-c|0]/2/p):f,N?f=W=S*T+Q*(T=U)+P*(U=f)-Y*V-X*(V=W):0),x=(b+=u+=y)*M.cos(A*
+H++),g+=x+x*E*Z(a**5),n&&++n>z&&(b+=v,C+=v,n=0),!l||++I%l||(b=C,u=G,n=n||1);p=zzfxX.
+createBuffer(1,h,R);p.getChannelData(0).set(k);b=zzfxX.createBufferSource();
+b.buffer=p;b.connect(zzfxX.destination);b.start()}
 
+// thunder sound
+
+var t=(i,n)=>(n-i)/n;
+
+thu = (i) => {
+  var n=25000;
+  if (i > n) return null;
+  return Math.sin(i/200 - Math.sin(i/331)*Math.sin(i/61) + Math.sin(Math.sin(i/59)/39) * 33)*t(i,n)*9;
+}
+
+// Sound player
+player = (f) => {
+  var A=new AudioContext()
+  var m=A.createBuffer(1,96e3,48e3)
+  var b=m.getChannelData(0)
+  for(var i=96e3;i--;)b[i]=f(i)
+  var s=A.createBufferSource()
+  s.buffer=m
+  s.connect(A.destination)
+  s.start()
+}
 
 // Timer
 hour = 8;
@@ -113,18 +156,110 @@ min = 0;
 setInterval(()=>{
   if(introanim < 2) return;
   min++;
-  if(min > 60){
+  if(min > 59){
     min = 0;
     hour ++;
   }
-  if(hour > 24){
-    hour = 0;
+  if(hour > 23){
+    sleep();
   }
+  if(hour == seedhour + 1 && min == seedmin){
+    
+    // show bird
+    if(state[5].seed == 2 && state[0].window == 1){
+      bird1.classList.remove("hidden");
+      state[0].bird = 1;
+      if(room == 0){
+        // Achievement
+      }
+    }
+    if(state[5].seed == 3 && state[2].window == 1){
+      bird2.classList.remove("hidden");
+      state[2].bird = 1;
+      if(room == 2){
+        // Achievement
+      }
+    }
+  }
+  
+  // Cat: 13h13
+  if(hour == 13 && (min == 10)){
+    cat.style.left = "40%"; // cat
+  }
+  if(hour == 13 && (min == 13 || min == 17)){
+    zzfx(...[,,1100,.05,.2,.2,2,,2,-15,,,,.1,,,,.3,.05]); // meow
+    meow.classList.remove("hidden");
+    setTimeout(()=>{meow.classList.add("hidden");},1000);
+  }
+  
+  if(hour == 13 && (min == 20)){
+    cat.style.left = "120%"; // cat
+  }
+
+  // Rainbow: 18h15-19h
+  if(hour == 18 && min == 10){
+    rainbow.style.display = "block";
+  }
+  
+  if(hour == 18 && min == 15){
+    rainbow.style.opacity = 1;
+  }
+  
+  if(hour == 19 && min == 0){
+    rainbow.style.opacity = 0;
+  }
+  
+  if(hour == 19 && min == 5){
+    rainbow.style.display = "none";
+  }
+  
+  // Rain: 15h30 - 18h
+  if(hour == 15 && min == 30){
+    rain.style.opacity = .8;
+  }
+  
+  if(hour == 18 && min == 0){
+    rain.style.opacity = 0;
+  }
+  
+  // Thunder: 16h-17h
+  if(hour == 16 && (min == 0 || min == 10 || min == 20 || min == 30 || min == 40 || min == 50)){
+    thunder();
+  }
+  
   time.innerHTML = (""+hour).padStart(2,"0") + ":" + (""+min).padStart(2,"0");
 },1000);
 
-target = 0;
 
+// Rain
+ctx = rain.getContext("2d");
+setInterval(()=>{
+  var x, y, i;
+  rain.width ^= 0;
+  ctx.lineWidth = 4;
+  ctx.strokeStyle = "#346";
+  for(i = 100; i--;){
+  
+
+    if(watching){
+      ctx.moveTo(x = Math.random()*600, y = Math.random()*600)
+      ctx.lineTo(x-5,y+20);
+    }
+    else if(room == 4){
+      ctx.moveTo(x = Math.random()*600, y = Math.random()*600)
+      ctx.lineTo(x + (300 - x) / 10, y + (300 - y) / 10);
+    }
+    else if(room == 5){
+      ctx.moveTo(x = Math.random()*600 + 460, y = Math.random()*400+ 100)
+      ctx.lineTo(x + (300 - x) / 10, y + (300 - y) / 10);
+    }
+  }
+  ctx.stroke();
+},50);
+
+target = 0;
+seedhour = 99;
+seedmin = 99;
 
 
 
@@ -419,6 +554,22 @@ returnbread = () => {
   state[3].bread = 3;
 }
 
+putseed1 = () => {
+  pocketseed.remove();
+  document.querySelector("#seed1").classList.remove("hidden");
+  state[5].seed = 2;
+  seedhour = hour;
+  seedmin = min;
+}
+
+putseed2 = () => {
+  pocketseed.remove();
+  document.querySelector("#seed2").classList.remove("hidden");
+  state[5].seed = 3;
+  seedhour = hour;
+  seedmin = min;
+}
+
 // Kitchen
 
 openplane = () => {
@@ -520,11 +671,19 @@ breakmirror = () => {
 openumbrella = () => {
   document.querySelector("#umbrella1").classList.add("hidden");
   guy.innerHTML=svg.umbrella2;
+  state[4].umbrella = 1;
 }
 
 closeumbrella = () => {
   document.querySelector("#umbrella1").classList.remove("hidden");
   hero.innerHTML=drawguy();
+  state[4].umbrella = 0;
+}
+
+placeladder = () => {
+  pocketladder.remove();
+  document.querySelector("#ladder2").classList.remove("hidden");
+  state[5].ladder = 2;
 }
 
 // Tool shed
@@ -552,6 +711,8 @@ takehorseshoe = () => {
   pocket.innerHTML += "<div id=pockethorseshoe>"+svg.horseshoe+"</div>";
   state[5].horseshoe = 1;
 }
+
+
 
 
 
@@ -706,3 +867,45 @@ exitshed = () => {
   setTimeout(()=>{fade.style.opacity=1;},100);
   setTimeout(()=>{show(room = 4, pos=2);fade.style.opacity=0},600);
 }
+
+// View
+
+watchout = () => {
+  fade.style.opacity=1;
+  setTimeout(()=>{
+    root.className = "w";
+    watching = 1;
+    view.style.opacity = 1;
+    fade.style.opacity=0;
+  },500);
+}
+
+watchin = () => {
+  fade.style.opacity=1;
+  setTimeout(()=>{
+    watching = 0;
+    root.className = "";
+    view.style.opacity = 0;
+    fade.style.opacity=0;
+  },500);
+}
+
+pointrainbow = () => {
+  finger.style.top = "50%";
+  setTimeout(()=>{
+    finger.style.top = "120%";
+  },5000);
+}
+
+thunder = () => {
+  thun.style.opacity = .9;
+  setTimeout(()=>{thun.style.opacity = 0;}, 350);
+  player(thu);
+}
+
+// setup
+finger.innerHTML = svg.hand;
+cat.innerHTML = svg.cat;
+mountain.innerHTML = svg.mountain;
+path.innerHTML = svg.path;
+setTimeout(()=>{root.style.display = "block";},200);

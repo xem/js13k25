@@ -33,14 +33,12 @@ C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
 
   // door
   C.plane({w:51,h:51,x:290,y:84,z:300,rz:180,html:svg.door,css:"living room door",n:"lrd1"});
-  //C.plane({w:51,h:51,x:191,y:55-50,z:300,rz:-90,html:svg.door,css:"bathroom door"});
   
   // bed
   C.plane({w:100,h:100,x:253,y:-60-50,z:300,rz:-90,html:svg.bed,css:"bed",n:"bed"});
   
   // hat 
   C.plane({w:33,h:20,x:245,y:-71,z:300,rz:0,html:svg.hat,css:"hat hidden",n:"hat2"});
-  
   
   // desk
   C.plane({w:100,h:50,x:375,y:-10,z:300,rz:90,sy:1.2,html:svg.desk,css:"desk"});
@@ -50,6 +48,12 @@ C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   
   // window
   C.plane({w:100,h:100,x:180,y:25-50,z:300,rz:180,html:svg.window,css:"window",n:"window1"});
+  
+  // seed
+  C.plane({w:23,h:17,x:207,y:14,z:300,rz:90,sx:.5,sy:.6,html:svg.seed,css:"seed hidden",n:"seed1"});
+  
+  // Bird
+  C.plane({w:33,h:36,x:207,y:2,z:300,html:svg.bird,css:"bird hidden",n:"bird1"});
   
   // hanger
   C.plane({w:8,h:11,x:228,y:-147,z:300,rz:0,html:svg.hanger,css:"hanger",n:"hanger1"});
@@ -101,12 +105,15 @@ C.cube({x:301,y:-100,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   // window
   C.plane({w:100,h:100,x:180,y:280,z:300,rz:180,html:svg.window,css:"window",n:"window2"});
   
+  // seed
+  C.plane({w:23,h:17,x:210,y:317,z:312,rz:90,sx:.5,sy:.6,html:svg.seed,css:"seed hidden",n:"seed2"});
+  
+  // Bird
+  C.plane({w:33,h:36,x:213,y:302,z:312,html:svg.bird,css:"bird hidden",n:"bird2"});
+  
   // couch
   C.plane({w:50,h:100,x:375,y:250,z:300,rz:-180,html:svg.couch,css:"couch"});
   C.plane({w:100,h:50,x:355,y:250,z:300,rz:-180,html:"",css:"couch"});
-  
-  // fan
-  //C.plane({w:100,h:100,x:380,y:360,z:300,rz:-45,html:svg.fan});
   
   // chair
   C.plane({w:34,h:28,x:240,y:355,z:300,sx:-1,html:svg.chair,css:"chair 1",n:"chair1"});
@@ -198,6 +205,9 @@ C.plane({x:100,y:900,w:800,h:2000,z:65,b:"#787", css:""});
   
   // door
   C.plane({w:51,h:51,x:200,y:920+99,z:300,rz:0,html:svg.door,css:"entrance door"});
+  
+  // Ladder
+  C.plane({w:36,h:91,x:130,y:920+59,z:340,sx:1.9,sy:2.5,html:svg.ladder2,css:"ladder hidden",n:"ladder2"});
   
   // Umbrella
   C.plane({w:22,h:27,x:200+30,y:920+99+35,z:300,rz:0,html:svg.umbrellaholder,css:"umbrella holder"});
