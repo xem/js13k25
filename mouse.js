@@ -4,13 +4,16 @@ onmousemove = (e) => {
   if(x>0&&y>0&&x<600&&y<600){
     angle=Math.atan2(y-(guyY-roomY),x-(guyX-roomX))-1.6;
     if(!sit) guy.style.transform="rotate("+angle+"rad)";
-    text.innerHTML = e.target.className.replace(/ 1| 2/,"");
+    try{text.innerHTML = e.target.className.replace(/ 1| 2/,"");}catch(e){}
     target = e.target;
   }
   else {
     text.innerHTML = "";
   }
 }
+
+oldguyX = 0;
+oldguyY = 0;
 
 // Click (interact)
 onclick = (e) => {
@@ -29,13 +32,23 @@ onclick = (e) => {
     }
   }
   
+  // Check walk under ladder
+  if(((oldguyX < 30 && guyX > 89)||(guyX < 30 && oldguyX > 89)) && oldguyY > 1002 && oldguyY < 1064 && guyY > 1002 && guyY < 1064){
+    achievements[21][1] = 1;
+    
+  }
+  
+  // Backup coords
+  oldguyX = guyX;
+  oldguyY = guyY;
+  
   if(sit){
     C.move({n:"hero",sx:1,sy:1});
   }
   
   // intro
   if(introanim == 1){
-    title.innerHTML = "<div class=tuto>Today is your big (unlucky) day! Your goal is to trigger as many bad luck events as possible before midnight and return to bed to see how unlucky you have been.<br>After sleeping, you can restart the day to improve your score!<h1>OK";
+    title.innerHTML = "<div class=tuto>Today is your big (unlucky) day! Your goal is to trigger as many bad luck events as possible before midnight and return to bed to see how unlucky you've been. There is a total of 26 bad luck events to trigger based on famous superstitions.<h1>OK";
     introanim++;
   }
   else if(introanim == 2){
@@ -86,13 +99,13 @@ onclick = (e) => {
     // hanger
     if(target.id=="hanger1" && state[0].calendar1 != 0){
       tmp = {};
-      if(state[3].mirror == 1 && state[5].horseshoe != 2){
+      if(state[3].mirror == 1 && state[0].mirror == 0 && state[0].horseshoe == 0){
         tmp["hang mirror"] = "hangmirror";
       }
-      if(state[5].horseshoe == 1 && state[3].mirror != 2){
+      if(state[5].horseshoe == 1 && state[0].mirror == 0 && state[0].horseshoe == 0){
         tmp["hang horseshoe"] = "hanghorseshoe4";
       }
-      openmenu(tmp);
+      if(JSON.stringify(tmp) != '{}') openmenu(tmp);
     }
     
     // remove horseshoe
@@ -294,8 +307,6 @@ onclick = (e) => {
     if(target.id=="hanger2" && state[5].horseshoe == 1 && state[2].hat != 0){
       openmenu({"hang horseshoe": "hanghorseshoe3"});
     }
-   
-    
   }
   
   // Kitchen
@@ -441,6 +452,7 @@ onclick = (e) => {
     // Crack
     if(target.id == "crack"){
       achievements[18][1] = 1;
+      setTimeout(()=>{player(coin)},750);
     }
     
     // House

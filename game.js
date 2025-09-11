@@ -5,12 +5,13 @@ show = (room, pos) => {
   // Bedroom
   if(room == 0){
     C.camera({x:roomX = 0,y:roomY = -300, z:0}) // bedroom
-    guyX = 300;
-    guyY = -40;
-    C.move({n:"hero",x:300,y:-40});
+    guyX = roomX+300;
+    guyY = roomY+310;
+    C.move({n:"hero",x:guyX,y:guyY-40});
     if(state[0].bird == 1){
       // Bird achievement
       achievements[22][1] = 1;
+      
     }
   }
   
@@ -31,9 +32,11 @@ show = (room, pos) => {
     if(state[2].bird == 1){
       // Bird achievement
       achievements[22][1] = 1;
+      
     }
     if(state[4].umbrella == 1){
       achievements[17][1] = 1;
+      
     }
   }
   
@@ -88,7 +91,6 @@ createBuffer(1,h,R);p.getChannelData(0).set(k);b=zzfxX.createBufferSource();
 b.buffer=p;b.connect(zzfxX.destination);b.start()}
 
 // thunder sound
-
 var t=(i,n)=>(n-i)/n;
 
 thu = (i) => {
@@ -131,6 +133,7 @@ setInterval(()=>{
       if(room == 0){
         // Achievement
         achievements[22][1] = 1;
+        
       }
     }
     if(state[5].seed == 3 && state[2].window == 1){
@@ -139,6 +142,7 @@ setInterval(()=>{
       if(room == 2){
         // Achievement
         achievements[22][1] = 1;
+        
       }
     }
   }
@@ -153,6 +157,7 @@ setInterval(()=>{
     setTimeout(()=>{meow.classList.add("hidden");},1000);
     if(watching){
       achievements[24][1] = 1;
+      
     }
   }
 
@@ -191,6 +196,7 @@ setInterval(()=>{
     thunder();
     if(guyX > 201 && guyY > 1126){
       achievements[25][1] = 1;
+      
     }
   }
   
@@ -281,6 +287,8 @@ sleep = () => {
   if(state[0].door1 == 1){
     achievements[5][1] = 1;
   }
+  pocket.innerHTML = "";
+  outro();
 }
 
 openwindow1 = () => {
@@ -335,7 +343,7 @@ removecalendar = () => {
 watchcalendar = () => {
   setTimeout(()=>{
   menushadow.style.display = "block";
-  menu.innerHTML = drawcal();
+  menu.innerHTML = state[0].calendar2 == 1 ? drawcal(1, 1) : drawcal();
   },200);
 }
 
@@ -349,9 +357,10 @@ markdate = () => {
   },800);
     setTimeout(()=>{
     menu.innerHTML = drawcal(1,1);
+    state[0].calendar2 = 1;
+    achievements[1][1] = 1;
+    
   },1400);
-  state[0].calendar2 = 1;
-  achievements[1][1] = 1;
 }
 
 openscissors = () => {
@@ -403,6 +412,7 @@ weargreen = () => {
   document.querySelector(".shirt.blue").classList.remove("wear");
   document.querySelector(".shirt.red").classList.remove("wear");
   achievements[2][1] = 1;
+  
 }
 
 wearred = () => {
@@ -418,13 +428,16 @@ puthat = () => {
   document.querySelector("#hat2").classList.remove("hidden");
   state[2].hat = 2;
   achievements[7][1] = 1;
+  
 }
 
 hangmirror = () => {
   pocketmirror.remove();
   document.querySelector("#mirror2").classList.remove("hidden");
   state[3].mirror = 2;
+  state[0].mirror = 1;
   achievements[13][1] = 1;
+  
 }
 
 
@@ -470,6 +483,7 @@ sitchair2 = () => {
   sit = 1;
   guy.style.transform="rotate(1rad)";
   achievements[9][1] = 1;
+  
 }
 
 sitcouch = () => {
@@ -498,6 +512,7 @@ tipsalt = () => {
   C.move({n:"salt",x:225,y:240+180,rz:5});
   state[2].salt = 1;
   achievements[6][1] = 1;
+  
 }
 
 putbread = () => {
@@ -512,6 +527,7 @@ putkey = () => {
   C.move({n:"key",x:250,y:390,z:310,rz:80,sy:1.2});
   state[2].key = 2;
   achievements[16][1] = 1;
+  
 }
 
 putshoes = () => {
@@ -519,6 +535,7 @@ putshoes = () => {
   document.querySelector("#shoes2").classList.remove("hidden");
   state[0].shoes = 2;
   achievements[10][1] = 1;
+  
 }
 
 putglasses = () => {
@@ -526,6 +543,7 @@ putglasses = () => {
   document.querySelector("#glasses2").classList.remove("hidden");
   state[1].glasses = 2;
   achievements[14][1] = 1;
+  
 }
 
 returnbread = () => {
@@ -533,6 +551,7 @@ returnbread = () => {
   C.move({n:"bread2",sx:-.9});
   state[3].bread = 3;
   achievements[8][1] = 1;
+  
 }
 
 putseed1 = () => {
@@ -582,13 +601,14 @@ putknive = () => {
   document.querySelector("#knive3").classList.remove("hidden");
   state[3].knive = 2;
   achievements[11][1] = 1;
+  
 }
 
 returnbroom = () => {
   document.querySelector("#broom").innerHTML = state[3].broom ? svg.broom : svg.broom2;
   C.move({n:"broom",rz: state[3].broom ? -90 : 90});
   state[3].broom = state[3].broom ? 0 : 1;
-  achievements[12][1] = state[3].broom;
+  achievements[12][1] = state[3].broom; 
 }
 
 takemirror = () => {
@@ -597,25 +617,29 @@ takemirror = () => {
   state[3].mirror = 1;
 }
 
-hanghorseshoe2 = () => {
+hanghorseshoe2 = () => { // kitchen
   document.querySelector("#horseshoe2").classList.remove("hidden");
   pockethorseshoe.remove();
   state[5].horseshoe = 2;
   achievements[20][1] = 1;
+  
 }
 
-hanghorseshoe3 = () => {
+hanghorseshoe3 = () => { // living room
   document.querySelector("#horseshoe3").classList.remove("hidden");
   pockethorseshoe.remove();
   state[5].horseshoe = 2;
   achievements[20][1] = 1;
+  
 }
 
-hanghorseshoe4 = () => {
+hanghorseshoe4 = () => { // bedroom
   document.querySelector("#horseshoe4").classList.remove("hidden");
   pockethorseshoe.remove();
   state[5].horseshoe = 2;
+  state[0].horseshoe = 1;
   achievements[20][1] = 1;
+  
 }
 
 
@@ -639,6 +663,7 @@ dropcomb = () => {
   C.move({n:"comb",x:-38,y:67,rz: 204,sx:-.9,sy:.9});
   state[1].comb = 1;
   achievements[15][1] = 1;
+  
 }
 
 takeglasses = () => {
@@ -651,6 +676,7 @@ breakmirror = () => {
   document.querySelector("#bathmirror").innerHTML = svg.bathmirror2;
   state[1].mirror = 1;
   achievements[19][1] = 1;
+  
 }
 
 // Garden
@@ -883,6 +909,7 @@ pointrainbow = () => {
   setTimeout(()=>{
     finger.style.top = "120%";
     achievements[23][1] = 1;
+    
   },5000);
 }
 

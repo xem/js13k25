@@ -69,6 +69,28 @@ outro = () => {
   },4500);
 };
 
+score = () => {
+  var score = 0;
+  var html = "";
+  for(var i = 0; i < 26; i++){
+    if(achievements[i][1]){
+      score++;
+      html += "<br>✅ " + achievements[i][0];
+    }
+  }
+  html = "<div class=divscore><h2>SCORE: " + score + "/26</h2><p>" + html + (score < 26 ? "<p><details><summary>Reveal the rest?</summary>" : "");
+  for(var i = 0; i < 26; i++){
+    if(achievements[i][1] != 1){
+      html += "<br>❌ " + achievements[i][0];
+    }
+  }
+  html += "</details>";
+  html += "<br><br><h2 onclick=location=location>REPLAY?";
+  intro.innerHTML = html;
+  
+  
+}
+
 
 //start();
-introanim = 3;intro.style.display="none";show(room=5);// debug
+introanim = 3;intro.style.display="none";show(room=0);// debug

@@ -84,7 +84,7 @@
 #menu div:hover {  background: #ddd; }
 #menu div:first-child { background: none; border: none; text-align: center; margin-top: -50px; font-size: 30px; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
 #calendar, .chair, #broom, .comb { transition: all .75s }
-#pocket { width: 100px; height: 600px; position: absolute; left: 50%; margin-left: 300px; background: #bbb; border: 4px solid #555; border-left: 0; width: 0; transition: width .25s; overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; }
+#pocket { width: 100px; height: 590px; position: absolute; left: 50%; margin-left: 300px; background: #bbb; border: 4px solid #555; border-left: 0; width: 0; transition: width .25s; overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; padding: 10px 0 0; }
 #pocket:not(:empty) { width: 100px; background: #bbb; margin-left: 304px; }
 #pocket div { width: 100px; height: 100px; }
 #pocket div svg { padding: 10px 0 0 10px; transform: scale(3); }
@@ -92,11 +92,12 @@
 #pocket div#pocketshoes svg { transform: scale(2.5); padding: 10px 0 0 15px; }
 #pocket div#pocketladder svg { transform: scale(1.5); padding: 15px 0 0 0px; margin: 0 0 0 -5px; }
 #pocket div#pockethat svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#pocket div#pocketglasses { padding: 15px 0 0 0 }
 #pocket div#pocketglasses svg { transform: scale(2.5); padding: 10px 0 0 15px; }
 #pocket div#pocketmirror svg { transform: scale(2); }
 #pocket div#pockethatchet svg { transform: scale(2); padding: 10px 0 0 15px; }
 #pocket div#pockethorseshoe svg { transform: scale(1.5); }
-#title .tuto { text-shadow: 2px 2px 50px #bbb,-2px -2px 50px #bbb,-2px 2px 50px #bbb,2px -2px 50px #bbb; font: 39px / 50px Anton, impact, fantasy; width: 500px; margin: 50px; }
+#title .tuto { text-shadow: 2px 2px 20px #bbb,-2px -2px 20px #bbb,-2px 2px 20px #bbb,2px -2px 20px #bbb; font: 39px / 50px Anton, impact, fantasy; width: 500px; margin: 50px; }
 .hidden,.wear { display: none }
 #sky { width: 600px; height: 600px; position: absolute; animation: sky 1000s;}
 #rainbow { width: 600px; height: 1000px; position: absolute; top: 10%; left: 0%; display: none; opacity: 0; transition: opacity 4s; background: radial-gradient(circle,
@@ -114,4 +115,6 @@
 #path { position: absolute; top: 45%; left: 41%; transform: scale(6.5); }
 #rain { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 5s; pointer-events:none}
 #v #guy, #v .guy, #v svg, #v svg *, #v, #v #time, #v #text, #v .cube, #v #fade, #v .treetop, #v #view { pointer-events: none}
+.divscore { font: 30px/40px Anton,impact,fantasy; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; overflow: auto; scrollbar-width: thin; padding: 20px; height: 560px; }
+.divscore h2 { text-align: center; font-size: 40px; margin: 2px; }
 </style>

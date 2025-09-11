@@ -22,7 +22,7 @@ drawguy = () => {
 svg = {
 
   // Intro
-  eyes: `<svg id=eyesvg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M0 0L198 0L198 198L0 198L0 0M77 48C73 42 60 42 54 48C63 52 71 52 77 48M45 48C35 42 28 44 24 48C30 51 39 52 45 48" fill="#000000" stroke="#000000"/></svg>`,
+  eyes: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg' id=eyesvg><path d="M0 0L98 0L98 98L0 98L0 -1M44 50C40 44 25 44 20 50C28 54 35 54 44 50M80 50C74 44 63 44 55 50C63 54 71 54 80 50" fill="#000" stroke="#000000"/></svg>`,
   
   bedintro: `<svg id=bedintro width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=0 y=22 width=99 height=45 fill="#ffffff" stroke="#000000"/><rect x=2 y=67 width=10 height=23 fill="#ffffff" stroke="#000000"/><rect x=86 y=67 width=10 height=23 fill="#ffffff" stroke="#000000"/></svg>`,
   

@@ -14,6 +14,8 @@ state = [
     window: 0, // closed
     shoes: 0, // 1: pocket, 2: on table
     bird: 0, // 1: here
+    mirror: 0, // 1: hanged
+    horseshoe: 0, // 1: hanged
   },
   
   // 1: bathroom
@@ -90,7 +92,7 @@ achievements = [
   ["walk on a crack"],  // 18 ok
   ["break a mirror"],  // 19 ok
   ["hang horseshoe pointing down"],  // 20 ok
-  ["walk under a ladder"],  // 21 ------------------------
+  ["walk under a ladder"],  // 21 ok
   ["a bird looks inside from the window"],  // 22 ok
   ["point to a rainbow"],  // 23 ok
   ["cross a black cat"],  // 24 ok
