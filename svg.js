@@ -56,7 +56,7 @@ svg = {
   
   scissorsopen: `<svg width=25 height=28 xmlns='http://www.w3.org/2000/svg'><circle cx=4 cy=4 r=3 fill="#ffffff" stroke="#000000"/><circle cx=14 cy=4 r=3 fill="#ffffff" stroke="#000000"/><path d="M12 6L1 17L1 22L14 7" fill="#ffffff" stroke="#000000"/><path d="M6 5L18 16L18 21L4 7" fill="#ffffff" stroke="#000000"/></svg>`,
   
-  mirror: `<svg width=29 height=46 xmlns='http://www.w3.org/2000/svg'><ellipse cx=16 cy=29 rx=12 ry=16 fill="#dddddd" stroke="#000000"/><ellipse cx=16 cy=29 rx=9 ry=13 fill="#ffffff" stroke="#000000"/><path d="M7 18L16 2L25 18L16 2L15 11" fill="#dddddd" stroke="#000000"/></svg>`,
+  mirror: `<svg width=29 height=46 xmlns='http://www.w3.org/2000/svg'><ellipse cx=16 cy=29 rx=12 ry=16 fill="#dddddd" stroke="#000000"/><ellipse cx=16 cy=29 rx=9 ry=13 fill="#ffffff" stroke="#000000"/><path d="M7 18L16 2L25 18L16 2L7 18" fill="#dddddd" stroke="#000000"/></svg>`,
   
   shoes: `<svg width=24 height=27 xmlns='http://www.w3.org/2000/svg'><path d="M7 9C12 7 12 8 15 9C13 11 9 10 7 9L7 12C1 11 0 11 0 17L15 18L15 9L7 9" fill="#555" stroke="#000000"/><path d="M10 13C14 11 18 11 21 13C17 15 12 15 10 13L10 16C5 15 2 15 1 16C0 21 0 24 5 24L22 21L21 13L10 13" fill="#555" stroke="#000000"/></svg>`,
   
@@ -164,7 +164,7 @@ svg = {
   
   hand: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M0 92L14 70L12 57L18 47L22 46L25 49L28 48L31 52L41 36L45 35L47 40L36 58L34 64L43 64L46 67L44 70L27 74L20 98L0 98Z" fill="#fdb" stroke="#000000"/></svg>`,
   
-  cat: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M89 22C83 24 82 27 80 32C67 40 52 38 38 42C27 12 16 10 6 13C0 16 1 24 16 24C23 27 28 44 36 48C29 51 20 63 15 66C11 71 18 75 24 70C28 64 37 63 44 56C46 66 40 68 41 72C44 78 50 74 51 56C54 59 64 60 70 56C74 62 72 61 68 66C66 69 70 72 75 70C77 67 77 70 77 64C82 68 87 66 94 73C98 74 98 68 96 63C94 60 84 57 78 54C79 47 84 47 89 49C96 47 97 39 96 37L93 36C92 33 91 33 90 32C91 28 93 25 95 24C91 24 88 28 86 32Z" fill="#000" stroke="#000000"/></svg>`,
+  cat: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M77 22C72 27 70 29 69 34C60 39 52 42 43 43C40 43 36 40 32 40C30 27 26 19 13 18C3 18 4 27 17 28C22 28 26 33 29 42C22 47 19 54 18 60C9 72 15 75 25 63C28 61 31 60 32 56C29 72 35 73 40 63C38 55 40 56 43 55C49 57 51 57 56 56C43 70 50 71 61 62C65 66 70 63 76 64C89 72 91 63 80 59C73 56 69 55 65 55C66 47 70 45 77 47C84 48 94 42 87 38C85 33 86 33 82 32L86 23C82 24 79 27 77 32L77 22" fill="#000" stroke="#000000"/><ellipse cx=86 cy=39 rx=2 ry=1 fill="#ffffff" stroke="#000000"/><path d="M83 34C80 34 80 34 83 37L85 36L83 35L84 34" fill="#ffffff" stroke="#000000"/></svg>`,
   
   mountain: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M0 46C17 20 20 20 38 41L34 36C52 21 48 21 73 36L67 43C84 21 90 33 98 40L98 99L0 99Z" fill="#364" stroke="#000000"/></svg>`,
   

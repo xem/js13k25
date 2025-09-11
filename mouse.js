@@ -27,6 +27,7 @@ onclick = (e) => {
     if(e.target.className=="floor"){
       sit = 0;
       C.move({n:"hero",x:300-(300-x)/2+roomX,y:250-(300-y)/2+roomY,sx:room==5?1.5:1,sy:room==5?1.5:1});
+      player(step);setTimeout("player(step)",300);
       guyX = x+roomX;
       guyY = y+roomY;
     }
