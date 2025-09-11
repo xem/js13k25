@@ -440,7 +440,7 @@ onclick = (e) => {
     
     // Crack
     if(target.id == "crack"){
-      // todo
+      achievements[18][1] = 1;
     }
     
     // House

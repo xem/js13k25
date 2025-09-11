@@ -1,49 +1,3 @@
-// Achievements
-achievements = [
-  "get up on the left foot",  // ok
-  "set the date to friday 13th",  // ok
-  "wear green clothes",  // ok
-  "sleep head north",  // ok
-  "leave scissors open",  // ok
-  "sleep with door open",  // ok
-  "tip a salt shaker",  // ok
-  "put hat on bed",  // ok
-  "put bread upside down",  // ok
-  "sit on table corner",  // ok
-  "put shoes on table", // ok
-  "cross knives", // ok
-  "broom upside down", // ok
-  "put two mirrors face to face", // ok
-  "put glasses on table", // ok
-  "drop a haircomb", // ok
-  "put keys on table", // ok
-  "open an umbrella inside", // ok
-  "walk on a crack", // ok
-  "break a mirror", // ok (bathroom)
-  "hang horseshoe pointing down", // ok
-  "walk under a ladder", // ok
-  "a bird looks inside from the window", // ok
-  "point to a rainbow", // ok
-  "cross a black cat", // ok
-  "walk under a tree during thunder",
-  
-  //"see an owl", // 
-  // let candle burn out
-  // sleep with window open,
-  // sleep with fan on,
-  // watch new moon at...
-  // broken clock
-  //"kill a ladybug",
-  //"carry an empty bucket",
-
-];
-
-completed = [
-
-];
-
-
-
 // Show a room
 show = (room, pos) => {
   hero.style.transition = "none";
@@ -55,7 +9,8 @@ show = (room, pos) => {
     guyY = -40;
     C.move({n:"hero",x:300,y:-40});
     if(state[0].bird == 1){
-      // Achievement
+      // Bird achievement
+      achievements[22][1] = 1;
     }
   }
   
@@ -74,7 +29,11 @@ show = (room, pos) => {
     guyY = roomY + 310;
     C.move({n:"hero",x:300,y:-40+320});
     if(state[2].bird == 1){
-      // Achievement
+      // Bird achievement
+      achievements[22][1] = 1;
+    }
+    if(state[4].umbrella == 1){
+      achievements[17][1] = 1;
     }
   }
   
@@ -171,6 +130,7 @@ setInterval(()=>{
       state[0].bird = 1;
       if(room == 0){
         // Achievement
+        achievements[22][1] = 1;
       }
     }
     if(state[5].seed == 3 && state[2].window == 1){
@@ -178,6 +138,7 @@ setInterval(()=>{
       state[2].bird = 1;
       if(room == 2){
         // Achievement
+        achievements[22][1] = 1;
       }
     }
   }
@@ -190,8 +151,11 @@ setInterval(()=>{
     zzfx(...[,,1100,.05,.2,.2,2,,2,-15,,,,.1,,,,.3,.05]); // meow
     meow.classList.remove("hidden");
     setTimeout(()=>{meow.classList.add("hidden");},1000);
+    if(watching){
+      achievements[24][1] = 1;
+    }
   }
-  
+
   if(hour == 13 && (min == 20)){
     cat.style.left = "120%"; // cat
   }
@@ -225,6 +189,9 @@ setInterval(()=>{
   // Thunder: 16h-17h
   if(hour == 16 && (min == 0 || min == 10 || min == 20 || min == 30 || min == 40 || min == 50)){
     thunder();
+    if(guyX > 201 && guyY > 1126){
+      achievements[25][1] = 1;
+    }
   }
   
   time.innerHTML = (""+hour).padStart(2,"0") + ":" + (""+min).padStart(2,"0");
@@ -305,7 +272,15 @@ rotatebed = () => {
 }
 
 sleep = () => {
-  
+  if(state[0].bed == 1){
+    achievements[3][1] = 1;
+  }
+  if(state[0].scissors == 1){
+    achievements[4][1] = 1;
+  }
+  if(state[0].door1 == 1){
+    achievements[5][1] = 1;
+  }
 }
 
 openwindow1 = () => {
@@ -317,10 +292,6 @@ closewindow1 = () => {
   document.querySelector("#window1").innerHTML = svg.window;
   state[0].window = 0;
 }
-
-/*watchwindow1 = () => {
-  
-}*/
 
 openwindow2 = () => {
   document.querySelector("#window2").innerHTML = svg.windowopen;
@@ -380,6 +351,7 @@ markdate = () => {
     menu.innerHTML = drawcal(1,1);
   },1400);
   state[0].calendar2 = 1;
+  achievements[1][1] = 1;
 }
 
 openscissors = () => {
@@ -430,6 +402,7 @@ weargreen = () => {
   document.querySelector(".shirt.green").classList.add("wear");
   document.querySelector(".shirt.blue").classList.remove("wear");
   document.querySelector(".shirt.red").classList.remove("wear");
+  achievements[2][1] = 1;
 }
 
 wearred = () => {
@@ -444,12 +417,14 @@ puthat = () => {
   pockethat.remove();
   document.querySelector("#hat2").classList.remove("hidden");
   state[2].hat = 2;
+  achievements[7][1] = 1;
 }
 
 hangmirror = () => {
   pocketmirror.remove();
   document.querySelector("#mirror2").classList.remove("hidden");
   state[3].mirror = 2;
+  achievements[13][1] = 1;
 }
 
 
@@ -494,6 +469,7 @@ sitchair2 = () => {
   setTimeout(()=>{C.move({n:"hero",sx:.8,sy:.8});},500);
   sit = 1;
   guy.style.transform="rotate(1rad)";
+  achievements[9][1] = 1;
 }
 
 sitcouch = () => {
@@ -521,6 +497,7 @@ tipsalt = () => {
   document.querySelector(".salt").innerHTML = svg.salttip;
   C.move({n:"salt",x:225,y:240+180,rz:5});
   state[2].salt = 1;
+  achievements[6][1] = 1;
 }
 
 putbread = () => {
@@ -534,24 +511,28 @@ putkey = () => {
   document.querySelector("#key").classList.remove("hidden");
   C.move({n:"key",x:250,y:390,z:310,rz:80,sy:1.2});
   state[2].key = 2;
+  achievements[16][1] = 1;
 }
 
 putshoes = () => {
   pocketshoes.remove();
   document.querySelector("#shoes2").classList.remove("hidden");
   state[0].shoes = 2;
+  achievements[10][1] = 1;
 }
 
 putglasses = () => {
   pocketglasses.remove();
   document.querySelector("#glasses2").classList.remove("hidden");
   state[1].glasses = 2;
+  achievements[14][1] = 1;
 }
 
 returnbread = () => {
   document.querySelector("#bread2").innerHTML = svg.breadr;
   C.move({n:"bread2",sx:-.9});
   state[3].bread = 3;
+  achievements[8][1] = 1;
 }
 
 putseed1 = () => {
@@ -600,12 +581,14 @@ putknive = () => {
   pocketknive.remove();
   document.querySelector("#knive3").classList.remove("hidden");
   state[3].knive = 2;
+  achievements[11][1] = 1;
 }
 
 returnbroom = () => {
   document.querySelector("#broom").innerHTML = state[3].broom ? svg.broom : svg.broom2;
   C.move({n:"broom",rz: state[3].broom ? -90 : 90});
   state[3].broom = state[3].broom ? 0 : 1;
+  achievements[12][1] = state[3].broom;
 }
 
 takemirror = () => {
@@ -618,18 +601,21 @@ hanghorseshoe2 = () => {
   document.querySelector("#horseshoe2").classList.remove("hidden");
   pockethorseshoe.remove();
   state[5].horseshoe = 2;
+  achievements[20][1] = 1;
 }
 
 hanghorseshoe3 = () => {
   document.querySelector("#horseshoe3").classList.remove("hidden");
   pockethorseshoe.remove();
   state[5].horseshoe = 2;
+  achievements[20][1] = 1;
 }
 
 hanghorseshoe4 = () => {
   document.querySelector("#horseshoe4").classList.remove("hidden");
   pockethorseshoe.remove();
   state[5].horseshoe = 2;
+  achievements[20][1] = 1;
 }
 
 
@@ -652,6 +638,7 @@ closecupboard2 = () => {
 dropcomb = () => {
   C.move({n:"comb",x:-38,y:67,rz: 204,sx:-.9,sy:.9});
   state[1].comb = 1;
+  achievements[15][1] = 1;
 }
 
 takeglasses = () => {
@@ -663,6 +650,7 @@ takeglasses = () => {
 breakmirror = () => {
   document.querySelector("#bathmirror").innerHTML = svg.bathmirror2;
   state[1].mirror = 1;
+  achievements[19][1] = 1;
 }
 
 // Garden
@@ -894,6 +882,7 @@ pointrainbow = () => {
   finger.style.top = "50%";
   setTimeout(()=>{
     finger.style.top = "120%";
+    achievements[23][1] = 1;
   },5000);
 }
 

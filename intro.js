@@ -40,27 +40,35 @@ start = () => {
 }
 
 outro = () => {
+  intro.style.display="block";
   intro.innerHTML = svg.bedintro + svg.legsintro + "<div id=title>";
+  legsintro.style.left="-21%";
+  legsintro.style.top="53%";
+  legsintro.style.transform="scaleX(12) scaleY(12)rotate(-35deg)"
+  bedintro.style.left="5%";
+  bedintro.style.top="0%";bedintro.style.transform="scaleX(12) scaleY(12)rotate(0deg)"
   setTimeout(()=>{
     bedintro.style.transition="all 3s";
     legsintro.style.transition="all 3s";
   },50);
-  setTimeout(()=>{
-    legsintro.style.left="-21%";
-    legsintro.style.top="53%";
-    legsintro.style.transform="scaleX(12) scaleY(12)rotate(-35deg)"
-  },2500);
-  setTimeout(()=>{
-    bedintro.style.left="5%";
-    bedintro.style.top="0%";bedintro.style.transform="scaleX(12) scaleY(12)rotate(0deg)"
-  },2600);
+  
   setTimeout(()=>{
       legsintro.style.left="5%";
       legsintro.style.top="0%";
       legsintro.style.transform="scaleX(12) scaleY(12)rotate(0deg)";
+  },300);  
+  
+  setTimeout(()=>{
+      bedintro.style.transform = "scaleX(7)scaleY(7)"; 
+      bedintro.style.left = "40%"; 
+      bedintro.style.top = "42%"; 
+      legsintro.style.transform = "scaleX(8)scaleY(8)rotate(-45deg)" 
+  },2300);
+  setTimeout(()=>{
+      score();
   },4500);
 };
 
 
 //start();
-introanim = 3;intro.remove();show(room=5);// debug
+introanim = 3;intro.style.display="none";show(room=5);// debug
