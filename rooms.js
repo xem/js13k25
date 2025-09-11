@@ -24,9 +24,6 @@ C.cube({x:-100,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   
   // shower
   C.plane({w:100,h:100,x:-25,y:-115,z:300,rz:0,html:svg.shower,css:"shower"});
-  
-  
-  
 
 // bedroom
 C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
@@ -89,8 +86,6 @@ C.cube({x:301,y:-450,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   // scissors
   C.plane({w:25,h:28,x:385,y:30,z:305,rz:45,html:svg.scissors,css:"scissors"});
 
-
-
 // living room
 C.cube({x:301,y:-100,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   
@@ -103,7 +98,7 @@ C.cube({x:301,y:-100,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   C.plane({w:12,h:12,x:313,y:440,z:300,rz:0,html:svg.key,css:"keys",n:"key"});
   
   // window
-  C.plane({w:100,h:100,x:180,y:280,z:300,rz:180,html:svg.window,css:"window",n:"window2"});
+  C.plane({w:100,h:100,x:180,y:280,z:300,rz:180,html:svg.window, css:"window",n:"window2"});
   
   // seed
   C.plane({w:23,h:17,x:210,y:317,z:312,rz:90,sx:.5,sy:.6,html:svg.seed,css:"seed hidden",n:"seed2"});
@@ -144,8 +139,6 @@ C.cube({x:301,y:-100,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   // Horseshoe
   C.plane({w:50,h:50,x:283,y:435,z:300,rz:180,sy:.7,html:svg.horseshoe,css:"horseshoe hidden",n:"horseshoe3"});
 
-
-
 // kitchen
 C.cube({x:-100,y:-100,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
 
@@ -185,9 +178,6 @@ C.cube({x:-100,y:-100,z:70,w:300,h:300,d:300,b:"#ddd",css:"cube"});
   // Horseshoe
   C.plane({w:50,h:50,x:-117,y:449,z:300,rz:180,sy:.7,html:svg.horseshoe,css:"horseshoe hidden",n:"horseshoe2"});
 
-
-
-
 // Garden
 C.plane({x:100,y:900,w:800,h:2000,z:65,b:"#787", css:""});
 
@@ -222,12 +212,9 @@ C.plane({x:100,y:900,w:800,h:2000,z:65,b:"#787", css:""});
   C.plane({w:18,h:11,x:47,y:990+195,z:300,rz:0,html:svg.crack,css:"floor",n:"crack"});
   
   // tree
-  C.plane({w:100,h:100,x:235,y:1045+120,z:300,sx:1.9,sy:1.9,html:svg.trunk,css:"treetop"});
-  C.plane({w:40,h:40,x:220,y:1045+120,z:300,sx:1.9,sy:1.9,css:"tree"});
+  C.plane({w:100,h:100,x:216,y:1165,z:320,sx:1.9,sy:1.9,html:svg.trunk,css:"treetop"});
+  C.plane({w:40,h:40,x:220,y:1045+120,z:420,sx:1.9,sy:1.9,css:"tree"});
   C.plane({w:100,h:100,x:195,y:1045+90,z:420,html:svg.tree,css:"treetop"});
-  
-  
-  
   
 // Tool shed
 C.cube({x:0,y:1200,z:70,w:300,h:300,d:300,b:"#888",css:"cube toolshed"},0,2);
@@ -250,7 +237,3 @@ C.cube({x:0,y:1200,z:70,w:300,h:300,d:300,b:"#888",css:"cube toolshed"},0,2);
   // shelves
   //C.plane({x:-120,y:1500,w:60,h:298,z:155,b:"#bbb",css:"shelf"});
   C.plane({x:-120,y:1500,w:60,h:298,z:295,b:"#bbb",css:"shelf"});
-  
-  
-room = 0;
-show(room);

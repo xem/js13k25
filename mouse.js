@@ -1,6 +1,6 @@
 // Mousemove (show names / rotate hero)
 onmousemove = (e) => {
-  var x = -(window.innerWidth-600)/2+e.pageX, y = e.pageY-30, angle;
+  var x = -(innerWidth-600)/2+e.pageX, y = e.pageY-30, angle;
   if(x>0&&y>0&&x<600&&y<600){
     angle=Math.atan2(y-(guyY-roomY),x-(guyX-roomX))-1.6;
     if(!sit) guy.style.transform="rotate("+angle+"rad)";
@@ -20,14 +20,14 @@ onclick = (e) => {
   tmp = {};
   
   // Compute in-game coordinates
-  var x = -(window.innerWidth-600)/2+e.pageX, y = e.pageY-30;
+  var x = -(innerWidth-600)/2+e.pageX, y = e.pageY-30;
   
   // Move hero on floor
   if(x>0&&y>0&&x<600&&y<600){
     if(e.target.className=="floor"){
       sit = 0;
       C.move({n:"hero",x:300-(300-x)/2+roomX,y:250-(300-y)/2+roomY,sx:room==5?1.5:1,sy:room==5?1.5:1});
-      player(step);setTimeout("player(step)",300);
+      py(step);setTimeout("py(step)",300);
       guyX = x+roomX;
       guyY = y+roomY;
     }
@@ -161,7 +161,7 @@ onclick = (e) => {
     
     // Doors
     if(target.id == "lrd1"){
-      tmp = {"go to living room": "bedtoliving"};
+      tmp = {"go to living room": "b2l"};
       if(state[0].door1){
         tmp["close"] = "closedoor1";
       }
@@ -192,9 +192,9 @@ onclick = (e) => {
   // Living room
   else if(room == 2){
     
-    if(target.className == "window"){
+    if(target.id == "window2"){
       tmp = {};
-      if(state[2].window == 0){
+      if(state[2].window== 0){
         tmp["open"] = "openwindow2";
       }
       else {
@@ -242,7 +242,7 @@ onclick = (e) => {
     
     // Doors
     if(target.className == "bedroom door"){
-      tmp = {"go to bedroom": "livingtobed"};
+      tmp = {"go to bedroom": "l2b"};
       if(state[2].door1){
         tmp["close"] = "closedoor1";
       }
@@ -253,7 +253,7 @@ onclick = (e) => {
     }
     
     if(target.className == "kitchen door"){
-      tmp = {"go to kitchen": "livingtokitchen"};
+      tmp = {"go to kitchen": "l2k"};
       if(state[2].door2){
         tmp["close"] = "closedoor2";
       }
@@ -332,7 +332,7 @@ onclick = (e) => {
     
     // Door
     if(target.id == "lrd2"){
-      tmp = {"go to living room": "kitchentoliving"};
+      tmp = {"go to living room": "k2l"};
       if(state[3].door2){
         tmp["close"] = "closedoor2";
       }
@@ -343,7 +343,7 @@ onclick = (e) => {
     }
     
     if(target.className == "bathroom door"){
-      tmp = {"go to bathroom": "kitchentobath"};
+      tmp = {"go to bathroom": "k2b"};
       if(state[3].door3){
         tmp["close"] = "closedoor3";
       }
@@ -383,7 +383,7 @@ onclick = (e) => {
   
     // Door
     if(target.id == "bathdoor"){
-      tmp = {"go to kitchen": "bathtokitchen"};
+      tmp = {"go to kitchen": "b2k"};
       if(state[1].door3){
         tmp["close"] = "closedoor3";
       }
@@ -453,7 +453,6 @@ onclick = (e) => {
     // Crack
     if(target.id == "crack"){
       achievements[18][1] = 1;
-      setTimeout(()=>{player(coin)},750);
     }
     
     // House

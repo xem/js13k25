@@ -12,7 +12,7 @@ state = [
     pen: 0, // take
     shirt: 3, // blue, red, green, default
     window: 0, // closed
-    shoes: 0, // 1: pocket, 2: on table
+    shoes: 0, // 1: k, 2: on table
     bird: 0, // 1: here
     mirror: 0, // 1: hanged
     horseshoe: 0, // 1: hanged
@@ -45,7 +45,7 @@ state = [
   {
     door2: 0, // living room, closed
     door3: 0, // bathroom, closed
-    bread: 0, // 0: in kitchen, 1: in pocket 2: on table, 3: turned 
+    bread: 0, // 0: in kitchen, 1: in k 2: on table, 3: turned 
     mirror: 0, // 1: take, 2: hang in bedroom 
     knive: 0, // 1: take, 2: put on other
     broom: 0, // 1: returned
@@ -60,7 +60,7 @@ state = [
   // 5: Tool shed
   {
     ladder: 0, // 1: taken, 2: placed against house
-    seed: 0,  // 1: taken, 2: on window bedroom, 3: on window living room, 4: eaten
+    seed: 0,  // 1: taken, 2: on bedroom, 3: on living room, 4: eaten
     hatchet: 0,  // 1: taken
     horseshoe: 0, // 1: taken, 2: hung
   },
@@ -83,7 +83,7 @@ achievements = [
   ["sit on table corner"],  // 9 ok
   ["put shoes on table"],  // 10 ok
   ["cross knives"],  // 11 ok
-  ["broom upside down"],  // 12 ok
+  ["put broom upside down"],  // 12 ok
   ["put two mirrors face to face"],  // 13 ok
   ["put glasses on table"],  // 14 ok
   ["drop a haircomb"],  // 15 ok
@@ -93,18 +93,8 @@ achievements = [
   ["break a mirror"],  // 19 ok
   ["hang horseshoe pointing down"],  // 20 ok
   ["walk under a ladder"],  // 21 ok
-  ["a bird looks inside from the window"],  // 22 ok
+  ["bird looks inside from window"],  // 22 ok
   ["point to a rainbow"],  // 23 ok
   ["cross a black cat"],  // 24 ok
   ["walk under a tree during thunder"],  // 25 ok
-  
-  //"see an owl",
-  // let candle burn out
-  // sleep with window open,
-  // sleep with fan on,
-  // watch new moon at...
-  // broken clock
-  //"kill a ladybug",
-  //"carry an empty bucket",
-
 ];

@@ -35,7 +35,6 @@ show = (room, pos) => {
     }
     if(state[4].umbrella == 1){
       achievements[17][1] = 1;
-      
     }
   }
   
@@ -72,21 +71,21 @@ show = (room, pos) => {
 }
 
 // ZZfx
-zzfxV=.3,               // volume
-zzfxX=new AudioContext, // audio context
-zzfx=                   // play sound
+zv=.3,               // volume
+zx=new AudioContext, // audio context
+z=                   // play sound
 (p=1,k=.05,b=220,e=0,r=0,t=.1,q=0,D=1,u=0,y=0,v=0,z=0,l=0,E=0,A=0,F=0,c=0,w=1,m=0,B=0
 ,N=0)=>{let M=Math,d=2*M.PI,R=44100,G=u*=500*d/R/R,C=b*=(1-k+2*k*M.random(k=[]))*d/R,
 g=0,H=0,a=0,n=1,I=0,J=0,f=0,h=N<0?-1:1,x=d*h*N*2/R,L=M.cos(x),Z=M.sin,K=Z(x)/4,O=1+K,
 X=-2*L/O,Y=(1-K)/O,P=(1+h*L)/2/O,Q=-(h+L)/O,S=P,T=0,U=0,V=0,W=0;e=R*e+9;m*=R;r*=R;t*=
-R;c*=R;y*=500*d/R**3;A*=d/R;v*=d/R;z*=R;l=R*l|0;p*=zzfxV;for(h=e+m+r+t+c|0;a<h;k[a++]
+R;c*=R;y*=500*d/R**3;A*=d/R;v*=d/R;z*=R;l=R*l|0;p*=zv;for(h=e+m+r+t+c|0;a<h;k[a++]
 =f*p)++J%(100*F|0)||(f=q?1<q?2<q?3<q?Z(g**3):M.max(M.min(M.tan(g),1),-1):1-(2*g/d%2+2)
 %2:1-4*M.abs(M.round(g/d)-g/d):Z(g),f=(l?1-B+B*Z(d*a/l):1)*(f<0?-1:1)*M.abs(f)**D*(a<
 e?a/e:a<e+m?1-(a-e)/m*(1-w):a<e+m+r?w:a<h-c?(h-a-c)/t*w:0),f=c?f/2+(c>a?0:(a<h-c?1:(h
 -a)/c)*k[a-c|0]/2/p):f,N?f=W=S*T+Q*(T=U)+P*(U=f)-Y*V-X*(V=W):0),x=(b+=u+=y)*M.cos(A*
-H++),g+=x+x*E*Z(a**5),n&&++n>z&&(b+=v,C+=v,n=0),!l||++I%l||(b=C,u=G,n=n||1);p=zzfxX.
-createBuffer(1,h,R);p.getChannelData(0).set(k);b=zzfxX.createBufferSource();
-b.buffer=p;b.connect(zzfxX.destination);b.start()}
+H++),g+=x+x*E*Z(a**5),n&&++n>z&&(b+=v,C+=v,n=0),!l||++I%l||(b=C,u=G,n=n||1);p=zx.
+createBuffer(1,h,R);p.getChannelData(0).set(k);b=zx.createBufferSource();
+b.buffer=p;b.connect(zx.destination);b.start()}
 
 // thunder sound
 var t=(i,n)=>(n-i)/n;
@@ -97,8 +96,8 @@ thu = (i) => {
   return Math.sin(i/200 - Math.sin(i/331)*Math.sin(i/61) + Math.sin(Math.sin(i/59)/39) * 33)*t(i,n)*(room > 3 ? 9 : 2);
 }
 
-// Nudge Sound
-nudge = function(i){
+// nudge Sound
+nu = function(i){
   var n=6e3;
   if (i > n) return null;
   var q = t(i,n);
@@ -106,7 +105,7 @@ nudge = function(i){
 }
 
 // write sound
-write = i => (Math.sin(i/200) + Math.sin(i/350) + Math.sin(i/800))* Math.exp(-i/60000)
+wr = i => (Math.sin(i/200) + Math.sin(i/350) + Math.sin(i/800))* Math.exp(-i/60000)
 
 // ting sound
 ting = i => (i%10 < 5 ? 1 : -1) * Math.exp(-i/2000)
@@ -120,7 +119,7 @@ op = function(i){
 }
 
 // Explosion Sound
-explode = i => (Math.random() * 2 - 1) * Math.exp(-i/1e4);
+ex = i => (Math.random() * 2 - 1) * Math.exp(-i/1e4);
 
 // Step sound
 step = function(i){
@@ -130,8 +129,8 @@ step = function(i){
   return Math.sin(i*0.01*Math.sin(0.001*i+Math.sin(i/200))+Math.sin(i/200))*q*q/9;
 }
 
-// Sound player
-player = (f,r) => {
+// Sound py
+py = (f,r) => {
   var A=new AudioContext()
   var m=A.createBuffer(1,96e3,48e3)
   var b=m.getChannelData(0)
@@ -158,7 +157,7 @@ setInterval(()=>{
   if(hour == seedhour + 1 && min == seedmin){
     
     // show bird
-    if(state[5].seed == 2 && state[0].window == 1){
+    if(state[5].seed == 2 && state[0].window== 1){
       bird1.classList.remove("hidden");
       state[0].bird = 1;
       if(room == 0){
@@ -167,7 +166,7 @@ setInterval(()=>{
       }
     }
     
-    if(state[5].seed == 3 && state[2].window == 1){
+    if(state[5].seed == 3 && state[2].window== 1){
       bird2.classList.remove("hidden");
       state[2].bird = 1;
       if(room == 2){
@@ -182,7 +181,7 @@ setInterval(()=>{
     cat.style.left = "40%"; // cat
   }
   if(hour == 13 && (min == 13 || min == 17)){
-    zzfx(...[,,1100,.05,.2,.2,2,,2,-15,,,,.1,,,,.3,.05]); // meow
+    z(...[,,1100,.05,.2,.2,2,,2,-15,,,,.1,,,,.3,.05]); // meow
     meow.classList.remove("hidden");
     setTimeout(()=>{meow.classList.add("hidden");},1000);
     if(watching){
@@ -196,7 +195,7 @@ setInterval(()=>{
 
   // Rainbow: 18h15-19h
   if(hour == 18 && min == 10){
-    rainbow.style.display = "block";
+    rainbow.classList.remove("hidden");
   }
   
   if(hour == 18 && min == 15){
@@ -208,7 +207,7 @@ setInterval(()=>{
   }
   
   if(hour == 19 && min == 5){
-    rainbow.style.display = "none";
+    rainbow.classList.add("hidden");
   }
   
   // Rain: 15h30 - 18h
@@ -220,7 +219,7 @@ setInterval(()=>{
     whiteNoise.onaudioprocess = function(e) {
         var output = e.outputBuffer.getChannelData(0);
         for (var i = 0; i < bufferSize; i++) {
-            output[i] = (Math.random() * 2 - 1)/((room > 3 || (room == 0 &&state[0].window == 1) || (room == 2 && (state[2].window == 1 || state[2].door4 == 1)))  ? 50 : 200);
+            output[i] = (Math.random() * 2 - 1)/((room > 3 || (room == 0 &&state[0].window== 1) || (room == 2 && (state[2].window== 1 || state[2].door4 == 1)))  ? 50 : 200);
         }
     }
     whiteNoise.connect(A.destination);
@@ -236,7 +235,6 @@ setInterval(()=>{
     thunder();
     if(guyX > 201 && guyY > 1126){
       achievements[25][1] = 1;
-      
     }
   }
   
@@ -252,8 +250,6 @@ setInterval(()=>{
   ctx.lineWidth = 4;
   ctx.strokeStyle = "#346";
   for(i = 100; i--;){
-  
-
     if(watching){
       ctx.moveTo(x = Math.random()*600, y = Math.random()*600)
       ctx.lineTo(x-5,y+20);
@@ -277,7 +273,7 @@ seedmin = 99;
 
 // Open and fill menu
 openmenu = (opts) => {
-  menushadow.style.display = "block";
+  ms.classList.remove("hidden");
   var html = "<div>" + target.className.replace(/ 1| 2/,"") + "</div>";
   for(var i in opts){
     html += "<div onclick='" + opts[i] + "()'>" + i + "</div>";
@@ -286,7 +282,7 @@ openmenu = (opts) => {
 }
 
 closemenu = () => {
-  menushadow.style.display = "none";
+  ms.classList.add("hidden");
   menu.innerHTML = "";
 }
 
@@ -306,7 +302,7 @@ rotatebed = () => {
   else {
     C.move({n:"bed",x:253,y:-110,sx:1})
   }
-  player(nudge);
+  py(nu);
 }
 
 sleep = () => {
@@ -319,32 +315,32 @@ sleep = () => {
   if(state[0].door1 == 1){
     achievements[5][1] = 1;
   }
-  pocket.innerHTML = "";
+  k.innerHTML = "";
   outro();
 }
 
 openwindow1 = () => {
   document.querySelector("#window1").innerHTML = svg.windowopen;
-  state[0].window = 1;
-  player(op);
+  state[0].window= 1;
+  py(op);
 }
 
 closewindow1 = () => {
-  document.querySelector("#window1").innerHTML = svg.window;
-  state[0].window = 0;
-  player(op,1);
+  document.querySelector("#window1").innerHTML = svg.window
+  state[0].window= 0;
+  py(op,1);
 }
 
 openwindow2 = () => {
   document.querySelector("#window2").innerHTML = svg.windowopen;
-  state[2].window = 1;
-  player(op);
+  state[2].window= 1;
+  py(op);
 }
 
 closewindow2 = () => {
-  document.querySelector("#window2").innerHTML = svg.window;
-  state[2].window = 0;
-  player(op,1);
+  document.querySelector("#window2").innerHTML = svg.window
+  state[2].window= 0;
+  py(op,1);
 }
 
 opencupboard1 = () => {
@@ -354,7 +350,7 @@ opencupboard1 = () => {
   if(state[0].shirt != 1) document.querySelector(".shirt.red").classList.remove("hidden");
   if(state[0].shirt != 2) document.querySelector(".shirt.green").classList.remove("hidden");
   if(state[0].shoes != 1) document.querySelector("#shoes1").classList.remove("hidden");
-  player(op);
+  py(op);
 }
 
 closecupboard1 = () => {
@@ -364,14 +360,14 @@ closecupboard1 = () => {
   document.querySelector(".shirt.green").classList.add("hidden");
   document.querySelector(".shirt.red").classList.add("hidden");
   document.querySelector(".shoes").classList.add("hidden");
-  player(op,1);
+  py(op,1);
 }
 
 takeshoes = () => {
-  document.querySelector("#shoes1").style.display = "none";
-  pocket.innerHTML += "<div id=pocketshoes>"+svg.shoes+"</div>";
+  document.querySelector("#shoes1").classList.add("hidden");
+  k.innerHTML += "<div id=kshoes>"+svg.shoes+"</div>";
   state[0].shoes = 1;
-  player(nudge);
+  py(nu);
 }
 
 removecalendar = () => {
@@ -381,19 +377,19 @@ removecalendar = () => {
 
 watchcalendar = () => {
   setTimeout(()=>{
-  menushadow.style.display = "block";
+  ms.classList.remove("hidden");
   menu.innerHTML = state[0].calendar2 == 1 ? drawcal(1, 1) : drawcal();
   },200);
 }
 
 markdate = () => {
   setTimeout(()=>{
-    menushadow.style.display = "block";
+    ms.classList.remove("hidden");
     menu.innerHTML = drawcal();
   },200);
   setTimeout(()=>{
     menu.innerHTML = drawcal(1);
-    player(write);
+    py(wr);
   },800);
     setTimeout(()=>{
     menu.innerHTML = drawcal(1,1);
@@ -405,41 +401,41 @@ markdate = () => {
 openscissors = () => {
   document.querySelector(".scissors").innerHTML = svg.scissorsopen;
   state[0].scissors = 1;
-  player(nudge);
+  py(nu);
 }
 
 closescissors = () => {
   document.querySelector(".scissors").innerHTML = svg.scissors;
   state[0].scissors = 0;
-  player(nudge);
+  py(nu);
 }
 
 takepen = () => {
-  document.querySelector(".pen").style.display = "none";
-  pocket.innerHTML += "<div id=pocketpen>"+svg.pen+"</div>";
+  document.querySelector(".pen").classList.add("hidden");
+  k.innerHTML += "<div id=kpen>"+svg.pen+"</div>";
   state[0].pen = 1;
-  player(nudge);
+  py(nu);
 }
 
 takescissors = () => {
-  document.querySelector(".scissors").style.display = "none";
-  pocket.innerHTML += "<div id=pocketscissors>"+svg.scissors+"</div>";
+  document.querySelector(".scissors").classList.add("hidden");
+  k.innerHTML += "<div id=kscissors>"+svg.scissors+"</div>";
   state[0].scissors = 2;
-  player(nudge);
+  py(nu);
 }
 
 putdownpen = () => {
-  pocketpen.remove();
-  document.querySelector(".pen").style.display = "block";
+  kpen.remove();
+  document.querySelector(".pen").classList.remove("hidden");
   state[0].pen = 0;
-  player(nudge);
+  py(nu);
 }
 
 putdownscissors = () => {
-  pocketscissors.remove();
-  document.querySelector(".scissors").style.display = "block";
+  kscissors.remove();
+  document.querySelector(".scissors").classList.remove("hidden");
   closescissors(); // implied: state[0].scissors = 0;
-  player(nudge);
+  py(nu);
 }
 
 wearblue = () => {
@@ -448,7 +444,7 @@ wearblue = () => {
   document.querySelector(".shirt.blue").classList.add("wear");
   document.querySelector(".shirt.green").classList.remove("wear");
   document.querySelector(".shirt.red").classList.remove("wear");
-  player(nudge);
+  py(nu);
 }
 
 weargreen = () => {
@@ -458,7 +454,7 @@ weargreen = () => {
   document.querySelector(".shirt.blue").classList.remove("wear");
   document.querySelector(".shirt.red").classList.remove("wear");
   achievements[2][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 wearred = () => {
@@ -467,24 +463,24 @@ wearred = () => {
   document.querySelector(".shirt.red").classList.add("wear");
   document.querySelector(".shirt.green").classList.remove("wear");
   document.querySelector(".shirt.blue").classList.remove("wear");
-  player(nudge);
+  py(nu);
 }
 
 puthat = () => {
-  pockethat.remove();
+  khat.remove();
   document.querySelector("#hat2").classList.remove("hidden");
   state[2].hat = 2;
   achievements[7][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 hangmirror = () => {
-  pocketmirror.remove();
+  kmirror.remove();
   document.querySelector("#mirror2").classList.remove("hidden");
   state[3].mirror = 2;
   state[0].mirror = 1;
   achievements[13][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 // Living room
@@ -492,25 +488,25 @@ hangmirror = () => {
 pullchair1 = () => {
   C.move({n:"chair1", y:335});
   state[2].chair1 = 1;
-  player(op);
+  py(op);
 }
 
 pushchair1 = () => {
   C.move({n:"chair1", y:355});
   state[2].chair1 = 0;
-  player(op);
+  py(op);
 }
 
 pullchair2 = () => {
   C.move({n:"chair2", x:275,y:355, rz:70});
   state[2].chair2 = 1;
-  player(op);
+  py(op);
 }
 
 pushchair2 = () => {
   C.move({n:"chair2",x:265,y:390,rz:90});
   state[2].chair2 = 0;
-  player(op);
+  py(op);
 }
 
 sitchair1 = () => {
@@ -542,17 +538,17 @@ sitcouch = () => {
 }
 
 takehat = () => {
-  document.querySelector("#hat1").style.display = "none";
-  pocket.innerHTML += "<div id=pockethat>"+svg.hat+"</div>";
+  document.querySelector("#hat1").classList.add("hidden");
+  k.innerHTML += "<div id=khat>"+svg.hat+"</div>";
   state[2].hat = 1;
-  player(nudge);
+  py(nu);
 }
 
 takekey = () => {
   document.querySelector("#key").classList.add("hidden");
-  pocket.innerHTML += "<div id=pocketkey>"+svg.key+"</div>";
+  k.innerHTML += "<div id=kkey>"+svg.key+"</div>";
   state[2].key = 1;
-  player(nudge);
+  py(nu);
 }
 
 tipsalt = () => {
@@ -560,39 +556,39 @@ tipsalt = () => {
   C.move({n:"salt",x:225,y:240+180,rz:5});
   state[2].salt = 1;
   achievements[6][1] = 1;
-  player(ting);
+  py(ting);
 }
 
 putbread = () => {
-  pocketbread.remove();
+  kbread.remove();
   document.querySelector("#bread2").classList.remove("hidden");
   state[3].bread = 2;
-  player(nudge);
+  py(nu);
 }
 
 putkey = () => {
-  pocketkey.remove();
+  kkey.remove();
   document.querySelector("#key").classList.remove("hidden");
   C.move({n:"key",x:250,y:390,z:310,rz:80,sy:1.2});
   state[2].key = 2;
   achievements[16][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 putshoes = () => {
-  pocketshoes.remove();
+  kshoes.remove();
   document.querySelector("#shoes2").classList.remove("hidden");
   state[0].shoes = 2;
   achievements[10][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 putglasses = () => {
-  pocketglasses.remove();
+  kglasses.remove();
   document.querySelector("#glasses2").classList.remove("hidden");
   state[1].glasses = 2;
   achievements[14][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 returnbread = () => {
@@ -600,25 +596,25 @@ returnbread = () => {
   C.move({n:"bread2",sx:-.9});
   state[3].bread = 3;
   achievements[8][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 putseed1 = () => {
-  pocketseed.remove();
+  kseed.remove();
   document.querySelector("#seed1").classList.remove("hidden");
   state[5].seed = 2;
   seedhour = hour;
   seedmin = min;
-  player(nudge);
+  py(nu);
 }
 
 putseed2 = () => {
-  pocketseed.remove();
+  kseed.remove();
   document.querySelector("#seed2").classList.remove("hidden");
   state[5].seed = 3;
   seedhour = hour;
   seedmin = min;
-  player(nudge);
+  py(nu);
 }
 
 // Kitchen
@@ -627,36 +623,36 @@ openplane = () => {
   document.querySelector("#plane").innerHTML = svg.plane2;
   state[3].plane = 1;
   if(state[3].bread == 0) document.querySelector("#bread").classList.remove("hidden");
-  player(op);
+  py(op);
 }
 
 closeplane = () => {
   document.querySelector("#plane").innerHTML = svg.plane;
   state[3].plane = 0;
   document.querySelector(".bread").classList.add("hidden");
-  player(op,1);
+  py(op,1);
 }
 
 takebread = () => {
   document.querySelector("#bread").classList.add("hidden");
-  pocket.innerHTML += "<div id=pocketbread>"+svg.bread+"</div>";
+  k.innerHTML += "<div id=kbread>"+svg.bread+"</div>";
   state[3].bread = 1;
-  player(nudge);
+  py(nu);
 }
 
 takeknive = () => {
   document.querySelector("#knive1").classList.add("hidden");
-  pocket.innerHTML += "<div id=pocketknive>"+svg.knive+"</div>";
+  k.innerHTML += "<div id=kknive>"+svg.knive+"</div>";
   state[3].knive = 1;
-  player(nudge);
+  py(nu);
 }
 
 putknive = () => {
-  pocketknive.remove();
+  kknive.remove();
   document.querySelector("#knive3").classList.remove("hidden");
   state[3].knive = 2;
   achievements[11][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 returnbroom = () => {
@@ -664,39 +660,39 @@ returnbroom = () => {
   C.move({n:"broom",rz: state[3].broom ? -90 : 90});
   state[3].broom = state[3].broom ? 0 : 1;
   achievements[12][1] = state[3].broom;
-  player(nudge);
+  py(nu);
 }
 
 takemirror = () => {
-  document.querySelector("#mirror1").style.display = "none";
-  pocket.innerHTML += "<div id=pocketmirror>"+svg.mirror+"</div>";
+  document.querySelector("#mirror1").classList.add("hidden");
+  k.innerHTML += "<div id=kmirror>"+svg.mirror+"</div>";
   state[3].mirror = 1;
-  player(nudge);
+  py(nu);
 }
 
 hanghorseshoe2 = () => { // kitchen
   document.querySelector("#horseshoe2").classList.remove("hidden");
-  pockethorseshoe.remove();
+  khorseshoe.remove();
   state[5].horseshoe = 2;
   achievements[20][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 hanghorseshoe3 = () => { // living room
   document.querySelector("#horseshoe3").classList.remove("hidden");
-  pockethorseshoe.remove();
+  khorseshoe.remove();
   state[5].horseshoe = 2;
   achievements[20][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 hanghorseshoe4 = () => { // bedroom
   document.querySelector("#horseshoe4").classList.remove("hidden");
-  pockethorseshoe.remove();
+  khorseshoe.remove();
   state[5].horseshoe = 2;
   state[0].horseshoe = 1;
   achievements[20][1] = 1;
-  player(nudge);
+  py(nu);
 }
 
 // Bathroom
@@ -706,7 +702,7 @@ opencupboard2 = () => {
   state[1].cupboard = 1;
   if(state[1].comb == 0) document.querySelector(".comb").classList.remove("hidden");
   if(state[1].comb == 0) document.querySelector(".glasses").classList.remove("hidden");
-  player(op);
+  py(op);
 }
 
 closecupboard2 = () => {
@@ -714,28 +710,28 @@ closecupboard2 = () => {
   state[1].cupboard = 0;
   if(state[1].comb == 0) document.querySelector(".comb").classList.add("hidden");
   if(state[1].comb == 0) document.querySelector(".glasses").classList.add("hidden");
-  player(op,1);
+  py(op,1);
 }
 
 dropcomb = () => {
   C.move({n:"comb",x:-38,y:67,rz: 204,sx:-.9,sy:.9});
   state[1].comb = 1;
   achievements[15][1] = 1;
-  setTimeout(()=>{player(ting);},300);
+  setTimeout(()=>{py(ting);},300);
 }
 
 takeglasses = () => {
   document.querySelector("#glasses").classList.add("hidden");
-  pocket.innerHTML += "<div id=pocketglasses>"+svg.glasses+"</div>";
+  k.innerHTML += "<div id=kglasses>"+svg.glasses+"</div>";
   state[1].glasses = 1;
-  player(nudge);
+  py(nu);
 }
 
 breakmirror = () => {
   document.querySelector("#bathmirror").innerHTML = svg.bathmirror2;
   state[1].mirror = 1;
   achievements[19][1] = 1;
-  player(explode);
+  py(ex);
 }
 
 // Garden
@@ -744,50 +740,52 @@ openumbrella = () => {
   document.querySelector("#umbrella1").classList.add("hidden");
   guy.innerHTML=svg.umbrella2;
   state[4].umbrella = 1;
-  player(op);
+  py(op);
 }
 
 closeumbrella = () => {
   document.querySelector("#umbrella1").classList.remove("hidden");
   hero.innerHTML=drawguy();
   state[4].umbrella = 0;
-  player(op,1);
+  py(op,1);
 }
 
 placeladder = () => {
-  pocketladder.remove();
+  kladder.remove();
   document.querySelector("#ladder2").classList.remove("hidden");
   state[5].ladder = 2;
-  player(nudge);
+  py(nu);
 }
 
 // Tool shed
 
 takeladder = () => {
   document.querySelector("#ladder1").classList.add("hidden");
-  pocket.innerHTML += "<div id=pocketladder>"+svg.ladder+"</div>";
+  k.innerHTML += "<div id=kladder>"+svg.ladder+"</div>";
   state[5].ladder = 1;
-  player(nudge);
+  py(nu);
 }
 
 takeseed = () => {
-  pocket.innerHTML += "<div id=pocketseed>"+svg.seed+"</div>";
-  state[5].seed = 1;
-  player(nudge);
+  if(state[5].seed == 0){
+    k.innerHTML += "<div id=kseed>"+svg.seed+"</div>";
+    state[5].seed = 1;
+    py(nu);
+  }
 }
 
 takehatchet = () => {
   document.querySelector(".hatchet").classList.add("hidden");
-  pocket.innerHTML += "<div id=pockethatchet>"+svg.hatchet+"</div>";
+  k.innerHTML += "<div id=khatchet>"+svg.hatchet+"</div>";
   state[5].hatchet = 1;
-  player(nudge);
+  py(nu);
 }
 
 takehorseshoe = () => {
   document.querySelector("#horseshoe1").classList.add("hidden");
-  pocket.innerHTML += "<div id=pockethorseshoe>"+svg.horseshoe+"</div>";
+  k.innerHTML += "<div id=khorseshoe>"+svg.horseshoe+"</div>";
   state[5].horseshoe = 1;
-  player(nudge);
+  py(nu);
 }
 
 // Doors
@@ -797,7 +795,7 @@ opendoor1 = () => {
   document.querySelector(".bedroom.door").innerHTML = svg.door3;
   state[0].door1 = 1;
   state[2].door1 = 1;
-  player(op);
+  py(op);
 }
 
 closedoor1 = () => {
@@ -805,27 +803,27 @@ closedoor1 = () => {
   document.querySelector(".bedroom.door").innerHTML = svg.door;
   state[0].door1 = 0;
   state[2].door1 = 0;
-  player(op,1);
+  py(op,1);
 }
 
-bedtoliving = () => {
+b2l = () => {
   document.querySelector(".bedroom.door").innerHTML = svg.door3;
-  if(state[0].door1 == 0) player(op);
+  if(state[0].door1 == 0) py(op);
   setTimeout(()=>{document.querySelector("#lrd1").innerHTML = svg.door2;},100);
-  setTimeout(()=>{fade.style.opacity=1;player(step);setTimeout("player(step)",300);setTimeout("player(step)",600);},500);
+  setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},500);
   setTimeout(()=>{show(room = 2);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector(".bedroom.door").innerHTML = svg.door;player(op,1)},1500);
+  setTimeout(()=>{document.querySelector(".bedroom.door").innerHTML = svg.door;py(op,1)},1500);
   state[0].door1 = 0;
   state[2].door1 = 0;
 }
 
-livingtobed = () => {
+l2b = () => {
   document.querySelector("#lrd1").innerHTML = svg.door2;
-  if(state[0].door1 == 0) player(op);
+  if(state[0].door1 == 0) py(op);
   setTimeout(()=>{document.querySelector(".bedroom.door").innerHTML = svg.door3;},100);
-  setTimeout(()=>{fade.style.opacity=1;player(step);setTimeout("player(step)",300);setTimeout("player(step)",600);},500);
+  setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},500);
   setTimeout(()=>{show(room = 0);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector("#lrd1").innerHTML = svg.door;player(op,1)},1500);
+  setTimeout(()=>{document.querySelector("#lrd1").innerHTML = svg.door;py(op,1)},1500);
   state[0].door1 = 0;
   state[2].door1 = 0;
 }
@@ -835,7 +833,7 @@ opendoor2 = () => {
   document.querySelector(".kitchen.door").innerHTML = svg.door3;
   state[3].door2 = 1;
   state[2].door2 = 1;
-  player(op);
+  py(op);
 }
 
 closedoor2 = () => {
@@ -843,27 +841,27 @@ closedoor2 = () => {
   document.querySelector(".kitchen.door").innerHTML = svg.door;
   state[3].door2 = 0;
   state[2].door2 = 0;
-  player(op,1);
+  py(op,1);
 }
 
-kitchentoliving = () => {
+k2l = () => {
   document.querySelector(".kitchen.door").innerHTML = svg.door3;
-  if(state[3].door2 == 0) player(op);
+  if(state[3].door2 == 0) py(op);
   setTimeout(()=>{document.querySelector("#lrd2").innerHTML = svg.door2;},100);
-  setTimeout(()=>{fade.style.opacity=1;player(step);setTimeout("player(step)",300);setTimeout("player(step)",600);},500);
+  setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},500);
   setTimeout(()=>{show(room = 2);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector(".kitchen.door").innerHTML = svg.door;player(op,1)},1500);
+  setTimeout(()=>{document.querySelector(".kitchen.door").innerHTML = svg.door;py(op,1)},1500);
   state[3].door2 = 0;
   state[2].door2 = 0;
 }
 
-livingtokitchen = () => {
+l2k = () => {
   document.querySelector("#lrd2").innerHTML = svg.door2;
-  if(state[3].door2 == 0) player(op);
+  if(state[3].door2 == 0) py(op);
   setTimeout(()=>{document.querySelector(".kitchen.door").innerHTML = svg.door3;},100);
-  setTimeout(()=>{fade.style.opacity=1;player(step);setTimeout("player(step)",300);setTimeout("player(step)",600);},500);
+  setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},500);
   setTimeout(()=>{show(room = 3);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector("#lrd2").innerHTML = svg.door;player(op,1)},1500);
+  setTimeout(()=>{document.querySelector("#lrd2").innerHTML = svg.door;py(op,1)},1500);
   state[3].door2 = 0;
   state[2].door2 = 0;
 }
@@ -873,7 +871,7 @@ opendoor3 = () => {
   document.querySelector(".bathroom.door").innerHTML = svg.door3;
   state[3].door2 = 1;
   state[1].door2 = 1;
-  player(op);
+  py(op);
 }
 
 closedoor3 = () => {
@@ -881,51 +879,51 @@ closedoor3 = () => {
   document.querySelector(".bathroom.door").innerHTML = svg.door;
   state[3].door2 = 0;
   state[1].door2 = 0;
-  player(op,1);
+  py(op,1);
 }
 
-kitchentobath = () => {
+k2b = () => {
   document.querySelector("#bathdoor").innerHTML = svg.door2;
-  if(state[3].door3 == 0) player(op);
+  if(state[3].door3 == 0) py(op);
   setTimeout(()=>{document.querySelector(".bathroom.door").innerHTML = svg.door3;},100);
-  setTimeout(()=>{fade.style.opacity=1;player(step);setTimeout("player(step)",300);setTimeout("player(step)",600);},500);
+  setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},500);
   setTimeout(()=>{show(room = 1);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector("#bathdoor").innerHTML = svg.door;player(op,1)},1500);
+  setTimeout(()=>{document.querySelector("#bathdoor").innerHTML = svg.door;py(op,1)},1500);
   state[3].door3 = 0;
   state[1].door3 = 0;
 }
 
-bathtokitchen = () => {
+b2k = () => {
   document.querySelector(".bathroom.door").innerHTML = svg.door3;
-  if(state[3].door3 == 0) player(op);
+  if(state[3].door3 == 0) py(op);
   setTimeout(()=>{document.querySelector("#bathdoor").innerHTML = svg.door2;},100);
-  setTimeout(()=>{fade.style.opacity=1;player(step);setTimeout("player(step)",300);setTimeout("player(step)",600);},500);
+  setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},500);
   setTimeout(()=>{show(room = 3);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector(".bathroom.door").innerHTML = svg.door;player(op,1)},1500);
+  setTimeout(()=>{document.querySelector(".bathroom.door").innerHTML = svg.door;py(op,1)},1500);
   state[3].door3 = 0;
   state[1].door3 = 0;
 }
 
 goout = () => {
   document.querySelector(".entrance.door").innerHTML = svg.door3;
-  if(state[2].door4 == 0) { player(op); }
+  if(state[2].door4 == 0) { py(op); }
   state[2].door4 = 1 ;
   setTimeout(()=>{document.querySelector(".exit.door").innerHTML = svg.door2;document.querySelector("#key").classList.add("hidden")},100);
-  setTimeout(()=>{fade.style.opacity=1;player(step);setTimeout("player(step)",300);setTimeout("player(step)",600);},500);
+  setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},500);
   setTimeout(()=>{show(room = 4);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector(".entrance.door").innerHTML = svg.door;player(op,1)},1500);
+  setTimeout(()=>{document.querySelector(".entrance.door").innerHTML = svg.door;py(op,1)},1500);
   state[4].door4 = 0;
   state[2].door4 = 0;
 }
 
 goin = () => {
   document.querySelector(".exit.door").innerHTML = svg.door2;
-  if(state[2].door4 == 0) player(op);
+  if(state[2].door4 == 0) py(op);
   state[2].door4 = 1 
   setTimeout(()=>{document.querySelector(".entrance.door").innerHTML = svg.door3;document.querySelector("#key").classList.add("hidden")},100);
-  setTimeout(()=>{fade.style.opacity=1;player(step);setTimeout("player(step)",300);setTimeout("player(step)",600);},500);
+  setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},500);
   setTimeout(()=>{show(room = 2);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector(".exit.door").innerHTML = svg.door;if(state[2].key == 0)document.querySelector("#key").classList.remove("hidden");player(op,1)},1500);
+  setTimeout(()=>{document.querySelector(".exit.door").innerHTML = svg.door;if(state[2].key == 0)document.querySelector("#key").classList.remove("hidden");py(op,1)},1500);
   state[4].door4 = 0;
   state[2].door4 = 0;
 }
@@ -936,7 +934,7 @@ opendoor4 = () => {
   document.querySelector(".entrance.door").innerHTML = svg.door3;
   state[4].door4 = 1;
   state[2].door4 = 1;
-  player(op);
+  py(op);
 }
 
 closedoor4 = () => {
@@ -945,16 +943,16 @@ closedoor4 = () => {
   if(state[2].key == 0)document.querySelector("#key").classList.remove("hidden");
   state[4].door4 = 0;
   state[2].door4 = 0;
-  player(op,1);
+  py(op,1);
 }
 
 entershed = () => {
-  setTimeout(()=>{fade.style.opacity=1;player(step);setTimeout("player(step)",300);setTimeout("player(step)",600);},100);
+  setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},100);
   setTimeout(()=>{show(room = 5);fade.style.opacity=0},600);
 }
 
 exitshed = () => {
-  setTimeout(()=>{fade.style.opacity=1;player(step);setTimeout("player(step)",300);setTimeout("player(step)",600);},100);
+  setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},100);
   setTimeout(()=>{show(room = 4, pos=2);fade.style.opacity=0},600);
 }
 
@@ -981,9 +979,9 @@ watchin = () => {
 }
 
 pointrainbow = () => {
-  finger.style.top = "50%";
+  v5.style.top = "50%";
   setTimeout(()=>{
-    finger.style.top = "120%";
+    v5.style.top = "120%";
     achievements[23][1] = 1;
     
   },5000);
@@ -992,12 +990,12 @@ pointrainbow = () => {
 thunder = () => {
   thun.style.opacity = .9;
   setTimeout(()=>{thun.style.opacity = 0;}, 350);
-  player(thu);
+  py(thu);
 }
 
 // setup
-finger.innerHTML = svg.hand;
+v5.innerHTML = svg.h;
 cat.innerHTML = svg.cat;
-mountain.innerHTML = svg.mountain;
-path.innerHTML = svg.path;
-setTimeout(()=>{root.style.display = "block";},200);
+v3.innerHTML = svg.v3;
+v4.innerHTML = svg.v4;
+setTimeout(()=>{root.style.display = "";},200);

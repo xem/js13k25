@@ -1,14 +1,12 @@
 introanim = 0; // 1: ready to click, 2: ready to click again
 
 start = () => {
-
   intro.innerHTML = svg.eyes;
   setTimeout(()=>{eyesvg.style.transition="transform 0.5s";},50);
   setTimeout(()=>{eyesvg.style.transform="scaleX(9) scaleY(9)"},100);
   setTimeout(()=>{eyesvg.style.transform="scaleX(9) scaleY(6.2)"},600);
   setTimeout(()=>{eyesvg.style.transform="scaleX(9) scaleY(15)"},1200);
-  setTimeout(()=>{eyesvg.style.display = "none"},2500);
-  
+  setTimeout(()=>{eyesvg.classList.add("hidden")},2500);
   setTimeout(()=>{intro.innerHTML = svg.bedintro + svg.legsintro + "<div id=title>";},2500);
   setTimeout(()=>{
     bedintro.style.transition="all 3s";
@@ -40,7 +38,7 @@ start = () => {
 }
 
 outro = () => {
-  intro.style.display="block";
+  intro.classList.remove("hidden");
   intro.innerHTML = svg.bedintro + svg.legsintro + "<div id=title>";
   legsintro.style.left="-21%";
   legsintro.style.top="53%";
@@ -87,10 +85,8 @@ score = () => {
   html += "</details>";
   html += "<br><br><h2 onclick=location=location>REPLAY?";
   intro.innerHTML = html;
-  
-  
 }
 
-
-//start();
-introanim = 3;intro.style.display="none";show(room=0);// debug
+show(room = 0);
+start();
+//introanim = 3;intro.classList.remove("hidden");show(room=0);// debug

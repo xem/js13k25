@@ -13,8 +13,6 @@ camZ: 0,
 init: t => {
   t.css||(t.css=""),
   t.txt||(t.txt=""),
-  t.on=``;
-  t.cl=t.cl?`onclick='${t.cl}'`:"";
   t.html||(t.html=""),
   t.g||(t.g="scene"),
   t.o||(t.o="center center"),

@@ -1,17 +1,17 @@
-﻿﻿<!doctype html><meta name=viewport content="width=1200,initial-scale=1"><meta name=apple-mobile-web-app-capable content=yes><meta name=mobile-web-app-capable content=yes><title>I GOT UP ON THE WRONG FOOT</title><link rel=icon href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2230%22 y=%2280%22 font-size=%2280%22>🦶</text></svg>">
+﻿﻿<!doctype html><title>I GOT UP ON THE WRONG FOOT</title><link rel=icon href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2230%22 y=%2280%22 font-size=%2280%22>🦶</text></svg>">
 <html id=root style=display:none>
 <div id=v>
   <div id=camera>
     <div id=scene></div>
   </div>
   <div id=view>
-    <div id=sky class=return></div>
-    <div id=sun class=return></div>
-    <div id=mountain class=return></div>
-    <div id=path class=return></div>
+    <div id=v1 class=return></div> <!-- sky -->
+    <div id=v2 class=return></div> <!-- sun -->
+    <div id=v3 class=return></div> <!-- mountain -->
+    <div id=v4 class=return></div> <!-- path -->
     <div id=cat class=cat class=return></div>
-    <div id=finger class=return></div>
-    <div id=rainbow class=rainbow></div>
+    <div id=v5 class=return></div> <!-- finger -->
+    <div id=rainbow class="rainbow hidden"></div>
   </div>
   <canvas id=rain width=600 height=600></canvas>
   <div id=fade></div>
@@ -19,11 +19,11 @@
   <div id=meow class=hidden>MEOW!</div>
   <div id=text></div>
   <div id=time>08:00</div>
-  <div id=menushadow onclick="this.style.display='none'"><div id=menu></div></div>
+  <div id=ms class=hidden onclick="className='hidden'"><div id=menu></div></div> <!-- menu shadow -->
 </div>
 
 <div id=intro></div>
-<div id=pocket></div>
+<div id=k></div> <!-- pocket -->
 
 <script src=svg.js></script>
 <script src=c.js></script>
@@ -38,10 +38,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 #v, #intro{width:600px;height:600px;overflow:hidden;position:absolute;left:50%;transform:translateX(-50%);perspective:600px; background: #ccc; }
 #v *{transform-style:preserve-3d;box-sizing:border-box;line-height:0; cursor:pointer; }
-@keyframes sky {
+@keyframes s { /* v1 */
   5% { background: #000 }  /* 8h night */
-  8% { background: #F41 } /* 9h30 sunrise */
-  10% { background: #d60 } /* 9h30 sunrise */
+  8% { background: #F41 } /* 9h30 v2rise */
+  10% { background: #d60 } /* 9h30 v2rise */
   20% { background: #8ce } /* 11h */
   30% { background: #8cc } /* 12h30 cat */
   40% { background: #8aa } /* 14h */
@@ -51,7 +51,7 @@
   80% { background: #135 } /* 20h */
   90% { background: #000 } /* 21h30 night */
 }
-@keyframes rise {
+@keyframes r { /* rise */
   0% { transform: translateX(-640px) translateY(-90px);  }
   100% { transform: translateX(100px) translateY(-900px);  }
 }
@@ -72,7 +72,7 @@
 #time,#text { margin: 5px 10px; font: 25px Anton,impact,fantasy; text-align:right; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
 #text { bottom: 0; text-align: center; position: absolute; width: 100%; margin: 0; }
 #hero { transition: transform .75s }
-#menushadow { width: 100%; height: 100%; position: absolute; top: 0; background: #8888; display: none; }
+#ms { width: 100%; height: 100%; position: absolute; top: 0; background: #8888; }
 #fade { width: 100%; height: 100%; position: absolute; top: 0; background: #000; opacity: 0; transition: opacity .25s;  }
 #thun { width: 100%; height: 100%; position: absolute; top: 0; background: #fff; opacity: 0; pointer-events: none; }
 #meow { width: 100%; height: 100%; position: absolute; top: 0; text-align:center; font: 80px/600px Anton,impact,fantasy; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
@@ -84,22 +84,22 @@
 #menu div:hover {  background: #ddd; }
 #menu div:first-child { background: none; border: none; text-align: center; margin-top: -50px; font-size: 30px; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
 #calendar, .chair, #broom, .comb { transition: all .75s }
-#pocket { width: 100px; height: 590px; position: absolute; left: 50%; margin-left: 300px; background: #bbb; border: 4px solid #555; border-left: 0; width: 0; transition: width .25s; overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; padding: 10px 0 0; }
-#pocket:not(:empty) { width: 100px; background: #bbb; margin-left: 304px; }
-#pocket div { width: 100px; height: 100px; }
-#pocket div svg { padding: 10px 0 0 10px; transform: scale(3); }
-#pocket div#pocketscissors svg { transform: scale(2.5); padding: 10px 0 0 15px; }
-#pocket div#pocketshoes svg { transform: scale(2.5); padding: 10px 0 0 15px; }
-#pocket div#pocketladder svg { transform: scale(1.5); padding: 15px 0 0 0px; margin: 0 0 0 -5px; }
-#pocket div#pockethat svg { transform: scale(2.5); padding: 10px 0 0 15px; }
-#pocket div#pocketglasses { padding: 15px 0 0 0 }
-#pocket div#pocketglasses svg { transform: scale(2.5); padding: 10px 0 0 15px; }
-#pocket div#pocketmirror svg { transform: scale(2); }
-#pocket div#pockethatchet svg { transform: scale(2); padding: 10px 0 0 15px; }
-#pocket div#pockethorseshoe svg { transform: scale(1.5); }
+#k { width: 100px; height: 590px; position: absolute; left: 50%; margin-left: 300px; background: #bbb; border: 4px solid #555; border-left: 0; width: 0; transition: width .25s; overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; padding: 10px 0 0; }
+#k:not(:empty) { width: 100px; background: #bbb; margin-left: 304px; }
+#k div { width: 100px; height: 100px; }
+#k div svg { padding: 10px 0 0 10px; transform: scale(3); }
+#k div#kscissors svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#k div#kshoes svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#k div#kladder svg { transform: scale(1.5); padding: 15px 0 0 0px; margin: 0 0 0 -5px; }
+#k div#khat svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#k div#kglasses { padding: 15px 0 0 0 }
+#k div#kglasses svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#k div#kmirror svg { transform: scale(2); }
+#k div#khatchet svg { transform: scale(2); padding: 10px 0 0 15px; }
+#k div#khorseshoe svg { transform: scale(1.5); }
 #title .tuto { text-shadow: 2px 2px 20px #bbb,-2px -2px 20px #bbb,-2px 2px 20px #bbb,2px -2px 20px #bbb; font: 39px / 50px Anton, impact, fantasy; width: 500px; margin: 50px; }
 .hidden,.wear { display: none }
-#sky { width: 600px; height: 600px; position: absolute; animation: sky 1000s;}
+#v1 { width: 600px; height: 600px; position: absolute; animation: s 1000s;}
 #rainbow { width: 600px; height: 1000px; position: absolute; top: 10%; left: 0%; display: none; opacity: 0; transition: opacity 4s; background: radial-gradient(circle,
    rgba(0,0,0,0) 60%,
    rgba(192, 0, 255, 1) 65%,
@@ -108,11 +108,11 @@
    rgba(255, 0, 0, 1) 80%,
    rgba(0,0,0,0) 85%
  ) }
-#sun { width: 200px; height: 200px; position: absolute; bottom: 0; right: 0; background: radial-gradient(#fe8 30%, #fe80 50%); animation: rise 800s;}
-#finger { position: absolute; top: 110%; left: 40%; transform: scale(6); transition: all 2s; }
+#v2 { width: 200px; height: 200px; position: absolute; bottom: 0; right: 0; background: radial-gradient(#fe8 30%, #fe80 50%); animation: r 800s;}
+#v5 { position: absolute; top: 110%; left: 40%; transform: scale(6); transition: all 2s; }
 #cat { position: absolute; top: 70%; left: -40%; transform: scale(2); transition: left 5s; }
-#mountain{ position: absolute; top: 60%; left: 41%; transform: scale(6.5); }
-#path { position: absolute; top: 45%; left: 41%; transform: scale(6.5); }
+#v3{ position: absolute; top: 60%; left: 41%; transform: scale(6.5); }
+#v4 { position: absolute; top: 45%; left: 41%; transform: scale(6.5); }
 #rain { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 5s; pointer-events:none}
 #v #guy, #v .guy, #v svg, #v svg *, #v, #v #time, #v #text, #v .cube, #v #fade, #v .treetop, #v #view { pointer-events: none}
 .divscore { font: 30px/40px Anton,impact,fantasy; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; overflow: auto; scrollbar-width: thin; padding: 20px; height: 560px; }
