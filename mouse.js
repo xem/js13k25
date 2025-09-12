@@ -34,9 +34,8 @@ onclick = (e) => {
   }
   
   // Check walk under ladder
-  if(((oldguyX < 30 && guyX > 89)||(guyX < 30 && oldguyX > 89)) && oldguyY > 1002 && oldguyY < 1064 && guyY > 1002 && guyY < 1064){
+  if(state[5].ladder == 2 && ((oldguyX < 30 && guyX > 89)||(guyX < 30 && oldguyX > 89)) && oldguyY > 1002 && oldguyY < 1064 && guyY > 1002 && guyY < 1064){
     achievements[21][1] = 1;
-    
   }
   
   // Backup coords
@@ -53,8 +52,9 @@ onclick = (e) => {
     introanim++;
   }
   else if(introanim == 2){
-    intro.remove();
+    intro.classList.add("hidden");
     introanim++;
+    play_music();
   }
   
   // Open menu
@@ -90,7 +90,7 @@ onclick = (e) => {
         tmp["put on desk"] = "removecalendar";
       }
       
-      else if(state[0].pen == 1){
+      else if(state[0].pen == 1 && state[0].calendar2 != 1){
         tmp["mark date"] = "markdate";
       }
       
@@ -424,7 +424,7 @@ onclick = (e) => {
     
     // Door
     if(target.className == "entrance door"){
-      tmp = {"go intside": "goin"};
+      tmp = {"go inside": "goin"};
       if(state[4].door4){
         tmp["close"] = "closedoor4";
       }
@@ -481,7 +481,7 @@ onclick = (e) => {
     }
     
     // seed
-    if(target.className == "seed bucket"){
+    if(target.className == "seed bucket" && state[5].seed != 2){
       openmenu({"take some seed":"takeseed"});
     }
     

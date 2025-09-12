@@ -1,4 +1,6 @@
-﻿drawcal = (mark, mark2) => {
+﻿if(navigator.userAgent.toLowerCase().includes('firefox')) alert("Firefox currently has a bug that makes the game blurry. For better results, try another browser.");
+
+drawcal = (mark, mark2) => {
   var cal = `<svg width=99 height=99 style="transform:translateY(50px) scaleX(6) scaleY(6);font:4px Arial" xmlns='http://www.w3.org/2000/svg'><rect x=4 y=3 width=92 height=79 fill="#fff" stroke="#000"/><rect x=9 y=8 width=82 height=69 fill="#fff" stroke="#000"/><path d="M9 18L91 18M9 30L91 30M9 42L91 42M9 53L91 53M9 64 L91 64M20 8L20 77M32 8L32 77M44 8L44 77M56 8L56 77M68 8L68 77M80 8L80 77" fill="#fff" stroke="#000"/>`;
   for(calx = 0; calx < 7; calx++){  
     for(caly = 0; caly < 6; caly++){
@@ -22,9 +24,9 @@ drawguy = () => {
 svg = {
 
   // Intro
-  eyes: `<svg width=99 height=99 xmlns='http://www.w3.org/2000/svg' id=eyesvg><path d="M0 0L98 0L98 98L0 98L0 0M44 50C40 44 25 44 20 50C28 54 35 54 44 50M80 50C74 44 63 44 55 50C63 54 71 54 80 50" fill="#000" stroke="#000"/></svg>`,
+  eyes: `<svg width=999 height=999 xmlns='http://www.w3.org/2000/svg' id=eyesvg><path d="M0 0L980 0L980 980L0 980L0 0M440 500C400 440 250 440 200 500C280 540 350 540 440 500M800 500C740 440 630 440 550 500C630 540 710 540 800 500" fill="#000" stroke="#000"/></svg>`,
   
-  bedintro: `<svg id=bedintro width=99 height=99 xmlns='http://www.w3.org/2000/svg'><rect x=0 y=22 width=99 height=45 fill="#fff" stroke="#000"/><rect x=2 y=67 width=10 height=23 fill="#fff" stroke="#000"/><rect x=86 y=67 width=10 height=23 fill="#fff" stroke="#000"/></svg>`,
+  bedintro: `<svg id=bedintro width=99 height=99  xmlns='http://www.w3.org/2000/svg'><rect x=0 y=22 width=99 height=45 fill="#fff" stroke="#000"/><rect x=2 y=67 width=10 height=23 fill="#fff" stroke="#000"/><rect x=86 y=67 width=10 height=23 fill="#fff" stroke="#000"/></svg>`,
   
   legsintro: `<svg id=legsintro width=99 height=99 xmlns='http://www.w3.org/2000/svg'><path d="M24 0L8 9C5 12 3 12 4 17L17 56L38 50L29 19L23 18L28 18L25 15L29 19L42 13L65 31L71 26L67 31L72 30L66 32L59 61L78 69L88 24C88 20 87 17 83 16L63 -1Z" fill="#fff" stroke="#000"/><path d="M17 56L9 65C3 72 8 79 15 75L36 60C40 57 39 53 36 51Z" fill="#fff" stroke="#000"/><path d="M60 61C53 63 51 66 53 70L77 87C85 92 89 80 86 78L77 69Z" fill="#fff" stroke="#000"/></svg>`,
   

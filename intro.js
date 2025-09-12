@@ -3,9 +3,9 @@ introanim = 0; // 1: ready to click, 2: ready to click again
 start = () => {
   intro.innerHTML = svg.eyes;
   setTimeout(()=>{eyesvg.style.transition="transform 0.5s";},50);
-  setTimeout(()=>{eyesvg.style.transform="scaleX(9) scaleY(9)"},100);
-  setTimeout(()=>{eyesvg.style.transform="scaleX(9) scaleY(6.2)"},600);
-  setTimeout(()=>{eyesvg.style.transform="scaleX(9) scaleY(15)"},1200);
+  setTimeout(()=>{eyesvg.style.transform="scaleX(.9) scaleY(.9)"},100);
+  setTimeout(()=>{eyesvg.style.transform="scaleX(.9) scaleY(.62)"},600);
+  setTimeout(()=>{eyesvg.style.transform="scaleX(.9) scaleY(1.5)"},1200);
   setTimeout(()=>{eyesvg.classList.add("hidden")},2500);
   setTimeout(()=>{intro.innerHTML = svg.bedintro + svg.legsintro + "<div id=title>";},2500);
   setTimeout(()=>{

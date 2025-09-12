@@ -70,6 +70,77 @@ show = (room, pos) => {
   setTimeout(()=>{hero.style.transition = "transform .75s";},250);
 }
 
+// Music
+
+A = new AudioContext,
+m = A.createBuffer(1,1e6,44100);
+
+music0 = [,,,72,,,71, 72, 74, 72, 71, 69, 72,, 72, 69, 72,,, 71, 72, 69, 67, 64, 65, 67,,, 65, 64, 62, 64, 65, 67, 69, 67,,, 69, 71, 69, 67, 65, 64, 62, 64, 62, 60,, 60, 62, 64,, 65,, 62,,, 67, 67,,, 74,,, 72, 71, 69, 71, 72, 74, 72, 71,,, 72, 71, 69, 72, 71, 69, 65,, 65, 65, 65,,, 69,, 72, 69, 71, 67, 65,, 65, 65, 65,, 69,, 71, 67, 69, 65, 62,, 62, 60, 62,,, 62, 62, 62,, 65,, 69, 65, 67, 64, 62,, 62, 60, 62,,, 62, 60, 62,, 64, 65, 67,,, 65, 64, 62, 60,];
+music = [];
+for(i = 0; i < 20; i++){
+  for(j = 0; j < 143; j++){
+    music.push(music0[j] ? music0[j] - 20 + i : 0); 
+  }
+}
+
+// params: note value
+piano = (e) => {
+   var V, u, p, b, w, P, r, i, D;
+   for(
+  
+    // V: note length in seconds
+    V = .9,
+    
+    // Temp vars for guitar synthesis
+    v = [],
+    p = c = 0,
+    
+    // Modulation
+    // This function generates the i'th sample of a sinusoidal signal with a specific frequency and amplitude
+    b = (e, t, a, i) => Math.sin(e / t * 6.28 * a + i),
+    
+    // Instrument synthesis
+    w = (e, t) =>  Math.sin(e / 44100 * t * 6.28 + b(e, 44100, t, 0) ** 2 + .75 * b(e, 44100, t, .25) + .1 * b(e, 44100, t, .5)),
+    
+    // Sound samples
+    D = [],
+    
+    // Loop on all the samples
+    i = 0;
+    i < 44100 * V;
+    i++
+  ){
+  
+    // Fill the samples array
+    D[i] =
+    
+      // The first 88 samples represent the note's attack
+      (((1 - (i - 88.2) / (44100 * (V - .002))) ** (u ? (.5 * Math.log(1e4 * e / 44100)) ** 2 : 1) * w(i, e)) / (u ? 1 : 5))
+      /10;
+  }
+  
+  // Play the note
+  m.getChannelData(0).set(D),
+  s = A.createBufferSource(),
+  s.buffer = m,
+  s.connect(A.destination),
+  s.start()
+}
+
+current_note = 0;
+
+play_music = () => {
+  setInterval(play_note, 350);
+}
+
+play_note = () => {
+  current_note ++;
+  if(music[current_note] == 1) piano(0.0001);
+  else if(music[current_note]) piano(440*1.06**(music[current_note] - 80));
+}
+
+
+
 // ZZfx
 zv=.3,               // volume
 zx=new AudioContext, // audio context
@@ -129,7 +200,7 @@ step = function(i){
   return Math.sin(i*0.01*Math.sin(0.001*i+Math.sin(i/200))+Math.sin(i/200))*q*q/9;
 }
 
-// Sound py
+// Sound player
 py = (f,r) => {
   var A=new AudioContext()
   var m=A.createBuffer(1,96e3,48e3)
@@ -213,21 +284,21 @@ setInterval(()=>{
   // Rain: 15h30 - 18h
   if(hour == 15 && min == 30){
     rain.style.opacity = .8;
-    A = new AudioContext();
+    AA = new AudioContext();
     var bufferSize = 4096;
-    var whiteNoise = A.createScriptProcessor(bufferSize, 1, 1);
+    var whiteNoise = AA.createScriptProcessor(bufferSize, 1, 1);
     whiteNoise.onaudioprocess = function(e) {
         var output = e.outputBuffer.getChannelData(0);
         for (var i = 0; i < bufferSize; i++) {
-            output[i] = (Math.random() * 2 - 1)/((room > 3 || (room == 0 &&state[0].window== 1) || (room == 2 && (state[2].window== 1 || state[2].door4 == 1)))  ? 50 : 200);
+            output[i] = (Math.random() * 2 - 1)/((room > 3 || (room == 0 &&state[0].window== 1) || (room == 2 && (state[2].window== 1 || state[2].door4 == 1)))  ? 50 : 220);
         }
     }
-    whiteNoise.connect(A.destination);
+    whiteNoise.connect(AA.destination);
   }
   
   if(hour == 18 && min == 0){
     rain.style.opacity = 0;
-    A.close();
+    AA.close();
   }
   
   // Thunder: 16h-17h

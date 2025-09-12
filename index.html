@@ -36,12 +36,12 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-#v, #intro{width:600px;height:600px;overflow:hidden;position:absolute;left:50%;transform:translateX(-50%);perspective:600px; background: #ccc; }
-#v *{transform-style:preserve-3d;box-sizing:border-box;line-height:0; cursor:pointer; }
-@keyframes s { /* v1 */
+#v, #intro{width:600px;height:600px;overflow:hidden;position:absolute;left:50%;perspective:600px; background: #ccc;transform:translateX(-50%);}
+#v *{transform-style:preserve-3d;box-sizing:border-box;line-height:0; cursor:pointer;}
+@keyframes s { /* sky */
   5% { background: #000 }  /* 8h night */
-  8% { background: #F41 } /* 9h30 v2rise */
-  10% { background: #d60 } /* 9h30 v2rise */
+  8% { background: #F41 } /* 9h30 sunrise */
+  10% { background: #d60 } /* 9h30 sunrise */
   20% { background: #8ce } /* 11h */
   30% { background: #8cc } /* 12h30 cat */
   40% { background: #8aa } /* 14h */
@@ -61,8 +61,8 @@
 .cube div.floor { background: #eee !important }
 .cube.toolshed .right { display: none }
 .cube.toolshed .floor { background: #aaa !important }
-#intro { top: 32px; cursor: pointer }
-#intro svg#eyesvg { position:absolute;left:40%; top: 42%;transform:scaleX(9)scaleY(6.2); }
+#intro { top: 30px; cursor: pointer }
+#intro svg#eyesvg { position:absolute;left:-32%; top: -32%;transform:scaleX(.9)scaleY(.62); }
 #intro svg#bedintro { position:absolute;left:40%; top: 42%;transform:scaleX(7)scaleY(7); }
 #intro svg#legsintro { position:absolute;left:40%; top: 22%;transform:scaleX(8)scaleY(8)rotate(-45deg); }
 #title { color: #0b7bcd; position: absolute; width:100%; text-align: center; text-shadow: 10px 10px 10px #555; font: 145px / 139px Anton,impact,fantasy; }
@@ -79,7 +79,7 @@
 #view { width: 100%; height: 100%; position: absolute; top: 0; background: #000; overflow: hidden; pointer-events: none; opacity: 0; }
 #view * { pointer-events: none }
 .w #view, .w #view div { pointer-events: all; }
-#menu { width: 250px; min-height: 50px; background: #fff; border: 5px solid #444; position: relative; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); text-align: center; }
+#menu { width: 250px; min-height: 50px; background: #fff; border: 5px solid #444; position: relative; left: 50%; top: 50%;  text-align: center; transform: translateX(-50%) translateY(-50%); }
 #menu div { height: 50px; border: 2px solid #444; padding: 5px; font: 20px Anton,impact,fantasy;}
 #menu div:hover {  background: #ddd; }
 #menu div:first-child { background: none; border: none; text-align: center; margin-top: -50px; font-size: 30px; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; }
@@ -88,19 +88,19 @@
 #k:not(:empty) { width: 100px; background: #bbb; margin-left: 304px; }
 #k div { width: 100px; height: 100px; }
 #k div svg { padding: 10px 0 0 10px; transform: scale(3); }
-#k div#kscissors svg { transform: scale(2.5); padding: 10px 0 0 15px; }
-#k div#kshoes svg { transform: scale(2.5); padding: 10px 0 0 15px; }
-#k div#kladder svg { transform: scale(1.5); padding: 15px 0 0 0px; margin: 0 0 0 -5px; }
-#k div#khat svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#k div#kscissors svg { padding: 10px 0 0 15px; transform: scale(2.5);  }
+#k div#kshoes svg {  padding: 10px 0 0 15px; transform: scale(2.5); }
+#k div#kladder svg {  margin: 0 0 0 -5px; transform: scale(1.5); padding: 15px 0 0 0px; }
+#k div#khat svg { padding: 10px 0 0 15px; transform: scale(2.5);  }
 #k div#kglasses { padding: 15px 0 0 0 }
-#k div#kglasses svg { transform: scale(2.5); padding: 10px 0 0 15px; }
+#k div#kglasses svg { padding: 10px 0 0 15px; transform: scale(2.5);  }
 #k div#kmirror svg { transform: scale(2); }
-#k div#khatchet svg { transform: scale(2); padding: 10px 0 0 15px; }
+#k div#khatchet svg {  padding: 10px 0 0 15px;  transform: scale(2);}
 #k div#khorseshoe svg { transform: scale(1.5); }
 #title .tuto { text-shadow: 2px 2px 20px #bbb,-2px -2px 20px #bbb,-2px 2px 20px #bbb,2px -2px 20px #bbb; font: 39px / 50px Anton, impact, fantasy; width: 500px; margin: 50px; }
 .hidden,.wear { display: none }
 #v1 { width: 600px; height: 600px; position: absolute; animation: s 1000s;}
-#rainbow { width: 600px; height: 1000px; position: absolute; top: 10%; left: 0%; display: none; opacity: 0; transition: opacity 4s; background: radial-gradient(circle,
+#rainbow { width: 600px; height: 1000px; position: absolute; top: 10%; left: 0%; opacity: 0; transition: opacity 4s; background: radial-gradient(circle,
    rgba(0,0,0,0) 60%,
    rgba(192, 0, 255, 1) 65%,
    rgba(0, 192, 255, 1) 70%,
@@ -108,9 +108,9 @@
    rgba(255, 0, 0, 1) 80%,
    rgba(0,0,0,0) 85%
  ) }
-#v2 { width: 200px; height: 200px; position: absolute; bottom: 0; right: 0; background: radial-gradient(#fe8 30%, #fe80 50%); animation: r 800s;}
-#v5 { position: absolute; top: 110%; left: 40%; transform: scale(6); transition: all 2s; }
-#cat { position: absolute; top: 70%; left: -40%; transform: scale(2); transition: left 5s; }
+#v2 { width: 200px; height: 200px; position: absolute; bottom: 0; right: 0; animation: r 800s; background: radial-gradient(#fe8 30%, #fe80 50%); }
+#v5 { position: absolute; top: 110%; left: 40%; transition: all 2s; transform: scale(6);  }
+#cat { position: absolute; top: 70%; left: -40%; transition: left 5s; transform: scale(2);  }
 #v3{ position: absolute; top: 60%; left: 41%; transform: scale(6.5); }
 #v4 { position: absolute; top: 45%; left: 41%; transform: scale(6.5); }
 #rain { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 5s; pointer-events:none}
