@@ -1,4 +1,4 @@
-﻿﻿<!doctype html><title>I GOT UP ON THE WRONG FOOT</title><link rel=icon href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2230%22 y=%2280%22 font-size=%2280%22>🦶</text></svg>">
+﻿﻿<!doctype html><title>I GOT UP ON THE WRONG FOOT</title><link rel=icon href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%220%22 y=%2280%22 font-size=%2280%22>🦶</text></svg>">
 <html id=root style=display:none>
 <div id=v>
   <div id=camera>
@@ -37,7 +37,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 #v, #intro{width:600px;height:600px;overflow:hidden;position:absolute;left:50%;perspective:600px; background: #ccc;transform:translateX(-50%);}
-#v *{transform-style:preserve-3d;box-sizing:border-box;line-height:0; cursor:pointer;}
+#v *{transform-style:preserve-3d;box-sizing:border-box;line-height:0; cursor:pointer; -webkit-tap-highlight-color: transparent }
 @keyframes s { /* sky */
   5% { background: #000 }  /* 8h night */
   8% { background: #F41 } /* 9h30 sunrise */
@@ -87,16 +87,16 @@
 #k { width: 100px; height: 590px; position: absolute; left: 50%; margin-left: 300px; background: #bbb; border: 4px solid #555; border-left: 0; width: 0; transition: width .25s; overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; padding: 10px 0 0; }
 #k:not(:empty) { width: 100px; background: #bbb; margin-left: 304px; }
 #k div { width: 100px; height: 100px; }
-#k div svg { padding: 10px 0 0 10px; transform: scale(3); }
-#k div#kscissors svg { padding: 10px 0 0 15px; transform: scale(2.5);  }
-#k div#kshoes svg {  padding: 10px 0 0 15px; transform: scale(2.5); }
-#k div#kladder svg {  margin: 0 0 0 -5px; transform: scale(1.5); padding: 15px 0 0 0px; }
-#k div#khat svg { padding: 10px 0 0 15px; transform: scale(2.5);  }
+#k div svg { padding: 10px 0 0 10px; transform:scale(3); }
+#k div#kscissors svg { padding: 10px 0 0 15px; transform:scale(2.5);  }
+#k div#kshoes svg {  padding: 10px 0 0 15px; transform:scale(2.5); }
+#k div#kladder svg {  margin: 0 0 0 -5px; transform:scale(1.5); padding: 15px 0 0 0px; }
+#k div#khat svg { padding: 10px 0 0 15px; transform:scale(2.5);  }
 #k div#kglasses { padding: 15px 0 0 0 }
-#k div#kglasses svg { padding: 10px 0 0 15px; transform: scale(2.5);  }
-#k div#kmirror svg { transform: scale(2); }
-#k div#khatchet svg {  padding: 10px 0 0 15px;  transform: scale(2);}
-#k div#khorseshoe svg { transform: scale(1.5); }
+#k div#kglasses svg { padding: 10px 0 0 15px; transform:scale(2.5);  }
+#k div#kmirror svg { transform:scale(2); }
+#k div#khatchet svg {  padding: 10px 0 0 15px;  transform:scale(2);}
+#k div#khorseshoe svg { transform:scale(1.5); }
 #title .tuto { text-shadow: 2px 2px 20px #bbb,-2px -2px 20px #bbb,-2px 2px 20px #bbb,2px -2px 20px #bbb; font: 39px / 50px Anton, impact, fantasy; width: 500px; margin: 50px; }
 .hidden,.wear { display: none }
 #v1 { width: 600px; height: 600px; position: absolute; animation: s 1000s;}
@@ -109,10 +109,10 @@
    rgba(0,0,0,0) 85%
  ) }
 #v2 { width: 200px; height: 200px; position: absolute; bottom: 0; right: 0; animation: r 800s; background: radial-gradient(#fe8 30%, #fe80 50%); }
-#v5 { position: absolute; top: 110%; left: 40%; transition: all 2s; transform: scale(6);  }
-#cat { position: absolute; top: 70%; left: -40%; transition: left 5s; transform: scale(2);  }
-#v3{ position: absolute; top: 60%; left: 41%; transform: scale(6.5); }
-#v4 { position: absolute; top: 45%; left: 41%; transform: scale(6.5); }
+#v5 { position: absolute; top: 110%; left: 40%; transition: all 2s; transform:scale(6);  }
+#cat { position: absolute; top: 70%; left: -40%; transition: left 5s; transform:scale(2);  }
+#v3{ position: absolute; top: 60%; left: 41%; transform:scale(6.5); }
+#v4 { position: absolute; top: 45%; left: 41%; transform:scale(6.5); }
 #rain { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 5s; pointer-events:none}
 #v #guy, #v .guy, #v svg, #v svg *, #v, #v #time, #v #text, #v .cube, #v #fade, #v .treetop, #v #view { pointer-events: none}
 .divscore { font: 30px/40px Anton,impact,fantasy; text-shadow: 2px 2px 5px #fff,-2px -2px 5px #fff,-2px 2px 5px #fff,2px -2px 5px #fff; overflow: auto; scrollbar-width: thin; padding: 20px; height: 560px; }

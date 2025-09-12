@@ -57,9 +57,9 @@ cube: (t,out,shed) => {
 },
 
 // move an object
-move: t => {
+move: (t,r) => {
   if(t.n){
-   var r=C.$(t.n),
+   r=C.$(t.n),
    n=C.o[t.n || t.css];
    (t.x||0===t.x)&&(n.x=t.x),
    (t.y||0===t.y)&&(n.y=t.y),

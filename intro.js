@@ -3,9 +3,9 @@ introanim = 0; // 1: ready to click, 2: ready to click again
 start = () => {
   intro.innerHTML = svg.eyes;
   setTimeout(()=>{eyesvg.style.transition="transform 0.5s";},50);
-  setTimeout(()=>{eyesvg.style.transform="scaleX(.9) scaleY(.9)"},100);
-  setTimeout(()=>{eyesvg.style.transform="scaleX(.9) scaleY(.62)"},600);
-  setTimeout(()=>{eyesvg.style.transform="scaleX(.9) scaleY(1.5)"},1200);
+  setTimeout(()=>{eyesvg.style.transform="scaleX(.9)scaleY(.9)"},100);
+  setTimeout(()=>{eyesvg.style.transform="scaleX(.9)scaleY(.62)"},600);
+  setTimeout(()=>{eyesvg.style.transform="scaleX(.9)scaleY(1.5)"},1200);
   setTimeout(()=>{eyesvg.classList.add("hidden")},2500);
   setTimeout(()=>{intro.innerHTML = svg.bedintro + svg.legsintro + "<div id=title>";},2500);
   setTimeout(()=>{
@@ -15,16 +15,16 @@ start = () => {
   setTimeout(()=>{
       legsintro.style.left="5%";
       legsintro.style.top="0%";
-      legsintro.style.transform="scaleX(12) scaleY(12)rotate(0deg)";
+      legsintro.style.transform="scaleX(12)scaleY(12)rotate(0deg)";
   },2600);
   setTimeout(()=>{
     bedintro.style.left="5%";
-    bedintro.style.top="0%";bedintro.style.transform="scaleX(12) scaleY(12)rotate(0deg)"
+    bedintro.style.top="0%";bedintro.style.transform="scaleX(12)scaleY(12)rotate(0deg)"
   },2600);
   setTimeout(()=>{
     legsintro.style.left="-21%";
     legsintro.style.top="53%";
-    legsintro.style.transform="scaleX(12) scaleY(12)rotate(-35deg)"
+    legsintro.style.transform="scaleX(12)scaleY(12)rotate(-35deg)"
   },4500);
   
   setTimeout(()=>{title.innerHTML += "I ";},5100);
@@ -42,9 +42,9 @@ outro = () => {
   intro.innerHTML = svg.bedintro + svg.legsintro + "<div id=title>";
   legsintro.style.left="-21%";
   legsintro.style.top="53%";
-  legsintro.style.transform="scaleX(12) scaleY(12)rotate(-35deg)"
+  legsintro.style.transform="scaleX(12)scaleY(12)rotate(-35deg)"
   bedintro.style.left="5%";
-  bedintro.style.top="0%";bedintro.style.transform="scaleX(12) scaleY(12)rotate(0deg)"
+  bedintro.style.top="0%";bedintro.style.transform="scaleX(12)scaleY(12)rotate(0deg)"
   setTimeout(()=>{
     bedintro.style.transition="all 3s";
     legsintro.style.transition="all 3s";
@@ -53,7 +53,7 @@ outro = () => {
   setTimeout(()=>{
       legsintro.style.left="5%";
       legsintro.style.top="0%";
-      legsintro.style.transform="scaleX(12) scaleY(12)rotate(0deg)";
+      legsintro.style.transform="scaleX(12)scaleY(12)rotate(0deg)";
   },300);  
   
   setTimeout(()=>{
@@ -67,19 +67,19 @@ outro = () => {
   },4500);
 };
 
-score = () => {
-  var score = 0;
-  var html = "";
-  for(var i = 0; i < 26; i++){
-    if(achievements[i][1]){
+score = (i,html,score) => {
+  score = 0;
+  html = "";
+  for(i = 0; i < 26; i++){
+    if(ac[i][1]){
       score++;
-      html += "<br>✅ " + achievements[i][0];
+      html += "<br>✅ " + ac[i][0];
     }
   }
   html = "<div class=divscore><h2>SCORE: " + score + "/26</h2><p>" + html + (score < 26 ? "<p><details><summary>Reveal the rest?</summary>" : "");
-  for(var i = 0; i < 26; i++){
-    if(achievements[i][1] != 1){
-      html += "<br>❌ " + achievements[i][0];
+  for(i = 0; i < 26; i++){
+    if(ac[i][1] != 1){
+      html += "<br>❌ " + ac[i][0];
     }
   }
   html += "</details>";

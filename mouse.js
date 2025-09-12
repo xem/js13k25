@@ -1,6 +1,7 @@
 // Mousemove (show names / rotate hero)
-onmousemove = (e) => {
-  var x = -(innerWidth-600)/2+e.pageX, y = e.pageY-30, angle;
+onmousemove = (e,x,y,angle) => {
+  x = -(innerWidth-600)/2+e.pageX;
+  y = e.pageY-30, angle;
   if(x>0&&y>0&&x<600&&y<600){
     angle=Math.atan2(y-(guyY-roomY),x-(guyX-roomX))-1.6;
     if(!sit) guy.style.transform="rotate("+angle+"rad)";
@@ -16,11 +17,12 @@ oldguyX = 0;
 oldguyY = 0;
 
 // Click (interact)
-onclick = (e) => {
+onclick = (e,x,y) => {
   tmp = {};
   
   // Compute in-game coordinates
-  var x = -(innerWidth-600)/2+e.pageX, y = e.pageY-30;
+  x = -(innerWidth-600)/2+e.pageX;
+  y = e.pageY-30;
   
   // Move hero on floor
   if(x>0&&y>0&&x<600&&y<600){
@@ -35,7 +37,7 @@ onclick = (e) => {
   
   // Check walk under ladder
   if(state[5].ladder == 2 && ((oldguyX < 30 && guyX > 89)||(guyX < 30 && oldguyX > 89)) && oldguyY > 1002 && oldguyY < 1064 && guyY > 1002 && guyY < 1064){
-    achievements[21][1] = 1;
+    ac[21][1] = 1;
   }
   
   // Backup coords
@@ -252,7 +254,7 @@ onclick = (e) => {
       openmenu(tmp);
     }
     
-    if(target.className == "kitchen door"){
+    if(target.id == "kd"){
       tmp = {"go to kitchen": "l2k"};
       if(state[2].door2){
         tmp["close"] = "closedoor2";
@@ -452,7 +454,7 @@ onclick = (e) => {
     
     // Crack
     if(target.id == "crack"){
-      achievements[18][1] = 1;
+      ac[18][1] = 1;
     }
     
     // House

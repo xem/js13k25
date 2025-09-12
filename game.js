@@ -10,7 +10,7 @@ show = (room, pos) => {
     C.move({n:"hero",x:guyX,y:guyY-40});
     if(state[0].bird == 1){
       // Bird achievement
-      achievements[22][1] = 1;
+      ac[22][1] = 1;
     }
   }
   
@@ -30,11 +30,11 @@ show = (room, pos) => {
     C.move({n:"hero",x:300,y:-40+320});
     if(state[2].bird == 1){
       // Bird achievement
-      achievements[22][1] = 1;
+      ac[22][1] = 1;
       
     }
     if(state[4].umbrella == 1){
-      achievements[17][1] = 1;
+      ac[17][1] = 1;
     }
   }
   
@@ -75,17 +75,16 @@ show = (room, pos) => {
 A = new AudioContext,
 m = A.createBuffer(1,1e6,44100);
 
-music0 = [,,,72,,,71, 72, 74, 72, 71, 69, 72,, 72, 69, 72,,, 71, 72, 69, 67, 64, 65, 67,,, 65, 64, 62, 64, 65, 67, 69, 67,,, 69, 71, 69, 67, 65, 64, 62, 64, 62, 60,, 60, 62, 64,, 65,, 62,,, 67, 67,,, 74,,, 72, 71, 69, 71, 72, 74, 72, 71,,, 72, 71, 69, 72, 71, 69, 65,, 65, 65, 65,,, 69,, 72, 69, 71, 67, 65,, 65, 65, 65,, 69,, 71, 67, 69, 65, 62,, 62, 60, 62,,, 62, 62, 62,, 65,, 69, 65, 67, 64, 62,, 62, 60, 62,,, 62, 60, 62,, 64, 65, 67,,, 65, 64, 62, 60,];
+m0 = [,,,,72,,,71, 72, 74, 72, 71, 69, 72,, 72, 69, 72,,, 71, 72, 69, 67, 64, 65, 67,,, 65, 64, 62, 64, 65, 67, 69, 67,,, 69, 71, 69, 67, 65, 64, 62, 64, 62, 60,, 60, 62, 64,, 65,, 62,,, 67, 67,,, 74,,, 72, 71, 69, 71, 72, 74, 72, 71,,, 72, 71, 69, 72, 71, 69, 65,, 65, 65, 65,, 69,, 72, 69, 71, 67, 65,, 65, 65, 65,, 69,, 71, 67, 69, 65, 62,, 62, 60, 62,,, 62, 62, 62,, 65,, 69, 65, 67, 64, 62,, 62, 60, 62,,, 62, 60, 62,, 64, 65, 67,,, 65, 64, 62, 60];
 music = [];
-for(i = 0; i < 20; i++){
+for(i = 0; i < 30; i++){
   for(j = 0; j < 143; j++){
-    music.push(music0[j] ? music0[j] - 20 + i : 0); 
+    music.push(m0[j] ? m0[j] - 19 + i : 0); 
   }
 }
 
 // params: note value
-piano = (e) => {
-   var V, u, p, b, w, P, r, i, D;
+piano = (e,V, p, b, w, P, r, i, D) => {
    for(
   
     // V: note length in seconds
@@ -115,8 +114,8 @@ piano = (e) => {
     D[i] =
     
       // The first 88 samples represent the note's attack
-      (((1 - (i - 88.2) / (44100 * (V - .002))) ** (u ? (.5 * Math.log(1e4 * e / 44100)) ** 2 : 1) * w(i, e)) / (u ? 1 : 5))
-      /10;
+      (((1 - (i - 88.2) / (44100 * (V - .002))) * w(i, e)) / 5)
+      /5;
   }
   
   // Play the note
@@ -130,16 +129,11 @@ piano = (e) => {
 current_note = 0;
 
 play_music = () => {
-  setInterval(play_note, 350);
+  setInterval(() => {
+    current_note ++;
+    if(music[current_note]) piano(440*1.06**(music[current_note] - 80));
+  }, 350);
 }
-
-play_note = () => {
-  current_note ++;
-  if(music[current_note] == 1) piano(0.0001);
-  else if(music[current_note]) piano(440*1.06**(music[current_note] - 80));
-}
-
-
 
 // ZZfx
 zv=.3,               // volume
@@ -159,19 +153,19 @@ createBuffer(1,h,R);p.getChannelData(0).set(k);b=zx.createBufferSource();
 b.buffer=p;b.connect(zx.destination);b.start()}
 
 // thunder sound
-var t=(i,n)=>(n-i)/n;
+t=(i,n)=>(n-i)/n;
 
-thu = (i) => {
-  var n=25000;
+thu = (i,q,n) => {
+  n=25000;
   if (i > n) return null;
   return Math.sin(i/200 - Math.sin(i/331)*Math.sin(i/61) + Math.sin(Math.sin(i/59)/39) * 33)*t(i,n)*(room > 3 ? 9 : 2);
 }
 
 // nudge Sound
-nu = function(i){
-  var n=6e3;
+nu = (i,q,n) => {
+  n=6e3;
   if (i > n) return null;
-  var q = t(i,n);
+  q = t(i,n);
   return Math.sin(i*0.01*Math.sin(0.009*i+Math.sin(i/200))+Math.sin(i/100))*q*q/10;
 }
 
@@ -182,10 +176,10 @@ wr = i => (Math.sin(i/200) + Math.sin(i/350) + Math.sin(i/800))* Math.exp(-i/600
 ting = i => (i%10 < 5 ? 1 : -1) * Math.exp(-i/2000)
 
 // open sound
-op = function(i){
-  var n=25000;
+op = (i,q,n) => {
+  n=25000;
   if (i > n) return null;
-  var q = t(i,n);
+  q = t(i,n);
   return Math.sin(i*0.001*Math.sin(0.009*i+Math.sin(i/200))+Math.sin(i/100))*q*q/10;
 }
 
@@ -193,20 +187,20 @@ op = function(i){
 ex = i => (Math.random() * 2 - 1) * Math.exp(-i/1e4);
 
 // Step sound
-step = function(i){
-  var n=3800;
+step = (i,q,n) => {
+  n=3800;
   if (i > n) return null;
-  var q = t(i,n);
+  q = t(i,n);
   return Math.sin(i*0.01*Math.sin(0.001*i+Math.sin(i/200))+Math.sin(i/200))*q*q/9;
 }
 
 // Sound player
-py = (f,r) => {
-  var A=new AudioContext()
-  var m=A.createBuffer(1,96e3,48e3)
-  var b=m.getChannelData(0)
-  for(var i=96e3;i--;)b[r?20000-i:i]=f(i)
-  var s=A.createBufferSource()
+py = (f,r,A,m,b,i,s) => {
+  A=new AudioContext()
+  m=A.createBuffer(1,96e3,48e3)
+  b=m.getChannelData(0)
+  for(i=96e3;i--;)b[r?20000-i:i]=f(i)
+  s=A.createBufferSource()
   s.buffer=m
   s.connect(A.destination)
   s.start()
@@ -233,7 +227,7 @@ setInterval(()=>{
       state[0].bird = 1;
       if(room == 0){
         // Achievement
-        achievements[22][1] = 1;
+        ac[22][1] = 1;
       }
     }
     
@@ -242,7 +236,7 @@ setInterval(()=>{
       state[2].bird = 1;
       if(room == 2){
         // Achievement
-        achievements[22][1] = 1;
+        ac[22][1] = 1;
       }
     }
   }
@@ -256,7 +250,7 @@ setInterval(()=>{
     meow.classList.remove("hidden");
     setTimeout(()=>{meow.classList.add("hidden");},1000);
     if(watching){
-      achievements[24][1] = 1;
+      ac[24][1] = 1;
     }
   }
 
@@ -285,15 +279,15 @@ setInterval(()=>{
   if(hour == 15 && min == 30){
     rain.style.opacity = .8;
     AA = new AudioContext();
-    var bufferSize = 4096;
-    var whiteNoise = AA.createScriptProcessor(bufferSize, 1, 1);
-    whiteNoise.onaudioprocess = function(e) {
-        var output = e.outputBuffer.getChannelData(0);
-        for (var i = 0; i < bufferSize; i++) {
+    bs = 4096;
+    wn = AA.createScriptProcessor(bs, 1, 1);
+    wn.onaudioprocess = (e,i,output) => {
+        output = e.outputBuffer.getChannelData(0);
+        for (i = 0; i < bs; i++) {
             output[i] = (Math.random() * 2 - 1)/((room > 3 || (room == 0 &&state[0].window== 1) || (room == 2 && (state[2].window== 1 || state[2].door4 == 1)))  ? 50 : 220);
         }
     }
-    whiteNoise.connect(AA.destination);
+    wn.connect(AA.destination);
   }
   
   if(hour == 18 && min == 0){
@@ -305,7 +299,7 @@ setInterval(()=>{
   if(hour == 16 && (min == 0 || min == 10 || min == 20 || min == 30 || min == 40 || min == 50)){
     thunder();
     if(guyX > 201 && guyY > 1126){
-      achievements[25][1] = 1;
+      ac[25][1] = 1;
     }
   }
   
@@ -315,8 +309,7 @@ setInterval(()=>{
 
 // Rain
 ctx = rain.getContext("2d");
-setInterval(()=>{
-  var x, y, i;
+setInterval((x,y,i)=>{
   rain.width ^= 0;
   ctx.lineWidth = 4;
   ctx.strokeStyle = "#346";
@@ -343,10 +336,10 @@ seedmin = 99;
 
 
 // Open and fill menu
-openmenu = (opts) => {
+openmenu = (opts,i,html) => {
   ms.classList.remove("hidden");
-  var html = "<div>" + target.className.replace(/ 1| 2/,"") + "</div>";
-  for(var i in opts){
+  html = "<div>" + target.className.replace(/ 1| 2/,"") + "</div>";
+  for(i in opts){
     html += "<div onclick='" + opts[i] + "()'>" + i + "</div>";
   }
   menu.innerHTML = html;
@@ -378,13 +371,13 @@ rotatebed = () => {
 
 sleep = () => {
   if(state[0].bed == 1){
-    achievements[3][1] = 1;
+    ac[3][1] = 1;
   }
   if(state[0].scissors == 1){
-    achievements[4][1] = 1;
+    ac[4][1] = 1;
   }
   if(state[0].door1 == 1){
-    achievements[5][1] = 1;
+    ac[5][1] = 1;
   }
   k.innerHTML = "";
   outro();
@@ -449,23 +442,23 @@ removecalendar = () => {
 watchcalendar = () => {
   setTimeout(()=>{
   ms.classList.remove("hidden");
-  menu.innerHTML = state[0].calendar2 == 1 ? drawcal(1, 1) : drawcal();
+  menu.innerHTML = state[0].calendar2 == 1 ? dc(1, 1) : dc();
   },200);
 }
 
 markdate = () => {
   setTimeout(()=>{
     ms.classList.remove("hidden");
-    menu.innerHTML = drawcal();
+    menu.innerHTML = dc();
   },200);
   setTimeout(()=>{
-    menu.innerHTML = drawcal(1);
+    menu.innerHTML = dc(1);
     py(wr);
   },800);
     setTimeout(()=>{
-    menu.innerHTML = drawcal(1,1);
+    menu.innerHTML = dc(1,1);
     state[0].calendar2 = 1;
-    achievements[1][1] = 1;
+    ac[1][1] = 1;
   },1400);
 }
 
@@ -511,7 +504,7 @@ putdownscissors = () => {
 
 wearblue = () => {
   state[0].shirt = 0;
-  hero.innerHTML = drawguy();
+  hero.innerHTML = dg();
   document.querySelector(".shirt.blue").classList.add("wear");
   document.querySelector(".shirt.green").classList.remove("wear");
   document.querySelector(".shirt.red").classList.remove("wear");
@@ -520,17 +513,17 @@ wearblue = () => {
 
 weargreen = () => {
   state[0].shirt = 1;
-  hero.innerHTML = drawguy();
+  hero.innerHTML = dg();
   document.querySelector(".shirt.green").classList.add("wear");
   document.querySelector(".shirt.blue").classList.remove("wear");
   document.querySelector(".shirt.red").classList.remove("wear");
-  achievements[2][1] = 1;
+  ac[2][1] = 1;
   py(nu);
 }
 
 wearred = () => {
   state[0].shirt = 2;
-  hero.innerHTML = drawguy();
+  hero.innerHTML = dg();
   document.querySelector(".shirt.red").classList.add("wear");
   document.querySelector(".shirt.green").classList.remove("wear");
   document.querySelector(".shirt.blue").classList.remove("wear");
@@ -541,7 +534,7 @@ puthat = () => {
   khat.remove();
   document.querySelector("#hat2").classList.remove("hidden");
   state[2].hat = 2;
-  achievements[7][1] = 1;
+  ac[7][1] = 1;
   py(nu);
 }
 
@@ -550,7 +543,7 @@ hangmirror = () => {
   document.querySelector("#mirror2").classList.remove("hidden");
   state[3].mirror = 2;
   state[0].mirror = 1;
-  achievements[13][1] = 1;
+  ac[13][1] = 1;
   py(nu);
 }
 
@@ -596,7 +589,7 @@ sitchair2 = () => {
   setTimeout(()=>{C.move({n:"hero",sx:.8,sy:.8});},500);
   sit = 1;
   guy.style.transform="rotate(1rad)";
-  achievements[9][1] = 1;
+  ac[9][1] = 1;
 }
 
 sitcouch = () => {
@@ -626,7 +619,7 @@ tipsalt = () => {
   document.querySelector(".salt").innerHTML = svg.salttip;
   C.move({n:"salt",x:225,y:240+180,rz:5});
   state[2].salt = 1;
-  achievements[6][1] = 1;
+  ac[6][1] = 1;
   py(ting);
 }
 
@@ -642,7 +635,7 @@ putkey = () => {
   document.querySelector("#key").classList.remove("hidden");
   C.move({n:"key",x:250,y:390,z:310,rz:80,sy:1.2});
   state[2].key = 2;
-  achievements[16][1] = 1;
+  ac[16][1] = 1;
   py(nu);
 }
 
@@ -650,7 +643,7 @@ putshoes = () => {
   kshoes.remove();
   document.querySelector("#shoes2").classList.remove("hidden");
   state[0].shoes = 2;
-  achievements[10][1] = 1;
+  ac[10][1] = 1;
   py(nu);
 }
 
@@ -658,7 +651,7 @@ putglasses = () => {
   kglasses.remove();
   document.querySelector("#glasses2").classList.remove("hidden");
   state[1].glasses = 2;
-  achievements[14][1] = 1;
+  ac[14][1] = 1;
   py(nu);
 }
 
@@ -666,7 +659,7 @@ returnbread = () => {
   document.querySelector("#bread2").innerHTML = svg.breadr;
   C.move({n:"bread2",sx:-.9});
   state[3].bread = 3;
-  achievements[8][1] = 1;
+  ac[8][1] = 1;
   py(nu);
 }
 
@@ -700,7 +693,7 @@ openplane = () => {
 closeplane = () => {
   document.querySelector("#plane").innerHTML = svg.plane;
   state[3].plane = 0;
-  document.querySelector(".bread").classList.add("hidden");
+  document.querySelector("#bread").classList.add("hidden");
   py(op,1);
 }
 
@@ -722,7 +715,7 @@ putknive = () => {
   kknive.remove();
   document.querySelector("#knive3").classList.remove("hidden");
   state[3].knive = 2;
-  achievements[11][1] = 1;
+  ac[11][1] = 1;
   py(nu);
 }
 
@@ -730,7 +723,7 @@ returnbroom = () => {
   document.querySelector("#broom").innerHTML = state[3].broom ? svg.broom : svg.broom2;
   C.move({n:"broom",rz: state[3].broom ? -90 : 90});
   state[3].broom = state[3].broom ? 0 : 1;
-  achievements[12][1] = state[3].broom;
+  ac[12][1] = state[3].broom;
   py(nu);
 }
 
@@ -745,7 +738,7 @@ hanghorseshoe2 = () => { // kitchen
   document.querySelector("#horseshoe2").classList.remove("hidden");
   khorseshoe.remove();
   state[5].horseshoe = 2;
-  achievements[20][1] = 1;
+  ac[20][1] = 1;
   py(nu);
 }
 
@@ -753,7 +746,7 @@ hanghorseshoe3 = () => { // living room
   document.querySelector("#horseshoe3").classList.remove("hidden");
   khorseshoe.remove();
   state[5].horseshoe = 2;
-  achievements[20][1] = 1;
+  ac[20][1] = 1;
   py(nu);
 }
 
@@ -762,7 +755,7 @@ hanghorseshoe4 = () => { // bedroom
   khorseshoe.remove();
   state[5].horseshoe = 2;
   state[0].horseshoe = 1;
-  achievements[20][1] = 1;
+  ac[20][1] = 1;
   py(nu);
 }
 
@@ -772,7 +765,7 @@ opencupboard2 = () => {
   document.querySelector("#cupboard2").innerHTML = svg.cupboardopen2;
   state[1].cupboard = 1;
   if(state[1].comb == 0) document.querySelector(".comb").classList.remove("hidden");
-  if(state[1].comb == 0) document.querySelector(".glasses").classList.remove("hidden");
+  if(state[1].glasses == 0) document.querySelector(".glasses").classList.remove("hidden");
   py(op);
 }
 
@@ -780,19 +773,19 @@ closecupboard2 = () => {
   document.querySelector("#cupboard2").innerHTML = svg.cupboard;
   state[1].cupboard = 0;
   if(state[1].comb == 0) document.querySelector(".comb").classList.add("hidden");
-  if(state[1].comb == 0) document.querySelector(".glasses").classList.add("hidden");
+  document.querySelector(".glasses").classList.add("hidden");
   py(op,1);
 }
 
 dropcomb = () => {
   C.move({n:"comb",x:-38,y:67,rz: 204,sx:-.9,sy:.9});
   state[1].comb = 1;
-  achievements[15][1] = 1;
+  ac[15][1] = 1;
   setTimeout(()=>{py(ting);},300);
 }
 
 takeglasses = () => {
-  document.querySelector("#glasses").classList.add("hidden");
+  document.querySelector("#glasses1").classList.add("hidden");
   k.innerHTML += "<div id=kglasses>"+svg.glasses+"</div>";
   state[1].glasses = 1;
   py(nu);
@@ -801,7 +794,7 @@ takeglasses = () => {
 breakmirror = () => {
   document.querySelector("#bathmirror").innerHTML = svg.bathmirror2;
   state[1].mirror = 1;
-  achievements[19][1] = 1;
+  ac[19][1] = 1;
   py(ex);
 }
 
@@ -816,7 +809,7 @@ openumbrella = () => {
 
 closeumbrella = () => {
   document.querySelector("#umbrella1").classList.remove("hidden");
-  hero.innerHTML=drawguy();
+  hero.innerHTML=dg();
   state[4].umbrella = 0;
   py(op,1);
 }
@@ -901,7 +894,7 @@ l2b = () => {
 
 opendoor2 = () => {
   document.querySelector("#lrd2").innerHTML = svg.door2;
-  document.querySelector(".kitchen.door").innerHTML = svg.door3;
+  document.querySelector("#kd").innerHTML = svg.door3;
   state[3].door2 = 1;
   state[2].door2 = 1;
   py(op);
@@ -909,19 +902,19 @@ opendoor2 = () => {
 
 closedoor2 = () => {
   document.querySelector("#lrd2").innerHTML = svg.door;
-  document.querySelector(".kitchen.door").innerHTML = svg.door;
+  document.querySelector("#kd").innerHTML = svg.door;
   state[3].door2 = 0;
   state[2].door2 = 0;
   py(op,1);
 }
 
 k2l = () => {
-  document.querySelector(".kitchen.door").innerHTML = svg.door3;
+  document.querySelector("#kd").innerHTML = svg.door3;
   if(state[3].door2 == 0) py(op);
   setTimeout(()=>{document.querySelector("#lrd2").innerHTML = svg.door2;},100);
   setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},500);
   setTimeout(()=>{show(room = 2);fade.style.opacity=0},1000);
-  setTimeout(()=>{document.querySelector(".kitchen.door").innerHTML = svg.door;py(op,1)},1500);
+  setTimeout(()=>{document.querySelector("#kd").innerHTML = svg.door;py(op,1)},1500);
   state[3].door2 = 0;
   state[2].door2 = 0;
 }
@@ -929,7 +922,7 @@ k2l = () => {
 l2k = () => {
   document.querySelector("#lrd2").innerHTML = svg.door2;
   if(state[3].door2 == 0) py(op);
-  setTimeout(()=>{document.querySelector(".kitchen.door").innerHTML = svg.door3;},100);
+  setTimeout(()=>{document.querySelector("#kd").innerHTML = svg.door3;},100);
   setTimeout(()=>{fade.style.opacity=1;py(step);setTimeout("py(step)",300);setTimeout("py(step)",600);},500);
   setTimeout(()=>{show(room = 3);fade.style.opacity=0},1000);
   setTimeout(()=>{document.querySelector("#lrd2").innerHTML = svg.door;py(op,1)},1500);
@@ -1053,7 +1046,7 @@ pointrainbow = () => {
   v5.style.top = "50%";
   setTimeout(()=>{
     v5.style.top = "120%";
-    achievements[23][1] = 1;
+    ac[23][1] = 1;
     
   },5000);
 }

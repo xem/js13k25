@@ -69,8 +69,8 @@ state = [
 sit = 0;
 watching = 0;
 
-// Achievements
-achievements = [
+// ac
+ac = [
   ["get up on the left foot", 1],  // 0 ok
   ["set the date to friday 13th"],  // 1 ok
   ["wear green clothes"],  // 2 ok

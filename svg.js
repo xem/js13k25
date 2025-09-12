@@ -1,7 +1,9 @@
-﻿if(navigator.userAgent.toLowerCase().includes('firefox')) alert("Firefox currently has a bug that makes the game blurry. For better results, try another browser.");
+﻿// Firefox alert (non-zip only)
+if(navigator.userAgent.toLowerCase().includes('firefox')) alert("Firefox currently has a bug that makes the game blurry. For better results, try another browser.");
 
-drawcal = (mark, mark2) => {
-  var cal = `<svg width=99 height=99 style="transform:translateY(50px) scaleX(6) scaleY(6);font:4px Arial" xmlns='http://www.w3.org/2000/svg'><rect x=4 y=3 width=92 height=79 fill="#fff" stroke="#000"/><rect x=9 y=8 width=82 height=69 fill="#fff" stroke="#000"/><path d="M9 18L91 18M9 30L91 30M9 42L91 42M9 53L91 53M9 64 L91 64M20 8L20 77M32 8L32 77M44 8L44 77M56 8L56 77M68 8L68 77M80 8L80 77" fill="#fff" stroke="#000"/>`;
+// Draw calendar
+dc = (mark, mark2, cal) => {
+  cal = `<svg width=99 height=99 style="transform:translateY(50px)scaleX(6)scaleY(6);font:4px Arial" xmlns='http://www.w3.org/2000/svg'><rect x=4 y=3 width=92 height=79 fill="#fff" stroke="#000"/><rect x=9 y=8 width=82 height=69 fill="#fff" stroke="#000"/><path d="M9 18L91 18M9 30L91 30M9 42L91 42M9 53L91 53M9 64 L91 64M20 8L20 77M32 8L32 77M44 8L44 77M56 8L56 77M68 8L68 77M80 8L80 77" fill="#fff" stroke="#000"/>`;
   for(calx = 0; calx < 7; calx++){  
     for(caly = 0; caly < 6; caly++){
       cal += "<text x='"+(calx * 11.8+10.5)+"' y='" + (caly * 11.3+12) + "'>" + ["Mon","Tue","Wed","Thu"," Fri"," Sat","v2"][calx]+"</text>";
@@ -16,7 +18,8 @@ drawcal = (mark, mark2) => {
   return cal;
 }
 
-drawguy = () => {
+// Draw guy
+dg = () => {
   return `<svg id=guy width=89 height=89 xmlns='http://www.w3.org/2000/svg'><path d="M27 48M27 48C30 56 38 60 41 59L40 56L42 61C44 62 43 63 46 61L47 56L47 59C53 58 55 55 57 51L50 30Z" fill="#fff" stroke="#000"/><path d="M25 35C8 44 7 50 29 52M62 33C79 42 80 53 59 49" fill="#`+ ["008","080","800","bbb"][state[0].shirt] + `" stroke="#000"/><path d="M25 43C24 27 32 22 43 22C61 24 64 30 61 44L57 52L56 38L54 47L51 41L48 51L45 45L43 51L41 44L37 50L32 42L31 51L28 43L27 50L25 43Z" fill="#ccc" stroke="#000"/></svg>`
 }
 
