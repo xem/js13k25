@@ -5,7 +5,7 @@ onmousemove = (e,x,y,angle) => {
   if(x>0&&y>0&&x<600&&y<600){
     angle=Math.atan2(y-(guyY-roomY),x-(guyX-roomX))-1.6;
     if(!sit) guy.style.transform="rotate("+angle+"rad)";
-    try{text.innerHTML = e.target.className.replace(/ 1| 2/,"");}catch(e){}
+    try{text.innerHTML = e.target.className.replace(/ 1| 2|^w$/,"");}catch(e){}
     target = e.target;
   }
   else {
@@ -411,7 +411,7 @@ onclick = (e,x,y) => {
     }
     
     // Glasses
-    if(target.id == "glasses"){
+    if(target.id == "glasses1"){
       openmenu({"take":"takeglasses"});
     }
     
@@ -483,7 +483,7 @@ onclick = (e,x,y) => {
     }
     
     // seed
-    if(target.className == "seed bucket" && state[5].seed != 2){
+    if(target.className == "seed bucket" && state[5].seed == 0){
       openmenu({"take some seed":"takeseed"});
     }
     
