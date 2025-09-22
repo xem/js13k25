@@ -1,0 +1,34 @@
+﻿<!doctype html>
+<body id=b></div>
+<script src="svg.js"></script>
+<script>
+state = [{}];
+html = "<table>";
+svg["dc"] = dc();
+svg["dc1"] = dc(1);
+svg["dc11"] = dc(1,1);
+svg["dg"] = dg();
+state[0].shirt = 0;
+svg["dg0"] = dg();
+state[0].shirt = 1;
+svg["dg1"] = dg();
+state[0].shirt = 2;
+svg["dg2"] = dg();
+svg["fav"] = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="0" y="80" font-size="80">🦶</text></svg>';
+count = 0;
+for(i in svg){
+  if(count % 13 == 0){
+    html += "<tr>";
+  }
+  html += "<td class='t"+count+"'>" + svg[i] + "</td>";
+  count++;
+}
+b.innerHTML = html;
+</script>
+<style>
+#eyesvg { transform-origin:top left; transform:scale(.1) }
+td div { width: 100px;height:100px;overflow:hidden;}
+.t10 svg, .t34 svg, .t35 svg, .t36 svg, .t52 svg, .t54 svg, .t58 svg { transform-origin:top left; transform:scale(3) translateY(-10px) }
+.t12 svg, .t13 svg, .t14 svg, .t15 svg, .t16 svg, .t17 svg, .t18 svg, .t19 svg, .t20 svg, .t28 svg, .t30 svg, .t33 svg, .t39 svg, .t40 svg, .t44 svg,.t51 svg, .t59 svg, .t60 svg, .t61 svg { transform-origin:top left; transform:scale(2) translateY(-10px) }
+.t11 svg { transform-origin:top left; transform:scale(1.5) }
+</style>
